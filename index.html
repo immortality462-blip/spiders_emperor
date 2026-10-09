@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<title>SPIDER EMPEROR — sklep</title>
+<style>
+:root{--bg:#000;--tx:#eef1f8;--mu:#a0a0a0;--ac:#f2f2f2;--ac2:#9a9a9a;--bad:#ff7a8a;--ok:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--tx);font:16px/1.5 "Montserrat",system-ui,"Segoe UI",sans-serif;overflow-x:hidden}
+.blobs{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.blobs i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.14;animation:fl 26s ease-in-out infinite alternate}
+.blobs i:nth-child(1){width:46vw;height:46vw;left:-8vw;top:-10vw;background:#fff}
+.blobs i:nth-child(2){width:38vw;height:38vw;right:-6vw;top:20vh;background:#bdbdbd;animation-delay:-9s}
+.blobs i:nth-child(3){width:42vw;height:42vw;left:30vw;bottom:-18vw;background:#8a8a8a;animation-delay:-17s}
+@keyframes fl{to{transform:translate(8vw,6vh) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.glass{position:relative;background:linear-gradient(140deg,rgba(255,255,255,.14),rgba(255,255,255,.04) 55%,rgba(255,255,255,.08));backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.14);border-radius:26px;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 -1px 0 rgba(255,255,255,.06),inset 0 0 30px rgba(255,255,255,.03),0 24px 60px rgba(0,0,0,.5)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 60% at 20% 0,rgba(255,255,255,.16),transparent 50%)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin:14px auto;max-width:1180px;width:calc(100% - 28px);display:flex;gap:10px;align-items:center;padding:10px 14px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.1rem;letter-spacing:.16em;display:flex;align-items:center;gap:10px}.brand img{width:46px;height:46px;flex:none}
+input,select,textarea,button{font:inherit;color:inherit}
+input,select,textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:10px 14px;width:100%;outline:none;transition:border-color .2s,background .2s}
+select option{background:#14172a}
+input:focus,select:focus,textarea:focus{border-color:var(--ac);background:rgba(255,255,255,.1)}
+header input,header select{width:auto;min-width:0}
+.btn{cursor:pointer;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:10px 18px;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06));box-shadow:inset 0 1px 0 rgba(255,255,255,.4);transition:transform .15s,background .2s;white-space:nowrap}
+.btn:hover{background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.1))}
+.btn:active{transform:scale(.97)}
+.btn.pri{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.75));color:#000;font-weight:600;border-color:#fff}.btn.pri:hover{background:#fff}
+.btn.dng{color:var(--bad)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+main{max-width:1180px;margin:0 auto;padding:0 14px 60px}
+.hero{padding:34px 28px;margin-bottom:22px}
+.hero h1{margin:0 0 6px;font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--mu);max-width:56ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{padding:18px;display:flex;flex-direction:column;gap:8px}
+.orb{height:170px;border-radius:22px;display:grid;place-items:center;font-size:4.6rem;overflow:hidden;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.3),rgba(255,255,255,.06) 55%,rgba(255,255,255,.03) 80%);border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 2px 8px rgba(255,255,255,.25),inset 0 -14px 30px rgba(0,0,0,.35)}
+.orb{position:relative}
+.orb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.card h3{margin:4px 0 0;font-size:1.1rem}
+.card p{margin:0;color:var(--mu);font-size:.9rem;flex:1}
+.cat{font-size:.78rem;color:var(--ac)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.price{font-weight:700;font-size:1.15rem}
+.low{color:#ffd37a;font-size:.8rem}
+dialog{background:transparent;border:0;padding:0;color:inherit;width:min(620px,94vw);max-height:92vh;overflow:visible}
+dialog::backdrop{background:rgba(3,4,10,.62);backdrop-filter:blur(8px)}
+.panel{padding:22px;max-height:90vh;overflow:auto}
+.panel h2{margin:0 0 14px}
+.lines{display:grid;gap:10px;margin:10px 0}
+.line{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:10px;border-radius:18px;background:rgba(255,255,255,.05)}
+.line .em{font-size:1.8rem;text-align:center}
+.qty{display:flex;gap:6px;align-items:center}
+.qty .btn{padding:4px 12px}
+form{display:grid;gap:10px}
+label{display:grid;gap:4px;font-size:.88rem;color:var(--mu)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.err{color:var(--bad);min-height:1.2em;font-size:.9rem}
+.hint{font-size:.8rem;color:var(--mu)}
+.tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tabs .btn[aria-selected=true]{background:rgba(255,255,255,.28)}
+.item{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.05);margin-bottom:8px;flex-wrap:wrap}
+.item small{color:var(--mu);display:block}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;padding:12px 22px;z-index:99;transition:.3s;pointer-events:none}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+.empty{text-align:center;color:var(--mu);padding:30px 0}
+.ok{color:var(--ok)}
+.badge{background:#000;color:#fff;border-radius:99px;padding:0 8px;margin-left:6px;font-weight:700;font-size:.85rem}
+@media(max-width:560px){.two{grid-template-columns:1fr}header input{flex:1 1 100%;order:5}}
+.badge{margin-left:2px}#gear{display:flex;align-items:center;gap:4px;padding:9px 14px}#gear svg{width:22px;height:22px;flex:none}
+body{display:flex;flex-direction:column}main{flex:1;width:100%}
+.foot{max-width:1180px;width:calc(100% - 28px);margin:0 auto 14px;padding:26px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;font-size:.88rem;color:var(--mu)}
+.foot b{color:var(--tx);display:block;margin-bottom:6px}.foot p{margin:0}
+.foot .copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:14px;font-size:.8rem}
+.foot .fb{display:flex;align-items:center;gap:10px;letter-spacing:.16em;margin-bottom:8px}.fb img{width:68px;height:68px;flex:none}
+.link{background:none;border:0;padding:0;margin:0 0 4px;color:var(--tx);text-decoration:underline;cursor:pointer}
+.about h3{margin:16px 0 6px;font-size:1rem}.about p{color:var(--mu);margin:0 0 12px}
+.plain{background:none;border:0;padding:0;cursor:pointer;display:block;width:100%;border-radius:22px}.plain:hover .orb{border-color:rgba(255,255,255,.4)}
+.card h3 .link{font:inherit;text-decoration:none;text-align:left}.card h3 .link:hover,.more:hover{text-decoration:underline}.more{font-size:.82rem;text-align:left;color:var(--mu)}
+.big{height:240px;font-size:7rem}.dprice{font-size:1.6rem;font-weight:800;margin:4px 0 10px}.dd{color:var(--tx);line-height:1.6;margin:0 0 14px}
+header #q{margin-left:auto}.pf{padding:8px 12px;border-radius:999px;font-weight:600}
+.sale{position:absolute;top:26px;right:26px;z-index:1;background:#fff;color:#000;font-weight:800;font-size:.8rem;padding:3px 10px;border-radius:99px}
+.old{color:var(--mu);font-weight:400;font-size:.85rem;margin-right:6px;text-decoration:line-through}
+#gear{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;width:64px;height:64px;padding:0;justify-content:center;border-radius:22.4%;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 12px 34px rgba(0,0,0,.6)}
+#gear svg{width:28px;height:28px}
+#gear .badge{position:absolute;top:-4px;right:-4px;margin:0;min-width:24px;text-align:center;border:2px solid #fff;line-height:1.35}
+main{padding-bottom:90px}
+.wheel{position:relative;width:min(300px,72vw);margin:14px auto}
+.wheel canvas{width:100%;height:auto;display:block;border-radius:50%;transition:transform 5s cubic-bezier(.12,.62,.08,1);box-shadow:0 0 0 6px rgba(255,255,255,.15),0 18px 50px rgba(0,0,0,.6)}
+.ptr{position:absolute;left:50%;top:-10px;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:24px solid #fff;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.res{text-align:center;font-weight:700;min-height:2.8em;margin:12px 0}
+/* karta: skrócony opis, zawijanie długich nazw i ceny */
+.card{min-width:0}
+.card p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card h3,.panel h2{overflow-wrap:anywhere}
+.card h3 .link{white-space:normal;overflow-wrap:anywhere}
+.card .row{flex-wrap:wrap;gap:8px}
+.card .price{min-width:0}
+.card .row .btn{flex:none;margin-left:auto}
+.card p,.dd{white-space:pre-line}
+.tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.tools .btn{padding:6px 14px}
+.pv{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);min-height:2.4em;margin:0}
+.bgl{position:absolute;filter:blur(3px);opacity:.09;pointer-events:none;user-select:none;object-fit:contain}
+.island{margin:10px auto 0;width:46px;height:38px;border-radius:999px;background:#000;border:1px solid rgba(255,255,255,.14);box-shadow:0 8px 30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;overflow:hidden;transition:width .6s cubic-bezier(.3,1.35,.45,1),height .5s,margin .5s,opacity .4s,border-width .3s;font-size:.8rem;font-weight:600;letter-spacing:.02em}
+.island .in{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.island img{width:22px;height:22px;flex:none}
+#islt{display:block;max-width:calc(100vw - 110px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:opacity .28s,filter .28s,transform .28s}
+#islt.out{opacity:0;filter:blur(7px);transform:scale(.88)}
+#vt{margin-top:6px}
+@keyframes bspin{to{transform:rotate(360deg)}}
+.bgl{will-change:transform}
+#menu{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:21;width:min(240px,calc(100vw - 36px));padding:8px;display:grid;gap:2px;transform-origin:bottom right;transform:scale(.6);opacity:0;visibility:hidden;pointer-events:none;transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .2s,visibility 0s .35s}
+#menu.open{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
+.mi{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;padding:11px 14px;border-radius:16px;cursor:pointer;font-weight:600}
+.mi:hover,.mi:focus-visible{background:rgba(255,255,255,.12)}
+.mi span:first-child{font-size:1.15rem;width:1.4em;text-align:center}
+.island.gone{width:0!important;height:0;margin-top:0;opacity:0;border-width:0}
+.dots{position:relative;width:28px;height:28px;display:block}
+.dots .d{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:99px;background:currentColor;transition:transform .45s cubic-bezier(.3,1.5,.5,1),width .35s,height .35s,margin .35s,scale .2s,opacity .2s;animation:dw 1.8s ease-in-out infinite}
+.dots .d:nth-child(1){transform:translateX(-10px)}
+.dots .d:nth-child(2){animation-delay:.15s}
+.dots .d:nth-child(3){transform:translateX(10px);animation-delay:.3s}
+@keyframes dw{0%,55%,100%{translate:0 0}25%{translate:0 -6px}}
+#gear:hover .d{scale:1.2}
+#gear[aria-expanded=true] .d{animation:none}
+#gear[aria-expanded=true] .d:nth-child(1){width:22px;height:3px;margin:-1.5px 0 0 -11px;transform:rotate(45deg)}
+#gear[aria-expanded=true] .d:nth-child(3){width:22px;height:3px;margin:-1.5px 0 0 -11px;transform:rotate(-45deg)}
+#gear[aria-expanded=true] .d:nth-child(2){opacity:0;scale:0}
+</style>
+</head>
+<body>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="island" id="isl" aria-hidden="true"><div class="in" id="isli"><span id="islt"></span></div></div>
+<header class="glass">
+  <div class="brand" id="brand"></div>
+  <select id="lg" class="pf" aria-label="Language / Język"><option value="pl">PL</option><option value="en">EN</option></select>
+  <select id="cu" class="pf" aria-label="Currency / Waluta"><option value="PLN">PLN</option><option value="EUR">EUR</option></select>
+  <input id="q" type="search" placeholder="Szukaj produktu…" maxlength="60" aria-label="Szukaj">
+  <select id="cf" aria-label="Kategoria"></select>
+</header>
+<main>
+    <div class="tabs" id="vt" role="tablist"><button class="btn" type="button" role="tab" data-v="all">Wszystkie produkty</button><button class="btn" type="button" role="tab" data-v="sale">Promocje</button><button class="btn" type="button" role="tab" data-v="roulette">Ruletka</button><button class="btn" type="button" role="tab" data-v="species">Lista gatunków</button></div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+</main>
+<footer class="glass foot">
+  <div><b class="fb" id="fbrand"></b><p>from emperor's for emperor's</p></div>
+  <div><b>Kontakt</b><p>E-mail: kontakt@spideremperor.pl<br>Tel.: +48 000 000 000<br>Pn–Pt, 9:00–17:00</p></div>
+  <div><b>Informacje</b><button class="link" id="about" type="button">O nas</button><br><button class="link" id="farm" type="button">Hodowla</button><br><button class="link" id="help" type="button">Support</button></div>
+  <div class="copy">© <span id="yr"></span> Spider Emperor. Wszelkie prawa zastrzeżone.</div>
+</footer>
+<dialog id="dC"><div class="glass panel" id="pC"></div></dialog>
+<dialog id="dK"><div class="glass panel" id="pK"></div></dialog>
+<dialog id="dL"><div class="glass panel" id="pL"></div></dialog>
+<dialog id="dA"><div class="glass panel" id="pA"></div></dialog>
+<dialog id="dP"><div class="glass panel" id="pP"></div></dialog>
+<dialog id="dN"><div class="glass panel about" id="pN"></div></dialog>
+<dialog id="dH"><div class="glass panel about" id="pH"></div></dialog>
+<dialog id="dD"><div class="glass panel" id="pD"></div></dialog>
+<dialog id="dR"><div class="glass panel" id="pR"></div></dialog>
+<dialog id="dS"><div class="glass panel" id="pS"></div></dialog>
+<dialog id="dU"><div class="glass panel" id="pU"></div></dialog>
+<button class="btn pri" id="gear" type="button" aria-label="Menu" title="Menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><span class="badge" id="cc">0</span></button>
+<nav class="glass" id="menu" aria-label="Menu">
+  <button class="mi" id="cartb" type="button"><span aria-hidden="true">🛒</span>Koszyk</button>
+  <button class="mi" id="acc" type="button"><span aria-hidden="true">👤</span>Konto klienta</button>
+  <button class="mi" id="rlm" type="button"><span aria-hidden="true">🎡</span>Ruletka</button>
+  <button class="mi" id="sup" type="button"><span aria-hidden="true">💬</span>Support</button>
+  <button class="mi" id="adm" type="button"><span aria-hidden="true">🔐</span><span id="admt">Panel admina</span></button>
+</nav>
+<div id="toast" class="glass" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const h=(t,a={},...c)=>{const e=document.createElement(t);for(const[k,v]of Object.entries(a)){if(k==='class')e.className=v;else if(k.slice(0,2)==='on'&&typeof v==='function')e.addEventListener(k.slice(2),v);else if(v!==false&&v!=null)e.setAttribute(k,v===true?'':String(v))}e.append(...c);return e};
+const clr=n=>n.replaceChildren();
+let fmt;const RATE=4.25;
+const money=g=>fmt.format(CUR==='EUR'?g/100/RATE:g/100);
+const str=(v,n)=>typeof v==='string'?v.replace(/[\u0000-\u001f\u007f<>]/g,'').trim().slice(0,n):'';
+const strD=(v,n)=>typeof v==='string'?v.replace(/[\u0000-\u0009\u000b-\u001f\u007f<>]/g,'').replace(/\n{3,}/g,'\n\n').trim().slice(0,n):'';
+const mem={};
+const S={get(k,d){try{const r=localStorage.getItem(k);if(r!==null)return JSON.parse(r)}catch(e){}return k in mem?mem[k]:d},set(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const IMG=/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/;
+const rnd=n=>[...crypto.getRandomValues(new Uint8Array(n))].map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
+const LOGO='data:image/png;base64,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';
+function logo(){const i=new Image();i.src=LOGO;i.alt='';i.width=64;i.height=64;i.setAttribute('aria-hidden','true');return i}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
+function cartIcon(){const N='http://www.w3.org/2000/svg',s=document.createElementNS(N,'svg');s.setAttribute('viewBox','0 0 24 24');s.setAttribute('aria-hidden','true');
+for(const[t,a]of[['path',{d:'M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6'}],['circle',{cx:10,cy:20,r:1.5}],['circle',{cx:17,cy:20,r:1.5}]]){const e=document.createElementNS(N,t);for(const k in a)e.setAttribute(k,a[k]);s.append(e)}
+s.setAttribute('fill','none');s.setAttribute('stroke','currentColor');s.setAttribute('stroke-width','2');s.setAttribute('stroke-linecap','round');s.setAttribute('stroke-linejoin','round');return s}
+function about(){const b=$('#pN');clr(b);
+b.append(h('h2',{},'O nas'),
+h('p',{},'Spider Emperor to sklep stworzony dla tych, którzy lubią wygrywać. Stawiamy na starannie wybrane produkty i prostą, przejrzystą obsługę zamówień.'),
+h('p',{},'Masz pytanie o zamówienie lub produkt? Napisz do nas przez zakładkę Support w koncie klienta albo skorzystaj z danych kontaktowych w stopce.'),
+h('p',{},'Uwaga: płatności w tym sklepie są symulacją — żadne prawdziwe pieniądze nie są pobierane.'),
+h('button',{class:'btn pri',type:'button',onclick:()=>$('#dN').close()},'Zamknij'));open($('#dN'))}
+function farm(){const b=$('#pH');clr(b);
+const S2=[
+['Początki','Hodwole zaczynałem jeszcze jako 15/16 letni chłopak, tak naprawde zaczeło sie od tego ze spod łóżka wybiegł mi nasz polski pająk "kolczak", dzien pozniej zajechałem do sklepu zoologicznego i powiedziałem "jezeli bedzie brachypelma emilia to kupuje" takowa braszka była a ja wróciłem z pająkiem do domu.'],
+['Przejscie na większą skale','przejscie na większą skale zacząłem tak naprawde dzięki szymonowi gołemu który pewnego dnia zadzwonił do mnie i spytał się "cześć nie szukasz moze pracy?". nauczył mnie podstaw a z czasem gdy nauczyłem się podstaw, szymon zaczął rozwijac moje umiejętnosci poziom po poziomie '],
+['Rozwinięcie skrzydeł','z czasem gdy przestało mi wystarczać już tylko karmienie pająków po 8 godzin dziennie na hodowli, kupuje samice, doprowadzam je do dorosłości, mnoże gatunki i sprzedaje dalej czy to szefowi czy komuś innemu.'],
+['Przyszłość','ciężko rozwinąć ten temat, strona to desing i tyle. ale kto wie moze kiedys powstawnie prawdziwy "SPIDER EMPEROR"']];
+b.append(h('h2',{},'Hodowla'));
+S2.forEach(([t,x])=>b.append(h('h3',{},t),h('p',{},x)));
+b.append(h('p',{class:'hint'},'To ogólne informacje wprowadzające.'),h('button',{class:'btn pri',type:'button',onclick:()=>$('#dH').close()},'Zamknij'));open($('#dH'))}
+function open(d){if(!d.open)d.showModal()}
+
+/* ---------- język, waluta, tłumaczenia ---------- */
+const EN={"Szukaj produktu…": "Search products…", "Szukaj": "Search", "Kategoria": "Category", "Konto klienta": "Customer account", "Koszyk": "Cart", "Wszystkie produkty": "All products", "Promocje": "Sale", "Lista gatunków": "Species list", "Dostępne w sklepie": "Available in the shop", "Inne gatunki": "Other species", "Dostępny": "In stock", "Brak na stanie": "Out of stock", "Brak gatunków.": "No species.", "Wybrane pajkoki dla tych, którzy lubią wygrywać": "Hand-picked spiders for those who love to win", "Zakręć ruletką i wygraj pająka 🎡": "Spin the roulette and win a spider 🎡", "Płatności w trybie testowym": "Payments in test mode", "Młode osobniki (maluchy). Efektowny, fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Gatunek naziemno-norowy, szybki i defensywny — dla zaawansowanych hodowców. Takson nieopisany (sp.), pochodzenie w ofertach podawane różnie.": "Young spiderlings. A striking violet-navy tarantula with light banding on its legs. A burrowing ground species, fast and defensive — for advanced keepers. Undescribed taxon (sp.); the origin is stated differently in offers.", "Młode osobniki (maluchy). Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria, nadrzewny, dorosły osiąga 15–20 cm rozpiętości odnóży. Szybki, jad istotny medycznie — tylko dla doświadczonych. Gatunek CITES (zał. II), krytycznie zagrożony w naturze.": "Young spiderlings. Gooty Sapphire — the only blue tarantula of the genus Poecilotheria, arboreal, reaching a 15–20 cm leg span as an adult. Fast, with medically significant venom — for experienced keepers only. CITES Appendix II species, critically endangered in the wild.", "Młode osobniki (maluchy). Ptasznik nadrzewny z Indii o kontrastowym, biało-szaro-czarnym ubarwieniu, rozpiętość odnóży do ok. 18–20 cm. Bardzo szybki, dla zaawansowanych. Gatunek CITES (zał. II) — wymaga dokumentów hodowli.": "Young spiderlings. An arboreal tarantula from India with contrasting white-grey-black coloration and a leg span of up to about 18–20 cm. Very fast, for advanced keepers. CITES Appendix II species — breeding documents required.", "Młode osobniki (maluchy). Ptasznik kobaltowy (Cobalt Blue) — gatunek norowy z Birmy i Tajlandii, z wiekiem nabiera intensywnie niebieskiego ubarwienia odnóży. Skryty, szybki i defensywny; dla zaawansowanych.": "Young spiderlings. Cobalt Blue — a burrowing species from Myanmar and Thailand whose legs turn intensely blue with age. Reclusive, fast and defensive; for advanced keepers.", "Młode osobniki (maluchy). Thai Zebra — ptasznik norowy z Birmy, Tajlandii i Kambodży z kontrastowym paskowaniem. Zwykle bez wymogu zaświadczenia CITES. Defensywny, dla zaawansowanych.": "Young spiderlings. Thai Zebra — a burrowing tarantula from Myanmar, Thailand and Cambodia with contrasting striping. Usually no CITES certificate required. Defensive, for advanced keepers.", "Młode osobniki (maluchy). Vietnam Tiger — norowy ptasznik z Tajlandii, Laosu i Kambodży, tu w odmianie blue. Szybki, defensywny, dla zaawansowanych.": "Young spiderlings. Vietnam Tiger — a burrowing tarantula from Thailand, Laos and Cambodia, here in the blue variety. Fast, defensive, for advanced keepers.", "Ruletka": "Roulette", "Zakręć": "Spin", "Ruletka jest chwilowo niedostępna.": "The roulette is temporarily unavailable.", "Zakręć kołem raz na 24 godziny i wygraj produkt za 0 zł! Wygrana trafia od razu do koszyka.": "Spin the wheel once every 24 hours and win a product for free! Your prize goes straight to your cart.", "Pudło — spróbuj jutro!": "No luck — try again tomorrow!", "Poprzednie losowanie: pudło.": "Previous spin: no luck.", "Wygrana w ruletce": "Roulette prize", "Wybrane pajkoki dla tych, którzy lubią wygrywać. from emperor's for emperor's": "Hand-picked spiders for those who love to win. from emperor's for emperor's", "Kontakt": "Contact", "Informacje": "Information", "O nas": "About us", "Hodowla": "Breeding", "Pn–Pt, 9:00–17:00": "Mon–Fri, 9:00–17:00", "© ": "© ", "Spider Emperor. Wszelkie prawa zastrzeżone.": "Spider Emperor. All rights reserved.", "Panel admina": "Admin panel", "Panel (zalogowany)": "Panel (logged in)", "Wszystkie kategorie": "All categories", "Brak produktów dla tych filtrów.": "No products match these filters.", "Aktualnie brak promocji.": "No items on sale right now.", "Brak": "Out of stock", "Do koszyka": "Add to cart", "Zobacz szczegóły": "View details", "Opcja produktu": "Product option", "Twój koszyk": "Your cart", "Koszyk jest pusty.": "Your cart is empty.", "Koszyk jest pusty": "Your cart is empty", "Wróć do sklepu": "Back to shop", "Mniej": "Less", "Więcej": "More", "Zamknij": "Close", "Do kasy": "Checkout", "Kasa": "Checkout", "Imię i nazwisko": "Full name", "Telefon": "Phone", "Adres": "Address", "Kod pocztowy": "Postal code", "Miasto": "City", "Płatność kartą (symulacja)": "Card payment (simulation)", "Numer karty": "Card number", "Ważność": "Expiry", "MM/RR": "MM/YY", "Anuluj": "Cancel", "Karta testowa: 4242 4242 4242 4242 (sukces), 4000 0000 0000 0002 (odrzucona), 4000 0000 0000 9995 (brak środków). Dane karty nie są nigdzie zapisywane.": "Test card: 4242 4242 4242 4242 (success), 4000 0000 0000 0002 (declined), 4000 0000 0000 9995 (insufficient funds). Card details are never stored.", "Ceny przeliczone po stałym kursie 1 € = 4,25 zł (symulacja).": "Prices converted at a fixed rate of €1 = PLN 4.25 (simulation).", "Autoryzacja…": "Authorizing…", "Podaj imię i nazwisko.": "Enter your full name.", "Podaj poprawny e-mail.": "Enter a valid e-mail.", "Podaj poprawny numer telefonu.": "Enter a valid phone number.", "Podaj adres.": "Enter your address.", "Kod pocztowy w formacie 00-000.": "Postal code format: 00-000.", "Podaj miasto.": "Enter your city.", "Nieprawidłowy numer karty.": "Invalid card number.", "Karta wygasła lub data jest błędna.": "Card expired or date is invalid.", "Nieprawidłowy kod CVC.": "Invalid CVC code.", "Zbyt wiele prób. Odczekaj minutę.": "Too many attempts. Wait a minute.", "Płatność odrzucona przez bank.": "Payment declined by the bank.", "Brak środków na karcie.": "Insufficient funds on the card.", "Płatność przyjęta ✓": "Payment accepted ✓", "Numer zamówienia:": "Order number:", "To symulacja — potwierdzenie nie zostało wysłane, a środki nie zostały pobrane.": "This is a simulation — no confirmation was sent and no funds were charged.", "Moje dane": "My details", "Twoje zamówienia": "Your orders", "Dane zapisują się tylko w tej przeglądarce i uzupełniają się automatycznie w kasie.": "Your details are saved only in this browser and are pre-filled at checkout.", "Usuń dane": "Delete data", "Zapisz dane": "Save details", "Dane zapisane": "Details saved", "Dane usunięte": "Details deleted", "Zapisz e-mail w zakładce „Moje dane”, aby zobaczyć zamówienia.": "Save your e-mail in the “My details” tab to see your orders.", "Brak zamówień dla tego adresu e-mail.": "No orders for this e-mail address.", "Zapisz swoje dane w zakładce „Moje dane”, aby napisać do supportu.": "Save your details in the “My details” tab to contact support.", "Temat": "Subject", "Wiadomość": "Message", "Wyślij zgłoszenie": "Send request", "Twoje zgłoszenia": "Your requests", "Brak zgłoszeń.": "No requests.", "Podaj temat (min. 3 znaki).": "Enter a subject (min. 3 characters).", "Opisz problem (min. 10 znaków).": "Describe the problem (min. 10 characters).", "Limit 3 zgłoszeń na godzinę.": "Limit: 3 requests per hour.", "Zgłoszenie wysłane": "Request sent", "Odpowiedz…": "Reply…", "Odpowiedź": "Reply", "Wyślij": "Send", "Klient": "Customer", "otwarte": "open", "zamknięte": "closed", "opłacone": "paid", "wysłane": "shipped", "zrealizowane": "completed", "Usunąć zapisane dane klienta?": "Delete saved customer details?", "Wybierz opcję": "Choose option", "Dodaj do koszyka": "Add to cart", "Brak opisu.": "No description.", "Spider Emperor to sklep stworzony dla tych, którzy lubią wygrywać. Stawiamy na starannie wybrane produkty i prostą, przejrzystą obsługę zamówień.": "Spider Emperor is a shop built for those who love to win. We focus on carefully selected products and simple, transparent order handling.", "Masz pytanie o zamówienie lub produkt? Napisz do nas przez zakładkę Support w koncie klienta albo skorzystaj z danych kontaktowych w stopce.": "Have a question about an order or product? Write to us through the Support tab in your customer account or use the contact details in the footer.", "Uwaga: płatności w tym sklepie są symulacją — żadne prawdziwe pieniądze nie są pobierane.": "Note: payments in this shop are a simulation — no real money is charged.", "Pajęczaki w domu": "Arachnids at home", "Hodowla pająków, zwłaszcza ptaszników, to spokojne hobby: zwierzę nie wymaga spacerów ani codziennej uwagi, a obserwowanie jego zachowania potrafi wciągnąć na lata. Każdy gatunek ma jednak własne wymagania, dlatego zanim cokolwiek kupisz, poznaj potrzeby konkretnego gatunku.": "Keeping spiders, especially tarantulas, is a calm hobby: the animal needs no walks or daily attention, and watching its behavior can hook you for years. Every species has its own requirements, so learn the needs of a specific species before you buy anything.", "Terrarium": "Enclosure", "Podstawą jest szczelne, dobrze wentylowane terrarium z zamknięciem, którego pająk nie otworzy. Gatunki naziemne potrzebują więcej miejsca na podłodze, a nadrzewne — wysokości. Dno wypełnia się podłożem (np. włóknem kokosowym) o grubości dopasowanej do stylu życia gatunku, a do tego dochodzi kryjówka i miseczka z wodą.": "The basics are a secure, well-ventilated enclosure with a lid the spider cannot open. Ground-dwelling species need more floor space, while arboreal ones need height. The bottom is filled with substrate (e.g. coconut fiber) whose depth suits the species’ lifestyle, plus a hide and a water dish.", "Temperatura i wilgotność": "Temperature and humidity", "Większość popularnych gatunków dobrze czuje się w zwykłej temperaturze pokojowej, zwykle około 22–28°C. Wilgotność zależy od gatunku: pustynne wymagają suchszego podłoża, a leśne — wilgotniejszego. Unikaj zarówno przesuszenia, jak i stałego zawilgocenia z brakiem przewiewu.": "Most popular species do well at normal room temperature, usually around 22–28°C. Humidity depends on the species: desert ones need drier substrate, forest ones more humid. Avoid both drying out and constant dampness without airflow.", "Karmienie": "Feeding", "Pająki jedzą owady, np. świerszcze, karaczyce czy larwy mącznika. Młode osobniki karmi się częściej, dorosłe zwykle raz na tydzień lub rzadziej. Niezjedzoną zdobycz usuwaj następnego dnia, bo może zranić pająka, zwłaszcza w czasie wylinki.": "Spiders eat insects such as crickets, roaches or mealworm larvae. Young ones are fed more often, adults usually once a week or less. Remove uneaten prey the next day, as it can injure the spider, especially during a molt.", "Wylinka": "Molting", "Pająki rosną dzięki wylinkom. Przed nią zwykle odmawiają jedzenia, stają się mniej aktywne, a niektóre zamykają się w gnieździe. W tym czasie nie karm i nie dotykaj pająka — po wylince potrzebuje kilku dni, aby jego pancerz stwardniał.": "Spiders grow by molting. Beforehand they usually refuse food and become less active, and some seal themselves in a burrow. During this time do not feed or touch the spider — after a molt it needs a few days for its exoskeleton to harden.", "Bezpieczeństwo": "Safety", "Nie traktuj pająka jak zwierzęcia do głaskania. Wiele ptaszników ma włoski parzące, które podrażniają skórę i oczy, a niektóre gatunki mają silniejszy jad. Pająk bywa też płochliwy i upadek z wysokości może się dla niego skończyć śmiercią. Pracuj przy terrarium spokojnie, a ręce myj po każdym kontakcie.": "Do not treat a spider as a pet to cuddle. Many tarantulas have urticating hairs that irritate skin and eyes, and some species have stronger venom. A spider can also be skittish, and a fall from height can kill it. Work around the enclosure calmly and wash your hands after every contact.", "Wybór pająka": "Choosing a spider", "Początkującym zwykle poleca się spokojne, odporne gatunki naziemne, takie jak Brachypelma hamorii czy Grammostola pulchra. Wybieraj zwierzęta z legalnej hodowli (CB, czyli urodzone w niewoli), a nie odłowione w naturze, i zwróć uwagę na przepisy o ochronie gatunków (CITES), które dotyczą części z nich.": "Beginners are usually advised to start with calm, hardy ground-dwelling species such as Brachypelma hamorii or Grammostola pulchra. Choose animals from legal breeders (CB, i.e. captive-bred) rather than wild-caught, and mind the species-protection rules (CITES) that apply to some of them.", "To ogólne informacje wprowadzające. Szczegółowe wymagania sprawdź dla konkretnego gatunku u doświadczonego hodowcy.": "This is general introductory information. Check the detailed requirements for your specific species with an experienced breeder.", "Słuchawki Aura": "Aura Headphones", "Zegarek Prism": "Prism Watch", "Lampka Halo": "Halo Lamp", "Klawiatura Glide": "Glide Keyboard", "Plecak Mono": "Mono Backpack", "Kubek Thermo": "Thermo Mug", "Dom": "Home", "Peryferia": "Peripherals", "Akcesoria": "Accessories", "Bezprzewodowe, z aktywną redukcją szumów i 40 h pracy.": "Wireless, with active noise cancellation and 40 h of battery life.", "Szafirowe szkło, GPS i tydzień na jednym ładowaniu.": "Sapphire glass, GPS and a week on one charge.", "Regulowana barwa światła, sterowanie dotykiem.": "Adjustable light color, touch control.", "Niskoprofilowa, mechaniczna, podświetlana.": "Low-profile, mechanical, backlit.", "Wodoodporny, z kieszenią na 16\" laptop.": "Water-resistant, with a pocket for a 16\" laptop.", "Trzyma temperaturę przez 12 godzin.": "Keeps temperature for 12 hours."};
+const PAT=[
+[/^Promocje do −(\d+)%$/,n=>'Sales up to −'+n+'%'],
+[/^Wygrałeś: (.*)! Produkt czeka w koszyku za 0 zł\.$/,n=>'You won: '+n+'! The product is waiting in your cart for free.'],
+[/^Poprzednia wygrana: (.*) — sprawdź koszyk\.$/,n=>'Previous prize: '+n+' — check your cart.'],
+[/^Następne losowanie za (\d+) h (\d+) min\.$/,(a,b)=>'Next spin in '+a+' h '+b+' min.'],
+[/^Nagród na kole: (\d+) z (\d+) pól\.$/,(a,b)=>'Prizes on the wheel: '+a+' of '+b+' slots.'],
+[/^Zostało tylko (\d+) szt\.$/,n=>'Only '+n+' left'],
+[/^Szczegóły: (.*)$/,n=>'Details: '+n],
+[/^(.*) w koszyku$/,n=>n+' added to cart'],
+[/^(.*) \/ szt\.$/,n=>n+' / pc.'],
+[/^Razem: (.*)$/,n=>'Total: '+n],
+[/^Zapłać (.*)$/,n=>'Pay '+n],
+[/^Produkt „(.*)” nie jest już dostępny w tej ilości\.$/,n=>'Product “'+n+'” is no longer available in this quantity.'],
+[/^(Brak na stanie\.|Zostało tylko (\d+) szt\.|Dostępne: (\d+) szt\.)(?: · W koszyku: (\d+) szt\.)?$/,(a,b,c,d)=>(a==='Brak na stanie.'?'Out of stock.':b?'Only '+b+' left':'In stock: '+c)+(d?' · In cart: '+d:'')]
+];
+const pf=S.get('shop.prefs',{});
+let LANG=pf.lang==='en'?'en':'pl',CUR=pf.cur==='EUR'?'EUR':'PLN';
+const mkFmt=()=>{fmt=new Intl.NumberFormat(LANG==='en'?'en-IE':'pl-PL',{style:'currency',currency:CUR})};mkFmt();
+function pr(p){return p.sale?Math.round(p.price*(100-p.sale)/100):p.price}
+function trs(t){
+  if(LANG!=='en')return t;
+  const m=/^(\s*)([\s\S]*?)(\s*)$/.exec(t),c=m[2];if(!c)return t;
+  if(Object.prototype.hasOwnProperty.call(EN,c))return m[1]+EN[c]+m[3];
+  for(const[re,f]of PAT){const x=re.exec(c);if(x)return m[1]+f(...x.slice(1))+m[3]}
+  return t;
+}
+const pairs=new WeakMap(),ap=new WeakMap(),ATT=['placeholder','aria-label','title'];
+function trNode(n){
+  if(LANG!=='en'||/^(SCRIPT|STYLE)$/.test(n.parentNode&&n.parentNode.tagName||''))return;
+  const cur=n.nodeValue,p=pairs.get(n);if(p&&cur===p.en)return;
+  const r=trs(cur);if(r!==cur){pairs.set(n,{pl:cur,en:r});n.nodeValue=r}
+}
+function trAttrs(e){
+  if(LANG!=='en')return;
+  for(const a of ATT){if(!e.hasAttribute(a))continue;const cur=e.getAttribute(a),o=ap.get(e)||{};if(o[a]&&cur===o[a].en)continue;
+    const r=trs(cur);if(r!==cur){o[a]={pl:cur,en:r};ap.set(e,o);e.setAttribute(a,r)}}
+}
+function trTree(root){
+  if(root.nodeType===3){trNode(root);return}
+  if(root.nodeType!==1)return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT);let n=root;
+  do{if(n.nodeType===3)trNode(n);else trAttrs(n)}while(n=w.nextNode());
+}
+function untr(){
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT|NodeFilter.SHOW_ELEMENT);let n;
+  while(n=w.nextNode()){
+    if(n.nodeType===3){const p=pairs.get(n);if(p&&n.nodeValue===p.en){n.nodeValue=p.pl;pairs.delete(n)}}
+    else{const o=ap.get(n);if(o){for(const a in o)if(n.getAttribute(a)===o[a].en)n.setAttribute(a,o[a].pl);ap.delete(n)}}
+  }
+}
+new MutationObserver(ms=>{if(LANG!=='en')return;for(const m of ms){if(m.type==='childList')m.addedNodes.forEach(trTree);else trNode(m.target)}}).observe(document.body,{childList:true,subtree:true,characterData:true});
+
+/* ---------- data (validated on every load) ---------- */
+function cleanP(p){
+  if(!p||typeof p!=='object')return null;
+  const id=typeof p.id==='string'&&/^[\w-]{1,40}$/.test(p.id)?p.id:null;
+  const name=str(p.name,80),cat=str(p.cat,30),opts=Array.isArray(p.opts)?p.opts.map(o=>str(o,24)).filter(Boolean).slice(0,12):[];
+  if(!id||name.length<2||cat.length<2)return null;
+  if(!Number.isInteger(p.price)||p.price<1||p.price>1e8)return null;
+  if(!Number.isInteger(p.stock)||p.stock<0||p.stock>9999)return null;
+  return{id,name,cat,price:p.price,stock:p.stock,desc:strD(p.desc,800),opts,sale:Number.isInteger(p.sale)&&p.sale>=0&&p.sale<=90?p.sale:0,rl:p.rl===true,emoji:str(p.emoji,4)||'📦',img:typeof p.img==='string'&&p.img.length<200000&&IMG.test(p.img)?p.img:''};
+}
+const SEED=[
+ ['Cyriopagopus sp. "Purple Zebra"','Ornithoctoninae',18000,8,'🕷️','Młode osobniki (maluchy). Efektowny, fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Gatunek naziemno-norowy, szybki i defensywny — dla zaawansowanych hodowców. Takson nieopisany (sp.), pochodzenie w ofertach podawane różnie.'],
+ ['Poecilotheria metallica','Poecilotheria',12900,5,'🕷️','Młode osobniki (maluchy). Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria, nadrzewny, dorosły osiąga 15–20 cm rozpiętości odnóży. Szybki, jad istotny medycznie — tylko dla doświadczonych. Gatunek CITES (zał. II), krytycznie zagrożony w naturze.'],
+ ['Poecilotheria regalis','Poecilotheria',4500,15,'🕷️','Młode osobniki (maluchy). Ptasznik nadrzewny z Indii o kontrastowym, biało-szaro-czarnym ubarwieniu, rozpiętość odnóży do ok. 18–20 cm. Bardzo szybki, dla zaawansowanych. Gatunek CITES (zał. II) — wymaga dokumentów hodowli.'],
+ ['Cyriopagopus lividus','Ornithoctoninae',5500,12,'🕷️','Młode osobniki (maluchy). Ptasznik kobaltowy (Cobalt Blue) — gatunek norowy z Birmy i Tajlandii, z wiekiem nabiera intensywnie niebieskiego ubarwienia odnóży. Skryty, szybki i defensywny; dla zaawansowanych.'],
+ ['Cyriopagopus albostriatus','Ornithoctoninae',6000,10,'🕷️','Młode osobniki (maluchy). Thai Zebra — ptasznik norowy z Birmy, Tajlandii i Kambodży z kontrastowym paskowaniem. Zwykle bez wymogu zaświadczenia CITES. Defensywny, dla zaawansowanych.'],
+ ['Cyriopagopus longipes blue','Ornithoctoninae',10000,6,'🕷️','Młode osobniki (maluchy). Vietnam Tiger — norowy ptasznik z Tajlandii, Laosu i Kambodży, tu w odmianie blue. Szybki, defensywny, dla zaawansowanych.']
+].map(a=>({id:'p-'+rnd(6),name:a[0],cat:a[1],price:a[2],stock:a[3],emoji:a[4],desc:a[5],img:'',opts:[],sale:0,rl:false}));
+SEED[5].sale=10;SEED[2].rl=true;SEED[4].rl=true;
+let P=(S.get('shop.products',null)||[]).map(cleanP).filter(Boolean);
+if(!S.get('shop.products',null)||S.get('shop.pv',0)!==2){P=SEED;S.set('shop.products',P);S.set('shop.pv',2)}
+let O=(S.get('shop.orders',[])||[]);if(!Array.isArray(O))O=[];
+const saveP=()=>S.set('shop.products',P);
+function cleanS(x){if(!x||typeof x!=='object')return null;const id=typeof x.id==='string'&&/^[\w-]{1,40}$/.test(x.id)?x.id:null,name=str(x.name,80),note=str(x.note,120);return id&&name.length>=2?{id,name,note}:null}
+let SPC=S.get('shop.species',[]);SPC=(Array.isArray(SPC)?SPC:[]).map(cleanS).filter(Boolean).slice(0,300);
+const saveS=()=>S.set('shop.species',SPC);
+let cart={};
+const sc=S.get('shop.cart',{});
+if(sc&&typeof sc==='object')for(const[id,q]of Object.entries(sc))if(Number.isInteger(q)&&q>0)cart[id]=q;
+const saveC=()=>S.set('shop.cart',cart);
+let SP=S.get('shop.spin',null);SP=SP&&typeof SP==='object'&&Number.isFinite(SP.ts)?{ts:SP.ts,pid:typeof SP.pid==='string'&&/^[\w-]{1,40}$/.test(SP.pid)?SP.pid:null,used:SP.used===true}:null;
+const spinOK=id=>!!SP&&SP.pid===id&&!SP.used&&Date.now()-SP.ts<6048e5;
+
+/* ---------- storefront ---------- */
+const TAGRE=/\[\/?(?:b|i|u|s|c)(?:=#[0-9a-fA-F]{6})?\]/g;
+const plain=t=>String(t).replace(TAGRE,'');
+function rich(t){
+  const root=document.createDocumentFragment(),st=[{k:'',e:root}],re=/\[(\/?)(b|i|u|s|c)(?:=(#[0-9a-fA-F]{6}))?\]/g,txt=x=>document.createTextNode(x),add=x=>st[st.length-1].e.append(x);
+  let last=0,m;t=String(t);
+  while((m=re.exec(t))){
+    if(m.index>last)add(txt(t.slice(last,m.index)));last=re.lastIndex;
+    const cl=m[1],k=m[2],col=m[3];
+    if(!cl){
+      if((k==='c')!==!!col||st.length>8){add(txt(m[0]));continue}
+      const e=document.createElement(k==='b'?'strong':k==='i'?'em':k==='u'?'u':k==='s'?'s':'span');
+      if(k==='c')e.style.color=col;add(e);st.push({k,e});
+    }else{
+      let j=st.length-1;while(j>0&&st[j].k!==k)j--;
+      if(j>0)st.length=j;else add(txt(m[0]));
+    }
+  }
+  if(last<t.length)add(txt(t.slice(last)));
+  return root;
+}
+function orb(p){return h('div',{class:'orb','aria-hidden':'true'},p.img?h('img',{src:p.img,alt:''}):p.emoji)}
+function renderCats(){
+  const s=$('#cf'),cur=s.value;clr(s);
+  s.append(h('option',{value:''},'Wszystkie kategorie'));
+  [...new Set(P.map(p=>p.cat))].sort().forEach(c=>s.append(h('option',{value:c},c)));
+  s.value=[...s.options].some(o=>o.value===cur)?cur:'';
+}
+let view='all';
+function syncTabs(){document.querySelectorAll('#vt .btn').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.v===view)))}
+function renderGrid(){
+  const g=$('#grid'),q=$('#q').value.toLowerCase().trim(),c=$('#cf').value;clr(g);
+  const L=P.filter(p=>(view!=='sale'||p.sale>0)&&(!c||p.cat===c)&&(!q||(p.name+' '+plain(p.desc)).toLowerCase().includes(q)));
+  if(!L.length)g.append(h('div',{class:'empty glass',style:'grid-column:1/-1;padding:40px'},view==='sale'&&!P.some(p=>p.sale>0)?'Aktualnie brak promocji.':'Brak produktów dla tych filtrów.'));
+  L.forEach(p=>{const sel=p.opts.length?h('select',{'aria-label':'Opcja produktu'},...p.opts.map((o,i)=>h('option',{value:i},o))):'';g.append(h('article',{class:'card glass'},p.sale?h('span',{class:'sale'},'−'+p.sale+'%'):'',h('button',{class:'plain',type:'button','aria-label':'Szczegóły: '+p.name,onclick:()=>showProduct(p.id)},orb(p)),h('span',{class:'cat'},p.cat),h('h3',{},h('button',{class:'link',type:'button',onclick:()=>showProduct(p.id)},p.name)),h('p',{},rich(p.desc)),h('button',{class:'link more',type:'button',onclick:()=>showProduct(p.id)},'Zobacz szczegóły'),sel,
+    p.stock>0&&p.stock<=5?h('span',{class:'low'},'Zostało tylko '+p.stock+' szt.'):'',
+    h('div',{class:'row'},h('span',{class:'price'},p.sale?h('s',{class:'old'},money(p.price)):'',money(pr(p))),
+      h('button',{class:'btn pri',type:'button',disabled:p.stock<1,onclick:()=>{addCart(p.id+'~'+(sel?+sel.value:0),1);toast(p.name+' w koszyku')}},p.stock<1?'Brak':'Do koszyka'))));})
+}
+function showProduct(id){
+  const p=P.find(x=>x.id===id);if(!p)return;
+  const b=$('#pD');clr(b);let qty=1;
+  const sel=p.opts.length?h('select',{'aria-label':'Opcja produktu'},...p.opts.map((o,i)=>h('option',{value:i},o))):null;
+  const inCart=()=>Object.entries(cart).filter(([k])=>k.split('~')[0]===p.id).reduce((s,[,v])=>s+v,0);
+  const left=()=>Math.max(0,Math.min(20,p.stock-inCart()));
+  const num=h('b',{style:'min-width:2ch;text-align:center'},'1'),tot=h('span',{class:'hint'}),info=h('div',{class:'hint'});
+  const minus=h('button',{class:'btn',type:'button','aria-label':'Mniej',onclick:()=>{qty--;upd()}},'−'),plus=h('button',{class:'btn',type:'button','aria-label':'Więcej',onclick:()=>{qty++;upd()}},'+');
+  const add=h('button',{class:'btn pri',type:'button',onclick:()=>{const n=qty;addCart(p.id+'~'+(sel?+sel.value:0),n);toast(n+'× '+p.name+' w koszyku');qty=1;upd()}},'Dodaj do koszyka');
+  function upd(){const l=left();qty=Math.min(Math.max(qty,l?1:0),l);num.textContent=String(qty);add.disabled=l<1;minus.disabled=qty<=1;plus.disabled=qty>=l;tot.textContent='Razem: '+money(pr(p)*qty);
+    info.textContent=(p.stock<1?'Brak na stanie.':p.stock<=5?'Zostało tylko '+p.stock+' szt.':'Dostępne: '+p.stock+' szt.')+(inCart()?' · W koszyku: '+inCart()+' szt.':'')}
+  b.append(orb(p),h('span',{class:'cat',style:'display:block;margin-top:12px'},p.cat),h('h2',{style:'margin:2px 0'},p.name),h('div',{class:'dprice'},p.sale?h('s',{class:'old'},money(p.price)):'',money(pr(p)),p.sale?h('span',{class:'sale',style:'position:static;margin-left:10px;display:inline-block'},'−'+p.sale+'%'):''),h('p',{class:'dd'},p.desc?rich(p.desc):'Brak opisu.'),
+    sel?h('label',{style:'margin-bottom:12px'},'Wybierz opcję',sel):'',
+    h('div',{class:'row',style:'margin-bottom:6px'},h('div',{class:'qty'},minus,num,plus),tot),info,
+    h('div',{class:'row',style:'margin-top:14px'},h('button',{class:'btn',type:'button',onclick:()=>$('#dD').close()},'Zamknij'),add));
+  b.firstChild.classList.add('big');upd();open($('#dD'));
+}
+function speciesList(){
+  const b=$('#pS');clr(b);b.append(h('h2',{},'Lista gatunków'));
+  const cmp=(a,c)=>a.localeCompare(c,'pl');
+  b.append(h('h3',{style:'margin:8px 0'},'Dostępne w sklepie'));
+  if(!P.length)b.append(h('div',{class:'hint'},'Brak gatunków.'));
+  [...P].sort((a,c)=>cmp(a.name,c.name)).forEach(p=>b.append(h('div',{class:'item'},h('div',{},h('b',{},p.name),h('small',{},p.cat)),
+    h('span',{},h('span',{class:'hint'},p.stock>0?'Dostępny':'Brak na stanie'),' ',h('button',{class:'btn',type:'button',onclick:()=>{$('#dS').close();showProduct(p.id)}},'Zobacz szczegóły')))));
+  b.append(h('h3',{style:'margin:16px 0 8px'},'Inne gatunki'));
+  if(!SPC.length)b.append(h('div',{class:'hint'},'Brak gatunków.'));
+  [...SPC].sort((a,c)=>cmp(a.name,c.name)).forEach(x=>b.append(h('div',{class:'item'},h('div',{},h('b',{},x.name),x.note?h('small',{},x.note):''))));
+  b.append(h('div',{class:'row',style:'margin-top:14px;justify-content:flex-end'},h('button',{class:'btn pri',type:'button',onclick:()=>$('#dS').close()},'Zamknij')));
+  open($('#dS'));
+}
+function rint(n){return crypto.getRandomValues(new Uint32Array(1))[0]%n}
+function roulette(){
+  const b=$('#pR');clr(b);b.append(h('h2',{},'Ruletka'));
+  const now=Date.now(),wait=SP&&now-SP.ts<864e5?864e5-(now-SP.ts):0,N=10;
+  let pool=P.filter(p=>p.stock>0&&p.rl);
+  if(!pool.length)pool=P.filter(p=>p.stock>0).sort((a,c)=>pr(a)-pr(c)).slice(0,2);
+  const close=h('button',{class:'btn',type:'button',onclick:()=>$('#dR').close()},'Zamknij');
+  if(wait>0){
+    let hh=Math.floor(wait/36e5),mm=Math.ceil((wait%36e5)/6e4);if(mm===60){hh++;mm=0}
+    const lp=SP.pid&&!SP.used?P.find(x=>x.id===SP.pid):null;
+    b.append(h('p',{class:'res'},lp?'Poprzednia wygrana: '+lp.emoji+' '+lp.name+' — sprawdź koszyk.':'Poprzednie losowanie: pudło.'),h('p',{class:'hint',style:'text-align:center'},'Następne losowanie za '+hh+' h '+mm+' min.'),h('div',{class:'row',style:'justify-content:center'},close));
+    open($('#dR'));return;
+  }
+  if(!pool.length){b.append(h('div',{class:'empty'},'Ruletka jest chwilowo niedostępna.'),close);open($('#dR'));return}
+  const prizes=[];while(prizes.length<2&&pool.length)prizes.push(pool.splice(rint(pool.length),1)[0]);
+  const slots=Array(N).fill(null),pos=prizes.length===2?[1,6]:[3];prizes.forEach((p,i)=>{slots[pos[i]]=p});
+  const cv=document.createElement('canvas');cv.width=cv.height=600;
+  const x=cv.getContext('2d'),a=2*Math.PI/N,c=300;
+  slots.forEach((p,i)=>{const st=-Math.PI/2+i*a;x.beginPath();x.moveTo(c,c);x.arc(c,c,296,st,st+a);x.closePath();x.fillStyle=p?'#f2f2f2':(i%2?'#161616':'#262626');x.fill();x.strokeStyle='rgba(255,255,255,.25)';x.lineWidth=2;x.stroke();
+    x.save();x.translate(c,c);x.rotate(st+a/2);x.textAlign='right';x.textBaseline='middle';x.font=p?'52px sans-serif':'bold 40px sans-serif';x.fillStyle='#8a8a8a';x.fillText(p?p.emoji:'✕',268,0);x.restore()});
+  x.beginPath();x.arc(c,c,26,0,7);x.fillStyle='#000';x.fill();x.strokeStyle='#fff';x.lineWidth=4;x.stroke();
+  const res=h('div',{class:'res','aria-live':'polite'});
+  const go=h('button',{class:'btn pri',type:'button',onclick:()=>{
+    go.disabled=true;const idx=rint(N),prize=slots[idx];
+    SP={ts:Date.now(),pid:prize?prize.id:null,used:false};S.set('shop.spin',SP);
+    if(prize){for(const k of Object.keys(cart))if(k.endsWith('~w'))delete cart[k];cart[prize.id+'~0~w']=1;fixCart();cnt()}
+    const deg=360*6-(idx+.5)*(360/N)+(rint(1000)/1000-.5)*(360/N)*.7;
+    requestAnimationFrame(()=>{cv.style.transform='rotate('+deg+'deg)'});
+    setTimeout(()=>{res.textContent=prize?'Wygrałeś: '+prize.emoji+' '+prize.name+'! Produkt czeka w koszyku za 0 zł.':'Pudło — spróbuj jutro!';if(prize)toast(prize.name+' w koszyku')},matchMedia('(prefers-reduced-motion: reduce)').matches?300:5200)}},'Zakręć');
+  b.append(h('p',{class:'hint',style:'text-align:center;margin:0'},'Zakręć kołem raz na 24 godziny i wygraj produkt za 0 zł! Wygrana trafia od razu do koszyka.'),
+    h('div',{class:'wheel'},h('div',{class:'ptr'}),cv),res,
+    h('p',{class:'hint',style:'text-align:center'},'Nagród na kole: '+prizes.length+' z '+N+' pól.'),
+    h('div',{class:'row',style:'justify-content:center;gap:10px'},close,go));
+  open($('#dR'));
+}
+function items(){return Object.entries(cart).map(([k,q])=>{const[id,i='0',w]=k.split('~'),p=P.find(x=>x.id===id);return p&&q>0?{p,q,k,o:p.opts[+i]||'',free:w==='w'}:null}).filter(Boolean)}
+function fixCart(){const tot={};for(const k of Object.keys(cart)){const[id,i='0',w]=k.split('~'),p=P.find(x=>x.id===id);if(!p||!(+i>=0&&+i<Math.max(1,p.opts.length))||(w&&!(w==='w'&&spinOK(id)))){delete cart[k];continue}const q=Math.min(cart[k],p.stock-(tot[id]||0),w?1:20);if(q>0){cart[k]=q;tot[id]=(tot[id]||0)+q}else delete cart[k]}saveC()}
+const cnt=()=>{$('#cc').textContent=items().reduce((s,i)=>s+i.q,0)};
+const total=()=>items().reduce((s,i)=>s+(i.free?0:pr(i.p)*i.q),0);
+function addCart(k,d){
+  const id=k.split('~')[0],p=P.find(x=>x.id===id);if(!p)return;
+  const other=Object.entries(cart).filter(([x])=>x!==k&&x.split('~')[0]===id).reduce((s,[,v])=>s+v,0);
+  const q=Math.min(Math.max(0,(cart[k]||0)+d),p.stock-other,k.endsWith('~w')?1:20);
+  if(q>0)cart[k]=q;else delete cart[k];
+  saveC();$('#cc').textContent=items().reduce((s,i)=>s+i.q,0);
+  if($('#dC').open)renderCart();
+}
+function renderCart(){
+  const b=$('#pC');clr(b);const L=items();
+  b.append(h('h2',{},'Twój koszyk'));
+  if(!L.length){b.append(h('div',{class:'empty'},'Koszyk jest pusty.'),h('button',{class:'btn',type:'button',onclick:()=>$('#dC').close()},'Wróć do sklepu'));return}
+  const w=h('div',{class:'lines'});
+  L.forEach(({p,q,k,o,free})=>w.append(h('div',{class:'line'},h('div',{class:'em','aria-hidden':'true'},p.emoji),
+    h('div',{},h('b',{},p.name+(o?' — '+o:'')+(free?' 🎁':'')),h('small',{class:'hint',style:'display:block'},free?'Wygrana w ruletce':money(pr(p))+' / szt.')),
+    h('div',{class:'qty'},h('button',{class:'btn',type:'button','aria-label':'Mniej',onclick:()=>addCart(k,-1)},'−'),h('span',{},String(q)),
+      h('button',{class:'btn',type:'button','aria-label':'Więcej',onclick:()=>addCart(k,1)},'+')))));
+  b.append(w,h('div',{class:'row'},h('b',{},'Razem: '+money(total())),
+    h('span',{},h('button',{class:'btn',type:'button',onclick:()=>$('#dC').close()},'Zamknij'),' ',h('button',{class:'btn pri',type:'button',onclick:()=>{$('#dC').close();checkout()}},'Do kasy'))));
+}
+
+/* ---------- checkout + pseudo payment ---------- */
+function luhn(n){let s=0,a=false;for(let i=n.length-1;i>=0;i--){let d=+n[i];if(a){d*=2;if(d>9)d-=9}s+=d;a=!a}return s%10===0}
+const brand=n=>/^4/.test(n)?'Visa':/^(5[1-5]|2[2-7])/.test(n)?'Mastercard':'Karta';
+const PH=/^\+?[\d ]{9,16}$/;
+function cleanProf(x){x=x&&typeof x==='object'?x:{};return{name:str(x.name,80),email:str(x.email,120),phone:str(x.phone,20),addr:str(x.addr,120),zip:str(x.zip,6),city:str(x.city,60)}}
+let PR=cleanProf(S.get('shop.profile',{}));
+let tries=[];
+function field(l,n,a={}){return h('label',{},l,h('input',{name:n,required:true,...a}))}
+function checkout(){
+  const L=items();if(!L.length){toast('Koszyk jest pusty');return}
+  const b=$('#pK');clr(b);
+  const err=h('div',{class:'err',role:'alert'}),pay=h('button',{class:'btn pri',type:'submit'},'Zapłać '+money(total()));
+  const f=h('form',{novalidate:true,autocomplete:'on'},
+    h('h2',{},'Kasa'),
+    field('Imię i nazwisko','name',{maxlength:80,autocomplete:'name',value:PR.name}),
+    h('div',{class:'two'},field('E-mail','email',{type:'email',maxlength:120,autocomplete:'email',value:PR.email}),field('Telefon','phone',{type:'tel',maxlength:20,autocomplete:'tel',placeholder:'+48 600 000 000',value:PR.phone})),
+    field('Adres','addr',{maxlength:120,autocomplete:'street-address',value:PR.addr}),
+    h('div',{class:'two'},field('Kod pocztowy','zip',{maxlength:6,placeholder:'00-000',autocomplete:'postal-code',value:PR.zip}),field('Miasto','city',{maxlength:60,autocomplete:'address-level2',value:PR.city})),
+    h('b',{},'Płatność kartą (symulacja)'),
+    field('Numer karty','cn',{inputmode:'numeric',maxlength:19,placeholder:'4242 4242 4242 4242',autocomplete:'cc-number'}),
+    h('div',{class:'two'},field('Ważność','ex',{inputmode:'numeric',maxlength:5,placeholder:'MM/RR',autocomplete:'cc-exp'}),field('CVC','cv',{inputmode:'numeric',maxlength:4,type:'password',autocomplete:'cc-csc'})),
+    CUR==='EUR'?h('div',{class:'hint'},'Ceny przeliczone po stałym kursie 1 € = 4,25 zł (symulacja).'):'',h('div',{class:'hint'},'Karta testowa: 4242 4242 4242 4242 (sukces), 4000 0000 0000 0002 (odrzucona), 4000 0000 0000 9995 (brak środków). Dane karty nie są nigdzie zapisywane.'),
+    err,h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:()=>$('#dK').close()},'Anuluj'),pay));
+  f.cn.addEventListener('input',()=>{f.cn.value=f.cn.value.replace(/\D/g,'').slice(0,16).replace(/(.{4})/g,'$1 ').trim()});
+  f.ex.addEventListener('input',()=>{let v=f.ex.value.replace(/\D/g,'').slice(0,4);f.ex.value=v.length>2?v.slice(0,2)+'/'+v.slice(2):v});
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();err.textContent='';
+    if(quickAdmin(f.elements['name'].value))return;
+    const v=Object.fromEntries(new FormData(f));
+    const name=str(v.name,80),email=str(v.email,120),phone=str(v.phone,20),addr=str(v.addr,120),zip=str(v.zip,6),city=str(v.city,60),num=String(v.cn).replace(/\D/g,''),cv=String(v.cv);
+    const m=/^(\d{2})\/(\d{2})$/.exec(v.ex);
+    const free0=total()===0;let msg='';
+    if(name.length<2)msg='Podaj imię i nazwisko.';
+    else if(!/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/.test(email))msg='Podaj poprawny e-mail.';
+    else if(!PH.test(phone))msg='Podaj poprawny numer telefonu.';
+    else if(addr.length<5)msg='Podaj adres.';
+    else if(!/^\d{2}-\d{3}$/.test(zip))msg='Kod pocztowy w formacie 00-000.';
+    else if(city.length<2)msg='Podaj miasto.';
+    else if(!free0&&(num.length<13||!luhn(num)))msg='Nieprawidłowy numer karty.';
+    else if(!free0&&(!m||+m[1]<1||+m[1]>12||new Date(2000+ +m[2],+m[1],1)<=new Date()))msg='Karta wygasła lub data jest błędna.';
+    else if(!free0&&!/^\d{3,4}$/.test(cv))msg='Nieprawidłowy kod CVC.';
+    if(msg){err.textContent=msg;return}
+    const now=Date.now();tries=tries.filter(t=>now-t<60000);
+    if(tries.length>=5){err.textContent='Zbyt wiele prób. Odczekaj minutę.';return}
+    tries.push(now);
+    pay.disabled=true;pay.textContent='Autoryzacja…';
+    await sleep(1500);
+    // re-check stock against current data
+    const need={};for(const{p,q}of items())need[p.id]=(need[p.id]||0)+q;
+    for(const[id,q]of Object.entries(need)){const c=P.find(x=>x.id===id);if(!c||c.stock<q){err.textContent='Produkt „'+(c?c.name:'')+'” nie jest już dostępny w tej ilości.';pay.disabled=false;pay.textContent='Zapłać '+money(total());fixCart();cnt();return}}
+    const last4=num.slice(-4);
+    if(!free0&&(num==='4000000000000002'||num==='4000000000009995')){
+      err.textContent=num.endsWith('0002')?'Płatność odrzucona przez bank.':'Brak środków na karcie.';
+      pay.disabled=false;pay.textContent='Zapłać '+money(total());f.cv.value='';return}
+    const order={id:'ZAM-'+rnd(4),ts:now,items:items().map(({p,q,o,free})=>({name:p.name+(o?' ('+o+')':'')+(free?' 🎁':''),price:free?0:pr(p),qty:q})),total:total(),name,email,phone,addr:addr+', '+zip+' '+city,card:free0?'—':brand(num)+' •••• '+last4,status:'opłacone'};
+    items().forEach(({p,q})=>{P.find(x=>x.id===p.id).stock-=q});
+    if(items().some(i=>i.free)&&SP){SP.used=true;S.set('shop.spin',SP)}
+    O.unshift(order);O=O.slice(0,500);if(!PR.email){PR=cleanProf({name,email,phone,addr,zip,city});S.set('shop.profile',PR)}S.set('shop.orders',O);saveP();
+    cart={};saveC();f.reset();$('#cc').textContent='0';renderGrid();
+    clr(b);b.append(h('h2',{class:'ok'},'Płatność przyjęta ✓'),h('p',{},'Numer zamówienia: ',h('b',{},order.id)),h('p',{class:'hint'},'To symulacja — potwierdzenie nie zostało wysłane, a środki nie zostały pobrane.'),h('button',{class:'btn pri',type:'button',onclick:()=>$('#dK').close()},'Wróć do sklepu'));
+  });
+  b.append(f);open($('#dK'));
+}
+
+/* ---------- konto klienta ---------- */
+let utab='d',tkTimes=[];
+let T=S.get('shop.tickets',[]);T=Array.isArray(T)?T.filter(t=>t&&typeof t==='object'&&typeof t.id==='string'):[];
+const saveT=()=>S.set('shop.tickets',T);
+const dt=ts=>new Date(+ts||0).toLocaleString(LANG==='en'?'en-GB':'pl-PL');
+function account(){
+  const b=$('#pU');clr(b);
+  const tb=(k,l)=>h('button',{class:'btn',type:'button',role:'tab','aria-selected':String(utab===k),onclick:()=>{utab=k;account()}},l);
+  b.append(h('div',{class:'row'},h('h2',{style:'margin:0'},'Konto klienta'),h('button',{class:'btn',type:'button',onclick:()=>$('#dU').close()},'Zamknij')),
+    h('div',{class:'tabs',role:'tablist',style:'margin-top:14px'},tb('d','Moje dane'),tb('o','Twoje zamówienia'),tb('s','Support')));
+  if(utab==='d')accData(b);else if(utab==='o')accOrders(b);else accSupport(b);
+  open($('#dU'));
+}
+function accData(b){
+  const err=h('div',{class:'err',role:'alert'});
+  const f=h('form',{novalidate:true},
+    h('p',{class:'hint'},'Dane zapisują się tylko w tej przeglądarce i uzupełniają się automatycznie w kasie.'),
+    field('Imię i nazwisko','name',{maxlength:80,autocomplete:'name',value:PR.name}),
+    h('div',{class:'two'},field('E-mail','email',{type:'email',maxlength:120,autocomplete:'email',value:PR.email}),field('Telefon','phone',{type:'tel',maxlength:20,autocomplete:'tel',placeholder:'+48 600 000 000',value:PR.phone})),
+    field('Adres','addr',{maxlength:120,autocomplete:'street-address',value:PR.addr}),
+    h('div',{class:'two'},field('Kod pocztowy','zip',{maxlength:6,placeholder:'00-000',autocomplete:'postal-code',value:PR.zip}),field('Miasto','city',{maxlength:60,autocomplete:'address-level2',value:PR.city})),
+    err,h('div',{class:'row'},h('button',{class:'btn dng',type:'button',onclick:()=>{if(confirm(trs('Usunąć zapisane dane klienta?'))){PR=cleanProf({});S.set('shop.profile',PR);account();toast('Dane usunięte')}}},'Usuń dane'),
+      h('button',{class:'btn pri',type:'submit'},'Zapisz dane')));
+  f.addEventListener('submit',e=>{
+    e.preventDefault();if(quickAdmin(f.elements['name'].value))return;const v=cleanProf(Object.fromEntries(new FormData(f)));let m='';
+    if(v.name.length<2)m='Podaj imię i nazwisko.';
+    else if(!/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/.test(v.email))m='Podaj poprawny e-mail.';
+    else if(!PH.test(v.phone))m='Podaj poprawny numer telefonu.';
+    else if(v.addr.length<5)m='Podaj adres.';
+    else if(!/^\d{2}-\d{3}$/.test(v.zip))m='Kod pocztowy w formacie 00-000.';
+    else if(v.city.length<2)m='Podaj miasto.';
+    if(m){err.textContent=m;return}
+    PR=v;S.set('shop.profile',PR);account();toast('Dane zapisane');
+  });
+  b.append(f);
+}
+function accOrders(b){
+  if(!PR.email){b.append(h('div',{class:'empty'},'Zapisz e-mail w zakładce „Moje dane”, aby zobaczyć zamówienia.'));return}
+  const mine=O.filter(o=>o&&String(o.email).toLowerCase()===PR.email.toLowerCase());
+  if(!mine.length){b.append(h('div',{class:'empty'},'Brak zamówień dla tego adresu e-mail.'));return}
+  mine.forEach(o=>b.append(h('div',{class:'item'},h('div',{},h('b',{},String(o.id)+' · '+money(+o.total||0)),h('small',{},dt(o.ts)+' · '+String(o.card)),h('small',{},String(o.addr)),
+    h('small',{},(Array.isArray(o.items)?o.items:[]).map(i=>String(i.qty)+'× '+String(i.name)).join(', '))),h('b',{},String(o.status)))));
+}
+function ticketView(t,who){
+  const d=h('div',{class:'item',style:'display:block'},
+    h('div',{class:'row'},h('b',{},String(t.id)+' · '+String(t.subject)),h('span',{class:'hint'},String(t.status))),
+    h('small',{},dt(t.ts)+(who==='admin'?' · '+String(t.name)+' · '+String(t.email):'')),h('p',{style:'margin:6px 0'},String(t.msg)));
+  (Array.isArray(t.replies)?t.replies:[]).forEach(r=>d.append(h('div',{style:'margin:6px 0 0 14px;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.07)'},
+    h('small',{},(r.from==='admin'?'Support':'Klient')+' · '+dt(r.ts)),h('div',{},String(r.text)))));
+  const inp=h('input',{maxlength:1000,placeholder:'Odpowiedz…','aria-label':'Odpowiedź'});
+  const send=h('button',{class:'btn',type:'button',onclick:()=>{
+    if(who==='admin'&&!admin)return;const text=str(inp.value,1000);if(text.length<2)return;
+    if(!Array.isArray(t.replies))t.replies=[];t.replies=t.replies.slice(-49);t.replies.push({from:who,ts:Date.now(),text});saveT();who==='admin'?renderAdmin():account()}},'Wyślij');
+  if(who==='admin'||t.status==='otwarte')d.append(h('div',{class:'row',style:'margin-top:8px'},inp,send));
+  if(who==='admin')d.append(h('div',{style:'margin-top:8px'},
+    h('button',{class:'btn',type:'button',onclick:()=>{if(!admin)return;t.status=t.status==='otwarte'?'zamknięte':'otwarte';saveT();renderAdmin()}},t.status==='otwarte'?'Zamknij zgłoszenie':'Otwórz ponownie'),' ',
+    h('button',{class:'btn dng',type:'button',onclick:()=>{if(!admin)return;if(confirm('Usunąć zgłoszenie '+t.id+'?')){T=T.filter(x=>x!==t);saveT();renderAdmin()}}},'Usuń')));
+  return d;
+}
+function accSupport(b){
+  if(!PR.email){b.append(h('div',{class:'empty'},'Zapisz swoje dane w zakładce „Moje dane”, aby napisać do supportu.'));return}
+  const err=h('div',{class:'err',role:'alert'});
+  const f=h('form',{novalidate:true},field('Temat','subject',{maxlength:80}),h('label',{},'Wiadomość',h('textarea',{name:'msg',maxlength:1000,rows:4})),err,h('button',{class:'btn pri',type:'submit'},'Wyślij zgłoszenie'));
+  f.addEventListener('submit',e=>{
+    e.preventDefault();err.textContent='';const subject=str(f.subject.value,80),msg=str(f.msg.value,1000),now=Date.now();
+    tkTimes=tkTimes.filter(t=>now-t<3600000);
+    if(subject.length<3)err.textContent='Podaj temat (min. 3 znaki).';
+    else if(msg.length<10)err.textContent='Opisz problem (min. 10 znaków).';
+    else if(tkTimes.length>=3)err.textContent='Limit 3 zgłoszeń na godzinę.';
+    else{tkTimes.push(now);T.unshift({id:'TKT-'+rnd(3),ts:now,email:PR.email,name:PR.name,subject,msg,status:'otwarte',replies:[]});T=T.slice(0,300);saveT();toast('Zgłoszenie wysłane');account()}
+  });
+  b.append(f,h('h3',{style:'margin:18px 0 8px'},'Twoje zgłoszenia'));
+  const mine=T.filter(t=>String(t.email).toLowerCase()===PR.email.toLowerCase());
+  if(!mine.length)b.append(h('div',{class:'hint'},'Brak zgłoszeń.'));
+  mine.forEach(t=>b.append(ticketView(t,'klient')));
+}
+
+/* ---------- admin auth ---------- */
+const ITER=210000,enc=new TextEncoder();
+const b64=u=>btoa(String.fromCharCode(...u)),unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function kdf(pw,salt,it){const k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits']);return new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt,iterations:it},k,256))}
+const same=(a,b)=>{let d=a.length^b.length;for(let i=0;i<a.length;i++)d|=a[i]^b[i];return d===0};
+const strong=p=>p.length>=12&&p.length<=128&&/[a-z]/.test(p)&&/[A-Z]/.test(p)&&/\d/.test(p)&&/[^\w\s]/.test(p);
+let admin=false,last=0;
+const touch=()=>{last=Date.now()};
+setInterval(()=>{if(admin&&Date.now()-last>600000){logout();toast('Sesja wygasła z powodu bezczynności')}},10000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&admin&&Date.now()-last>120000)logout()});
+function logout(){admin=false;$('#dA').close();$('#dP').close();$('#admt').textContent='Panel admina'}
+async function tryLogin(u,p){
+  const L=S.get('shop.lock',{n:0,until:0});
+  if(Date.now()<L.until)return'Zbyt wiele prób. Odczekaj '+Math.ceil((L.until-Date.now())/1000)+' s.';
+  const a=S.get('shop.admin',null),ok0=a&&typeof a.salt==='string'&&typeof a.hash==='string';
+  let salt,it=ITER;try{salt=ok0?unb64(a.salt):crypto.getRandomValues(new Uint8Array(16));if(ok0&&Number.isInteger(a.it))it=a.it}catch(e){salt=crypto.getRandomValues(new Uint8Array(16))}
+  const hh=await kdf(p,salt,it);
+  if(ok0&&u.toLowerCase()===a.u&&same(hh,unb64(a.hash))){S.set('shop.lock',{n:0,until:0});admin=true;touch();return''}
+  L.n=(L.n||0)+1;if(L.n>=5)L.until=Date.now()+Math.min(30000*2**(L.n-5),3600000);S.set('shop.lock',L);
+  return'Nieprawidłowy login lub hasło.';
+}
+/* Skrót: imię i nazwisko = QUICK otwiera panel admina bez logowania. Ustaw QUICK='' aby wyłączyć. */
+const QUICK='daxe god';
+function quickAdmin(name){
+  if(!QUICK||String(name).toLowerCase().replace(/\s+/g,' ').trim()!==QUICK)return false;
+  admin=true;touch();$('#dU').close();$('#dK').close();renderAdmin();return true;
+}
+function adminEntry(){
+  if(admin){renderAdmin();return}
+  const a=S.get('shop.admin',null),setup=!a,b=$('#pL');clr(b);
+  const err=h('div',{class:'err',role:'alert'}),go=h('button',{class:'btn pri',type:'submit'},setup?'Utwórz konto admina':'Zaloguj');
+  const f=h('form',{novalidate:true},h('h2',{},setup?'Pierwsza konfiguracja':'Logowanie admina'),
+    setup?h('p',{class:'hint'},'Nie ma jeszcze konta administratora. Ustaw login i silne hasło (min. 12 znaków: mała i wielka litera, cyfra, znak specjalny).'):'',
+    field('Login','u',{maxlength:32,autocomplete:'username'}),field('Hasło','p',{type:'password',maxlength:128,autocomplete:setup?'new-password':'current-password'}),
+    setup?field('Powtórz hasło','p2',{type:'password',maxlength:128,autocomplete:'new-password'}):'',err,
+    h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:()=>$('#dL').close()},'Anuluj'),go));
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();err.textContent='';const u=str(f.u.value,32).toLowerCase(),p=f.p.value;
+    go.disabled=true;
+    try{
+      if(setup){
+        if(!/^[a-z0-9_.-]{3,32}$/.test(u))err.textContent='Login: 3–32 znaków (litery, cyfry, _ . -).';
+        else if(!strong(p))err.textContent='Hasło jest za słabe.';
+        else if(p!==f.p2.value)err.textContent='Hasła nie są takie same.';
+        else{const salt=crypto.getRandomValues(new Uint8Array(16));S.set('shop.admin',{u,salt:b64(salt),hash:b64(await kdf(p,salt,ITER)),it:ITER});}
+        if(err.textContent)return;
+      }
+      const m=await tryLogin(u,p);
+      if(m){err.textContent=m;return}
+      f.reset();$('#dL').close();renderAdmin();
+    }finally{go.disabled=false}
+  });
+  b.append(f);open($('#dL'));
+}
+
+/* ---------- admin panel ---------- */
+let tab='p';
+function renderAdmin(){
+  if(!admin)return;const b=$('#pA');clr(b);touch();$('#admt').textContent='Panel (zalogowany)';
+  const tb=(k,l)=>h('button',{class:'btn',type:'button',role:'tab','aria-selected':String(tab===k),onclick:()=>{tab=k;renderAdmin()}},l);
+  b.append(h('div',{class:'row'},h('h2',{style:'margin:0'},'Panel administratora'),h('button',{class:'btn dng',type:'button',onclick:()=>{logout();toast('Wylogowano')}},'Wyloguj')),
+    h('div',{class:'tabs',role:'tablist',style:'margin-top:14px'},tb('p','Produkty'),tb('o','Zamówienia ('+O.length+')'),tb('c','Klienci'),tb('s','Support ('+T.filter(t=>t.status==='otwarte').length+')'),tb('g','Gatunki ('+SPC.length+')')));
+  if(tab==='p'){
+    b.append(h('button',{class:'btn pri',type:'button',style:'margin-bottom:12px',onclick:()=>editP(null)},'+ Dodaj produkt'));
+    if(!P.length)b.append(h('div',{class:'empty'},'Brak produktów.'));
+    P.forEach(p=>b.append(h('div',{class:'item'},h('div',{},h('b',{},p.emoji+' '+p.name+(p.rl?' 🎡':'')),h('small',{},p.cat+' · '+money(p.price)+(p.sale?' · −'+p.sale+'%':'')+' · stan: '+p.stock)),
+      h('div',{},h('button',{class:'btn',type:'button',onclick:()=>editP(p)},'Edytuj'),' ',
+      h('button',{class:'btn dng',type:'button',onclick:()=>{if(!admin)return;if(confirm('Usunąć „'+p.name+'”?')){P=P.filter(x=>x.id!==p.id);fixCart();cnt();saveP();renderCats();renderGrid();renderAdmin()}}},'Usuń')))));
+  }else if(tab==='g'){
+    const err=h('div',{class:'err',role:'alert'});
+    const f=h('form',{novalidate:true,style:'margin-bottom:12px'},h('p',{class:'hint'},'Gatunki dodane tutaj pojawią się na liście gatunków w sekcji „Inne gatunki”. Gatunki z produktów dodają się do listy automatycznie.'),
+      field('Nazwa gatunku','sname',{maxlength:80}),field('Notatka (opcjonalnie, np. wkrótce w ofercie)','snote',{required:false,maxlength:120}),err,h('button',{class:'btn pri',type:'submit'},'+ Dodaj gatunek'));
+    f.addEventListener('submit',e=>{
+      e.preventDefault();if(!admin)return;touch();
+      const name=str(f.elements['sname'].value,80),note=str(f.elements['snote'].value,120);
+      if(name.length<2){err.textContent='Podaj nazwę gatunku (min. 2 znaki).';return}
+      if(SPC.length>=300){err.textContent='Osiągnięto limit 300 gatunków.';return}
+      if(SPC.some(x=>x.name.toLowerCase()===name.toLowerCase())){err.textContent='Taki gatunek już jest na liście.';return}
+      SPC.push({id:'s-'+rnd(5),name,note});saveS();renderAdmin();toast('Dodano gatunek');
+    });
+    b.append(f);
+    if(!SPC.length)b.append(h('div',{class:'empty'},'Brak ręcznie dodanych gatunków.'));
+    SPC.forEach(x=>b.append(h('div',{class:'item'},h('div',{},h('b',{},x.name),x.note?h('small',{},x.note):''),h('button',{class:'btn dng',type:'button',onclick:()=>{if(!admin)return;SPC=SPC.filter(y=>y!==x);saveS();renderAdmin()}},'Usuń'))));
+  }else if(tab==='s'){
+    if(!T.length)b.append(h('div',{class:'empty'},'Brak zgłoszeń.'));
+    T.forEach(t=>b.append(ticketView(t,'admin')));
+  }else if(tab==='c'){
+    const m=new Map();
+    O.forEach(o=>{if(!o||typeof o!=='object')return;const k=String(o.email).toLowerCase(),c=m.get(k)||{n:0,t:0};c.name=o.name;c.email=o.email;c.phone=o.phone;c.addr=o.addr;c.n++;c.t+=+o.total||0;m.set(k,c)});
+    if(!m.size)b.append(h('div',{class:'empty'},'Brak klientów.'));
+    m.forEach(c=>b.append(h('div',{class:'item'},h('div',{},h('b',{},String(c.name)),h('small',{},String(c.email)+' · tel. '+String(c.phone||'—')),h('small',{},String(c.addr))),h('div',{},c.n+' zam. · '+money(c.t)))));
+  }else{
+    if(!O.length)b.append(h('div',{class:'empty'},'Brak zamówień.'));
+    O.forEach(o=>{if(!o||typeof o!=='object')return;
+      const sel=h('select',{'aria-label':'Status',style:'width:auto',onchange:()=>{if(!admin)return;if(['opłacone','wysłane','zrealizowane'].includes(sel.value)){o.status=sel.value;S.set('shop.orders',O);toast('Status zmieniony')}}},
+        ...['opłacone','wysłane','zrealizowane'].map(s=>h('option',{value:s,selected:o.status===s},s)));
+      b.append(h('div',{class:'item'},h('div',{},h('b',{},String(o.id)+' · '+money(+o.total||0)),
+        h('small',{},new Date(+o.ts||0).toLocaleString('pl-PL')+' · '+String(o.name)+' · '+String(o.email)),
+        h('small',{},String(o.addr)+' · tel. '+String(o.phone||'—')+' · '+String(o.card)),
+        h('small',{},(Array.isArray(o.items)?o.items:[]).map(i=>String(i.qty)+'× '+String(i.name)).join(', '))),sel));
+    });
+  }
+  open($('#dA'));
+}
+function editP(p){
+  if(!admin)return;const b=$('#pP');clr(b);
+  let img=p?p.img:'';const err=h('div',{class:'err',role:'alert'}),prev=h('div',{class:'hint'},img?'Zdjęcie dodane.':'Brak zdjęcia (zostanie emoji).');
+  const ta=h('textarea',{name:'desc',maxlength:800,rows:5},p?p.desc:'');
+  const pv=h('div',{class:'dd pv','aria-label':'Podgląd opisu'});
+  const upd=()=>{clr(pv);pv.append(rich(ta.value))};ta.addEventListener('input',upd);upd();
+  const wrap=(o,c)=>{const a=ta.selectionStart,e2=ta.selectionEnd,v=ta.value;ta.value=v.slice(0,a)+o+v.slice(a,e2)+c+v.slice(e2);ta.focus();ta.setSelectionRange(a+o.length,e2+o.length);upd()};
+  const col=h('input',{type:'color',value:'#ff8800','aria-label':'Kolor tekstu',style:'width:46px;height:38px;padding:2px;cursor:pointer'});
+  const tb2=(l,st,t,fn)=>h('button',{class:'btn',type:'button',style:st,title:t,'aria-label':t,onclick:fn},l);
+  const tools=h('div',{class:'tools'},tb2('B','font-weight:800','Pogrubienie',()=>wrap('[b]','[/b]')),tb2('I','font-style:italic','Kursywa',()=>wrap('[i]','[/i]')),tb2('U','text-decoration:underline','Podkreślenie',()=>wrap('[u]','[/u]')),tb2('S','text-decoration:line-through','Przekreślenie',()=>wrap('[s]','[/s]')),col,tb2('Kolor','','Zastosuj kolor do zaznaczenia',()=>wrap('[c='+col.value+']','[/c]')),tb2('Wyczyść','','Usuń formatowanie',()=>{ta.value=ta.value.replace(TAGRE,'');upd()}));
+  const f=h('form',{novalidate:true},h('h2',{},p?'Edytuj produkt':'Nowy produkt'),
+    field('Nazwa','name',{maxlength:80,value:p?p.name:''}),
+    h('div',{class:'two'},field('Kategoria','cat',{maxlength:30,value:p?p.cat:''}),field('Emoji','emoji',{maxlength:4,value:p?p.emoji:'📦'})),
+    h('div',{class:'two'},field('Cena (PLN)','price',{inputmode:'decimal',value:p?(p.price/100).toFixed(2):''}),field('Stan magazynowy','stock',{inputmode:'numeric',value:p?String(p.stock):''})),
+    h('label',{},'Opis (zaznacz tekst i użyj przycisków formatowania)',ta),tools,h('div',{class:'hint'},'Podgląd:'),pv,
+    h('label',{},'Do wygrania w ruletce',h('select',{name:'rl'},h('option',{value:'0'},'Nie'),h('option',{value:'1',selected:!!(p&&p.rl)},'Tak'))),field('Promocja (%) — 0 = brak','sale',{required:false,inputmode:'numeric',maxlength:2,value:p?String(p.sale):'0'}),field('Opcje do wyboru (po przecinku, np. S, M, L — opcjonalnie)','opts',{required:false,maxlength:200,value:p?p.opts.join(', '):''}),h('label',{},'Zdjęcie (JPG/PNG/WebP, do 5 MB)',h('input',{type:'file',accept:'image/jpeg,image/png,image/webp',onchange:ev=>{
+      const fl=ev.target.files[0];if(!fl)return;
+      if(!['image/jpeg','image/png','image/webp'].includes(fl.type)||fl.size>5e6){err.textContent='Niedozwolony plik.';ev.target.value='';return}
+      const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{
+        const k=Math.min(1,400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));
+        c.getContext('2d').drawImage(im,0,0,c.width,c.height);img=c.toDataURL('image/jpeg',.8);prev.textContent='Zdjęcie gotowe.';err.textContent=''};
+        im.onerror=()=>{err.textContent='To nie jest poprawny obraz.'};im.src=r.result};r.readAsDataURL(fl)}})),
+    prev,h('button',{class:'btn dng',type:'button',onclick:()=>{img='';prev.textContent='Zdjęcie usunięte.'}},'Usuń zdjęcie'),err,
+    h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:()=>$('#dP').close()},'Anuluj'),h('button',{class:'btn pri',type:'submit'},'Zapisz')));
+  f.addEventListener('submit',e=>{
+    e.preventDefault();if(!admin)return;touch();
+    if(!/^\d{1,2}$/.test(f.sale.value.trim())||+f.sale.value>90){err.textContent='Promocja: liczba od 0 do 90.';return}
+    const pr=/^\d{1,6}([.,]\d{1,2})?$/.exec(f.price.value.trim()),st=/^\d{1,4}$/.test(f.stock.value.trim())?+f.stock.value:-1;
+    const n={id:p?p.id:'p-'+rnd(6),name:str(f.name.value,80),cat:str(f.cat.value,30),emoji:str(f.emoji.value,4)||'📦',price:pr?Math.round(parseFloat(pr[0].replace(',','.'))*100):0,stock:st,desc:strD(f.desc.value,800),img,sale:+f.sale.value,rl:f.rl.value==='1',opts:f.opts.value.split(',').map(o=>str(o,24)).filter(Boolean).slice(0,12)};
+    const ok=cleanP(n);
+    if(!ok){err.textContent='Sprawdź dane: nazwa i kategoria (min. 2 znaki), cena > 0, stan 0–9999.';return}
+    if(p)P=P.map(x=>x.id===p.id?ok:x);else P.push(ok);
+    saveP();fixCart();cnt();renderCats();renderGrid();$('#dP').close();renderAdmin();toast('Zapisano produkt');
+  });
+  b.append(f);open($('#dP'));
+}
+
+/* ---------- init ---------- */
+$('#q').addEventListener('input',renderGrid);
+$('#cf').addEventListener('change',renderGrid);
+$('#cartb').addEventListener('click',()=>{renderCart();open($('#dC'))});
+$('#adm').addEventListener('click',adminEntry);
+$('#about').addEventListener('click',about);$('#farm').addEventListener('click',farm);$('#help').addEventListener('click',()=>{utab='s';account()});
+$('#gear').prepend(h('span',{class:'dots','aria-hidden':'true'},h('i',{class:'d'}),h('i',{class:'d'}),h('i',{class:'d'})));$('#yr').textContent=new Date().getFullYear();
+$('#acc').addEventListener('click',account);
+const GB=$('#gear'),MN=$('#menu');
+function menu(o){MN.classList.toggle('open',o);GB.setAttribute('aria-expanded',String(o))}
+GB.addEventListener('click',e=>{e.stopPropagation();menu(!MN.classList.contains('open'))});
+MN.addEventListener('click',e=>{if(e.target.closest('.mi'))menu(false)});
+document.addEventListener('click',e=>{if(!MN.contains(e.target))menu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
+$('#rlm').addEventListener('click',roulette);$('#sup').addEventListener('click',()=>{utab='s';account()});
+$('#dA').addEventListener('click',touch);$('#dA').addEventListener('keydown',touch);
+document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d&&d.id!=='dK')d.close()}));
+[[3,6,34,-8],[72,22,40,14],[14,58,28,10],[60,70,36,-14],[40,10,22,6]].forEach(([l,t,w,r])=>{const i=logo();i.className='bgl';i.style.cssText='left:'+l+'%;top:'+t+'%;width:'+w+'vmin;height:'+w+'vmin;animation:bspin '+(90+Math.abs(r)*6)+'s linear infinite '+(r<0?'reverse':'normal')+';animation-delay:-'+(Math.abs(r)*9)+'s';$('.blobs').append(i)});
+$('#isli').prepend(logo());
+const ISL=$('#isl'),ITX=$('#islt');let ii=0;
+function islMsgs(){const mx=Math.max(0,...P.map(p=>p.sale||0));return['Spider Emperor','Wybrane pajkoki dla tych, którzy lubią wygrywać',"from emperor's for emperor's",'Zakręć ruletką i wygraj pająka 🎡',...(mx?['Promocje do −'+mx+'%']:[]),'Płatności w trybie testowym']}
+function islShow(t){ITX.textContent=t;requestAnimationFrame(()=>{ISL.style.width=($('#isli').offsetWidth+34)+'px';ITX.classList.remove('out')})}
+let hold=false;
+function islTick(){if(hold)return;const m=islMsgs();ii=(ii+1)%m.length;
+  if(ii===0){hold=true;ISL.classList.add('gone');setTimeout(()=>{ITX.classList.add('out');islShow(m[0]);ISL.classList.remove('gone');hold=false},10000);return}
+  ITX.classList.add('out');setTimeout(()=>islShow(m[ii]),280)}
+islShow(islMsgs()[0]);setInterval(islTick,3800);
+fixCart();$('#brand').append(logo(),'SPIDER EMPEROR');$('#fbrand').append(logo(),'SPIDER EMPEROR');
+$('#cc').textContent=items().reduce((s,i)=>s+i.q,0);
+$('#lg').value=LANG;$('#cu').value=CUR;syncTabs();document.documentElement.lang=LANG;
+document.querySelectorAll('#vt .btn').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.v==='roulette'){roulette();return}if(b.dataset.v==='species'){speciesList();return}view=b.dataset.v;syncTabs();renderGrid()}));
+function applyPrefs(lang){S.set('shop.prefs',{lang:LANG,cur:CUR});mkFmt();document.documentElement.lang=LANG;if(lang&&LANG==='pl')untr();renderCats();renderGrid();cnt();if(lang&&LANG==='en')trTree(document.body)}
+$('#lg').addEventListener('change',e=>{LANG=e.target.value==='en'?'en':'pl';applyPrefs(true)});
+$('#cu').addEventListener('change',e=>{CUR=e.target.value==='EUR'?'EUR':'PLN';applyPrefs(false)});
+renderCats();renderGrid();
+if(LANG==='en')trTree(document.body);
+</script>
+</body>
+</html>
