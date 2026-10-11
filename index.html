@@ -133,21 +133,113 @@ main{padding-bottom:90px}
 #gear[aria-expanded=true] .d:nth-child(1){width:22px;height:3px;margin:-1.5px 0 0 -11px;transform:rotate(45deg)}
 #gear[aria-expanded=true] .d:nth-child(3){width:22px;height:3px;margin:-1.5px 0 0 -11px;transform:rotate(-45deg)}
 #gear[aria-expanded=true] .d:nth-child(2){opacity:0;scale:0}
+html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+#shop{scroll-margin-top:110px}
+.landing{min-height:min(72vh,560px);display:grid;place-content:center;justify-items:center;text-align:center;padding:44px 22px;margin-bottom:18px;gap:6px}
+.landing h1{margin:6px 0 0;font-size:clamp(2rem,8vw,4.4rem);line-height:1.05;letter-spacing:.14em;font-weight:800;background:linear-gradient(90deg,#8a8a8a,#fff,#8a8a8a);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+.landing .tag{margin:0;letter-spacing:.2em;font-size:.82rem;text-transform:uppercase;color:var(--mu)}
+.landing .sub{margin:10px 0 18px;color:var(--tx);max-width:46ch}
+.cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.lmark img{width:clamp(120px,22vw,190px);height:auto;animation:lf 5s ease-in-out infinite;filter:drop-shadow(0 0 28px rgba(255,255,255,.28))}
+@keyframes lf{50%{transform:translateY(-10px)}}
+.stats,.feats{display:grid;gap:14px;margin-bottom:18px}
+.stats{grid-template-columns:repeat(3,1fr)}.feats{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.stat{padding:18px 12px;text-align:center}.stat b{display:block;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:800}.stat span{color:var(--mu);font-size:.8rem}
+.feat{padding:20px}.feat>span{font-size:1.8rem}.feat h3{margin:8px 0 4px}.feat p{margin:0;color:var(--mu);font-size:.9rem}
+.dayp{display:flex;gap:18px;padding:18px;margin-bottom:18px;align-items:center;flex-wrap:wrap}
+.dorb{width:min(220px,100%);flex:none}.dtx{flex:1;min-width:220px;display:grid;gap:6px}.dtx h3{margin:0}.dtx p{margin:0;color:var(--mu);white-space:pre-line}
+.faq{padding:20px 22px;margin-bottom:22px}.faq h2{margin:0 0 8px}
+.faq details{border-top:1px solid rgba(255,255,255,.12);padding:10px 0}.faq summary{cursor:pointer;font-weight:600}.faq details p{margin:8px 0 0;color:var(--mu)}
+[hidden]{display:none!important}
+.nav{display:flex;gap:6px}.nav .btn{padding:8px 16px}.nav .btn[aria-current=true]{background:rgba(255,255,255,.28)}
+@media(max-width:560px){.nav{order:4;flex:1 1 100%;justify-content:center}}
+#splash{position:fixed;inset:0;z-index:300;display:grid;place-items:center;background:rgba(0,0,0,.45);backdrop-filter:blur(30px) saturate(140%);-webkit-backdrop-filter:blur(30px) saturate(140%);cursor:pointer;transition:opacity .7s,visibility 0s .7s,backdrop-filter .7s,-webkit-backdrop-filter .7s}
+#splash.out{opacity:0;visibility:hidden;backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0)}
+.sp-in{display:grid;justify-items:center;gap:22px;text-align:center;padding:20px}
+#splogo img{width:clamp(140px,30vw,230px);height:auto;filter:drop-shadow(0 0 36px rgba(255,255,255,.35));animation:spl 1.9s cubic-bezier(.16,.84,.24,1) both}
+@keyframes spl{from{opacity:0;transform:rotate(-720deg) scale(.3)}to{opacity:1;transform:none}}
+.sp-title{font-weight:800;font-size:clamp(1.5rem,6.5vw,3.2rem);letter-spacing:.3em;margin-right:-.3em;background:linear-gradient(90deg,#8a8a8a,#fff,#8a8a8a);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:spt 1.1s 1s cubic-bezier(.2,.7,.2,1) both,shine 5s linear infinite}
+@keyframes spt{from{opacity:0;transform:translateY(14px);filter:blur(12px);letter-spacing:.7em}to{opacity:1;transform:none;filter:blur(0)}}
+body.lock{overflow:hidden}
+body.ready main,body.ready header{animation:pin .9s .1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes pin{from{opacity:0;transform:translateY(16px)}}
+#dX{width:min(920px,96vw)}
+.cmpt{border-collapse:collapse;width:100%;min-width:480px;font-size:.88rem}
+.cmpt th,.cmpt td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.1);text-align:left;vertical-align:top}
+.cmpt thead th{min-width:150px}.cmpt tbody th{color:var(--mu);font-weight:600;white-space:nowrap}
+.cmpimg .orb{height:90px;font-size:2.4rem;margin-bottom:8px}
+.cmpbar{position:fixed;left:max(18px,env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:19;display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:999px;font-weight:600}
+.cmpbar .btn{padding:6px 14px}
+.thumbs{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.th{display:block;width:56px;height:56px;padding:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.2);background:none;cursor:pointer;opacity:.6}
+.th.on{opacity:1;border-color:#fff}.th img{width:100%;height:100%;object-fit:cover;display:block}
+.gal .orb{margin:0}
+#dZ{width:100vw;max-width:100vw;height:100vh;height:100dvh;max-height:100dvh;margin:0;overflow:hidden}
+.lbx{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.92)}
+.lbx img{max-width:94vw;max-height:84vh;object-fit:contain;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.lb-b{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff;font-size:1.5rem;cursor:pointer;line-height:1;display:grid;place-items:center}
+.lb-b:hover{background:rgba(255,255,255,.25)}.lb-x{top:max(16px,env(safe-area-inset-top,0px));right:16px}.lb-l{left:16px;top:50%;margin-top:-24px}.lb-r{right:16px;top:50%;margin-top:-24px}
+.lb-c{position:absolute;bottom:max(18px,env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:var(--mu);font-size:.85rem}
+.flt{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px 14px;margin-bottom:14px}
+.flt select,.flt input:not([type=checkbox]){width:auto;flex:1 1 130px;min-width:0}
+.chk{display:flex;align-items:center;gap:8px;color:var(--tx);font-size:.9rem;white-space:nowrap}.chk input{width:auto}
+.heart{position:absolute;top:26px;left:26px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.45);color:#fff;font-size:1.1rem;cursor:pointer;display:grid;place-items:center;line-height:1;padding:0;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:transform .2s}
+.heart:hover{transform:scale(1.12)}.heart.on{color:#ff6b81}
+.rt{font-size:.78rem;color:#ffd37a;font-weight:600}
+.stars{display:flex;gap:2px}.star{background:none;border:0;font-size:1.7rem;color:#ffd37a;cursor:pointer;padding:0 2px;line-height:1}
+.tag{display:inline-block;font-size:.72rem;padding:2px 10px;border-radius:99px;background:rgba(255,255,255,.12);margin:4px 4px 0 0;color:var(--tx)}
+.qopts{display:grid;gap:8px}.qopts .btn{white-space:normal;text-align:left;border-radius:18px;padding:12px 16px}
+.rv textarea,.rv input{margin-top:6px}
 </style>
 </head>
 <body>
+<div id="splash" aria-hidden="true"><div class="sp-in"><div id="splogo"></div><div class="sp-title">SPIDER EMPEROR</div></div></div>
 <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="island" id="isl" aria-hidden="true"><div class="in" id="isli"><span id="islt"></span></div></div>
 <header class="glass">
   <div class="brand" id="brand"></div>
+  <nav class="nav" aria-label="Nawigacja"><button class="btn" type="button" data-go="start">Start</button><button class="btn" type="button" data-go="shop">Sklep</button><button class="btn" type="button" data-go="info">Info</button></nav>
   <select id="lg" class="pf" aria-label="Language / Język"><option value="pl">PL</option><option value="en">EN</option></select>
   <select id="cu" class="pf" aria-label="Currency / Waluta"><option value="PLN">PLN</option><option value="EUR">EUR</option></select>
-  <input id="q" type="search" placeholder="Szukaj produktu…" maxlength="60" aria-label="Szukaj">
-  <select id="cf" aria-label="Kategoria"></select>
+  <input id="q" data-pg="shop" type="search" placeholder="Szukaj produktu…" maxlength="60" aria-label="Szukaj">
+  <select id="cf" data-pg="shop" aria-label="Kategoria"></select>
 </header>
 <main>
-    <div class="tabs" id="vt" role="tablist"><button class="btn" type="button" role="tab" data-v="all">Wszystkie produkty</button><button class="btn" type="button" role="tab" data-v="sale">Promocje</button><button class="btn" type="button" role="tab" data-v="roulette">Ruletka</button><button class="btn" type="button" role="tab" data-v="species">Lista gatunków</button></div>
-  <section class="grid" id="grid" aria-live="polite"></section>
+    <section class="landing glass" id="landing" data-pg="start">
+    <div class="lmark" id="lmark"></div>
+    <h1>SPIDER EMPEROR</h1>
+    <p class="tag">from emperor's for emperor's</p>
+    <p class="sub">Azjatyckie ptaszniki z hodowli — od klasyki po rzadkie formy.</p>
+    <div class="cta"><button class="btn pri" id="goshop" type="button">Wejdź do sklepu</button><button class="btn" id="goroul" type="button">Zakręć ruletką</button><button class="btn" id="goquiz" type="button">Jaki pająk dla mnie?</button></div>
+  </section>
+  <section class="stats" data-pg="start">
+    <div class="glass stat"><b id="st1">0</b><span>Gatunków w ofercie</span></div>
+    <div class="glass stat"><b id="st2">0</b><span>Sztuk na stanie</span></div>
+    <div class="glass stat"><b id="st3">0</b><span>Aktywnych promocji</span></div>
+  </section>
+  <section class="feats" data-pg="info">
+    <div class="glass feat"><span aria-hidden="true">🕷️</span><h3>Wyselekcjonowane gatunki</h3><p>Poecilotheria i Cyriopagopus — każdy gatunek z opisem i wymaganiami.</p></div>
+    <div class="glass feat"><span aria-hidden="true">🎡</span><h3>Ruletka i promocje</h3><p>Raz na dobę zakręć kołem i wygraj pająka za 0 zł.</p></div>
+    <div class="glass feat"><span aria-hidden="true">📘</span><h3>Wiedza z hodowli</h3><p>Zajrzyj do sekcji „Hodowla” i listy gatunków, zanim kupisz.</p></div>
+  </section>
+  <section class="glass dayp" id="dayp" data-pg="start"></section>
+  <section class="glass faq" data-pg="info">
+    <h2>Najczęstsze pytania</h2>
+    <details><summary>Czy płatności są prawdziwe?</summary><p>Nie. Płatność jest symulacją — żadne pieniądze nie są pobierane, a zamówienie służy tylko do testów.</p></details>
+    <details><summary>Czy do zakupu potrzebne są dokumenty CITES?</summary><p>Rodzaj Poecilotheria jest objęty załącznikiem II CITES, więc przy tych gatunkach obowiązują dokumenty hodowli. Pozostałe gatunki w ofercie zwykle ich nie wymagają.</p></details>
+    <details><summary>Czy te pająki są dla początkujących?</summary><p>Nie. To szybkie, defensywne gatunki — polecamy je doświadczonym hodowcom.</p></details>
+    <details><summary>Jak działa ruletka?</summary><p>Raz na 24 godziny kręcisz kołem. Jeśli trafisz nagrodę, produkt ląduje w koszyku za 0 zł.</p></details>
+  </section>
+  <div class="tabs" id="vt" role="tablist" data-pg="shop"><button class="btn" type="button" role="tab" data-v="all">Wszystkie produkty</button><button class="btn" type="button" role="tab" data-v="sale">Promocje</button><button class="btn" type="button" role="tab" data-v="roulette">Ruletka</button><button class="btn" type="button" role="tab" data-v="species">Lista gatunków</button></div>
+  <div class="glass flt" id="flt" data-pg="shop">
+    <select id="so" aria-label="Sortuj"><option value="">Domyślnie</option><option value="pa">Cena: rosnąco</option><option value="pd">Cena: malejąco</option><option value="na">Nazwa A–Z</option><option value="av">Najpierw dostępne</option></select>
+    <label class="chk"><input type="checkbox" id="fa">Tylko dostępne</label>
+    <input id="pmin" inputmode="decimal" maxlength="7" placeholder="Cena od" aria-label="Cena od">
+    <input id="pmax" inputmode="decimal" maxlength="7" placeholder="Cena do" aria-label="Cena do">
+    <button class="btn" id="fr" type="button">Resetuj</button>
+  </div>
+  <section class="grid" id="grid" data-pg="shop" aria-live="polite"></section>
 </main>
 <footer class="glass foot">
   <div><b class="fb" id="fbrand"></b><p>from emperor's for emperor's</p></div>
@@ -165,15 +257,22 @@ main{padding-bottom:90px}
 <dialog id="dD"><div class="glass panel" id="pD"></div></dialog>
 <dialog id="dR"><div class="glass panel" id="pR"></div></dialog>
 <dialog id="dS"><div class="glass panel" id="pS"></div></dialog>
+<dialog id="dX"><div class="glass panel" id="pX"></div></dialog>
+<dialog id="dZ"><div class="lbx" id="pZ"></div></dialog>
+<dialog id="dW"><div class="glass panel" id="pW"></div></dialog>
+<dialog id="dQ"><div class="glass panel" id="pQ"></div></dialog>
 <dialog id="dU"><div class="glass panel" id="pU"></div></dialog>
 <button class="btn pri" id="gear" type="button" aria-label="Menu" title="Menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu"><span class="badge" id="cc">0</span></button>
 <nav class="glass" id="menu" aria-label="Menu">
   <button class="mi" id="cartb" type="button"><span aria-hidden="true">🛒</span>Koszyk</button>
+  <button class="mi" id="wsh" type="button"><span aria-hidden="true">♥</span>Lista życzeń <span id="wcn" class="hint"></span></button>
   <button class="mi" id="acc" type="button"><span aria-hidden="true">👤</span>Konto klienta</button>
+  <button class="mi" id="qzm" type="button"><span aria-hidden="true">🧭</span>Jaki pająk dla mnie?</button>
   <button class="mi" id="rlm" type="button"><span aria-hidden="true">🎡</span>Ruletka</button>
   <button class="mi" id="sup" type="button"><span aria-hidden="true">💬</span>Support</button>
   <button class="mi" id="adm" type="button"><span aria-hidden="true">🔐</span><span id="admt">Panel admina</span></button>
 </nav>
+<div class="glass cmpbar" id="cmpbar" hidden></div>
 <div id="toast" class="glass" role="status" aria-live="polite"></div>
 
 <script>
@@ -215,8 +314,13 @@ b.append(h('p',{class:'hint'},'To ogólne informacje wprowadzające.'),h('button
 function open(d){if(!d.open)d.showModal()}
 
 /* ---------- język, waluta, tłumaczenia ---------- */
-const EN={"Szukaj produktu…": "Search products…", "Szukaj": "Search", "Kategoria": "Category", "Konto klienta": "Customer account", "Koszyk": "Cart", "Wszystkie produkty": "All products", "Promocje": "Sale", "Lista gatunków": "Species list", "Dostępne w sklepie": "Available in the shop", "Inne gatunki": "Other species", "Dostępny": "In stock", "Brak na stanie": "Out of stock", "Brak gatunków.": "No species.", "Wybrane pajkoki dla tych, którzy lubią wygrywać": "Hand-picked spiders for those who love to win", "Zakręć ruletką i wygraj pająka 🎡": "Spin the roulette and win a spider 🎡", "Płatności w trybie testowym": "Payments in test mode", "Młode osobniki (maluchy). Efektowny, fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Gatunek naziemno-norowy, szybki i defensywny — dla zaawansowanych hodowców. Takson nieopisany (sp.), pochodzenie w ofertach podawane różnie.": "Young spiderlings. A striking violet-navy tarantula with light banding on its legs. A burrowing ground species, fast and defensive — for advanced keepers. Undescribed taxon (sp.); the origin is stated differently in offers.", "Młode osobniki (maluchy). Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria, nadrzewny, dorosły osiąga 15–20 cm rozpiętości odnóży. Szybki, jad istotny medycznie — tylko dla doświadczonych. Gatunek CITES (zał. II), krytycznie zagrożony w naturze.": "Young spiderlings. Gooty Sapphire — the only blue tarantula of the genus Poecilotheria, arboreal, reaching a 15–20 cm leg span as an adult. Fast, with medically significant venom — for experienced keepers only. CITES Appendix II species, critically endangered in the wild.", "Młode osobniki (maluchy). Ptasznik nadrzewny z Indii o kontrastowym, biało-szaro-czarnym ubarwieniu, rozpiętość odnóży do ok. 18–20 cm. Bardzo szybki, dla zaawansowanych. Gatunek CITES (zał. II) — wymaga dokumentów hodowli.": "Young spiderlings. An arboreal tarantula from India with contrasting white-grey-black coloration and a leg span of up to about 18–20 cm. Very fast, for advanced keepers. CITES Appendix II species — breeding documents required.", "Młode osobniki (maluchy). Ptasznik kobaltowy (Cobalt Blue) — gatunek norowy z Birmy i Tajlandii, z wiekiem nabiera intensywnie niebieskiego ubarwienia odnóży. Skryty, szybki i defensywny; dla zaawansowanych.": "Young spiderlings. Cobalt Blue — a burrowing species from Myanmar and Thailand whose legs turn intensely blue with age. Reclusive, fast and defensive; for advanced keepers.", "Młode osobniki (maluchy). Thai Zebra — ptasznik norowy z Birmy, Tajlandii i Kambodży z kontrastowym paskowaniem. Zwykle bez wymogu zaświadczenia CITES. Defensywny, dla zaawansowanych.": "Young spiderlings. Thai Zebra — a burrowing tarantula from Myanmar, Thailand and Cambodia with contrasting striping. Usually no CITES certificate required. Defensive, for advanced keepers.", "Młode osobniki (maluchy). Vietnam Tiger — norowy ptasznik z Tajlandii, Laosu i Kambodży, tu w odmianie blue. Szybki, defensywny, dla zaawansowanych.": "Young spiderlings. Vietnam Tiger — a burrowing tarantula from Thailand, Laos and Cambodia, here in the blue variety. Fast, defensive, for advanced keepers.", "Ruletka": "Roulette", "Zakręć": "Spin", "Ruletka jest chwilowo niedostępna.": "The roulette is temporarily unavailable.", "Zakręć kołem raz na 24 godziny i wygraj produkt za 0 zł! Wygrana trafia od razu do koszyka.": "Spin the wheel once every 24 hours and win a product for free! Your prize goes straight to your cart.", "Pudło — spróbuj jutro!": "No luck — try again tomorrow!", "Poprzednie losowanie: pudło.": "Previous spin: no luck.", "Wygrana w ruletce": "Roulette prize", "Wybrane pajkoki dla tych, którzy lubią wygrywać. from emperor's for emperor's": "Hand-picked spiders for those who love to win. from emperor's for emperor's", "Kontakt": "Contact", "Informacje": "Information", "O nas": "About us", "Hodowla": "Breeding", "Pn–Pt, 9:00–17:00": "Mon–Fri, 9:00–17:00", "© ": "© ", "Spider Emperor. Wszelkie prawa zastrzeżone.": "Spider Emperor. All rights reserved.", "Panel admina": "Admin panel", "Panel (zalogowany)": "Panel (logged in)", "Wszystkie kategorie": "All categories", "Brak produktów dla tych filtrów.": "No products match these filters.", "Aktualnie brak promocji.": "No items on sale right now.", "Brak": "Out of stock", "Do koszyka": "Add to cart", "Zobacz szczegóły": "View details", "Opcja produktu": "Product option", "Twój koszyk": "Your cart", "Koszyk jest pusty.": "Your cart is empty.", "Koszyk jest pusty": "Your cart is empty", "Wróć do sklepu": "Back to shop", "Mniej": "Less", "Więcej": "More", "Zamknij": "Close", "Do kasy": "Checkout", "Kasa": "Checkout", "Imię i nazwisko": "Full name", "Telefon": "Phone", "Adres": "Address", "Kod pocztowy": "Postal code", "Miasto": "City", "Płatność kartą (symulacja)": "Card payment (simulation)", "Numer karty": "Card number", "Ważność": "Expiry", "MM/RR": "MM/YY", "Anuluj": "Cancel", "Karta testowa: 4242 4242 4242 4242 (sukces), 4000 0000 0000 0002 (odrzucona), 4000 0000 0000 9995 (brak środków). Dane karty nie są nigdzie zapisywane.": "Test card: 4242 4242 4242 4242 (success), 4000 0000 0000 0002 (declined), 4000 0000 0000 9995 (insufficient funds). Card details are never stored.", "Ceny przeliczone po stałym kursie 1 € = 4,25 zł (symulacja).": "Prices converted at a fixed rate of €1 = PLN 4.25 (simulation).", "Autoryzacja…": "Authorizing…", "Podaj imię i nazwisko.": "Enter your full name.", "Podaj poprawny e-mail.": "Enter a valid e-mail.", "Podaj poprawny numer telefonu.": "Enter a valid phone number.", "Podaj adres.": "Enter your address.", "Kod pocztowy w formacie 00-000.": "Postal code format: 00-000.", "Podaj miasto.": "Enter your city.", "Nieprawidłowy numer karty.": "Invalid card number.", "Karta wygasła lub data jest błędna.": "Card expired or date is invalid.", "Nieprawidłowy kod CVC.": "Invalid CVC code.", "Zbyt wiele prób. Odczekaj minutę.": "Too many attempts. Wait a minute.", "Płatność odrzucona przez bank.": "Payment declined by the bank.", "Brak środków na karcie.": "Insufficient funds on the card.", "Płatność przyjęta ✓": "Payment accepted ✓", "Numer zamówienia:": "Order number:", "To symulacja — potwierdzenie nie zostało wysłane, a środki nie zostały pobrane.": "This is a simulation — no confirmation was sent and no funds were charged.", "Moje dane": "My details", "Twoje zamówienia": "Your orders", "Dane zapisują się tylko w tej przeglądarce i uzupełniają się automatycznie w kasie.": "Your details are saved only in this browser and are pre-filled at checkout.", "Usuń dane": "Delete data", "Zapisz dane": "Save details", "Dane zapisane": "Details saved", "Dane usunięte": "Details deleted", "Zapisz e-mail w zakładce „Moje dane”, aby zobaczyć zamówienia.": "Save your e-mail in the “My details” tab to see your orders.", "Brak zamówień dla tego adresu e-mail.": "No orders for this e-mail address.", "Zapisz swoje dane w zakładce „Moje dane”, aby napisać do supportu.": "Save your details in the “My details” tab to contact support.", "Temat": "Subject", "Wiadomość": "Message", "Wyślij zgłoszenie": "Send request", "Twoje zgłoszenia": "Your requests", "Brak zgłoszeń.": "No requests.", "Podaj temat (min. 3 znaki).": "Enter a subject (min. 3 characters).", "Opisz problem (min. 10 znaków).": "Describe the problem (min. 10 characters).", "Limit 3 zgłoszeń na godzinę.": "Limit: 3 requests per hour.", "Zgłoszenie wysłane": "Request sent", "Odpowiedz…": "Reply…", "Odpowiedź": "Reply", "Wyślij": "Send", "Klient": "Customer", "otwarte": "open", "zamknięte": "closed", "opłacone": "paid", "wysłane": "shipped", "zrealizowane": "completed", "Usunąć zapisane dane klienta?": "Delete saved customer details?", "Wybierz opcję": "Choose option", "Dodaj do koszyka": "Add to cart", "Brak opisu.": "No description.", "Spider Emperor to sklep stworzony dla tych, którzy lubią wygrywać. Stawiamy na starannie wybrane produkty i prostą, przejrzystą obsługę zamówień.": "Spider Emperor is a shop built for those who love to win. We focus on carefully selected products and simple, transparent order handling.", "Masz pytanie o zamówienie lub produkt? Napisz do nas przez zakładkę Support w koncie klienta albo skorzystaj z danych kontaktowych w stopce.": "Have a question about an order or product? Write to us through the Support tab in your customer account or use the contact details in the footer.", "Uwaga: płatności w tym sklepie są symulacją — żadne prawdziwe pieniądze nie są pobierane.": "Note: payments in this shop are a simulation — no real money is charged.", "Pajęczaki w domu": "Arachnids at home", "Hodowla pająków, zwłaszcza ptaszników, to spokojne hobby: zwierzę nie wymaga spacerów ani codziennej uwagi, a obserwowanie jego zachowania potrafi wciągnąć na lata. Każdy gatunek ma jednak własne wymagania, dlatego zanim cokolwiek kupisz, poznaj potrzeby konkretnego gatunku.": "Keeping spiders, especially tarantulas, is a calm hobby: the animal needs no walks or daily attention, and watching its behavior can hook you for years. Every species has its own requirements, so learn the needs of a specific species before you buy anything.", "Terrarium": "Enclosure", "Podstawą jest szczelne, dobrze wentylowane terrarium z zamknięciem, którego pająk nie otworzy. Gatunki naziemne potrzebują więcej miejsca na podłodze, a nadrzewne — wysokości. Dno wypełnia się podłożem (np. włóknem kokosowym) o grubości dopasowanej do stylu życia gatunku, a do tego dochodzi kryjówka i miseczka z wodą.": "The basics are a secure, well-ventilated enclosure with a lid the spider cannot open. Ground-dwelling species need more floor space, while arboreal ones need height. The bottom is filled with substrate (e.g. coconut fiber) whose depth suits the species’ lifestyle, plus a hide and a water dish.", "Temperatura i wilgotność": "Temperature and humidity", "Większość popularnych gatunków dobrze czuje się w zwykłej temperaturze pokojowej, zwykle około 22–28°C. Wilgotność zależy od gatunku: pustynne wymagają suchszego podłoża, a leśne — wilgotniejszego. Unikaj zarówno przesuszenia, jak i stałego zawilgocenia z brakiem przewiewu.": "Most popular species do well at normal room temperature, usually around 22–28°C. Humidity depends on the species: desert ones need drier substrate, forest ones more humid. Avoid both drying out and constant dampness without airflow.", "Karmienie": "Feeding", "Pająki jedzą owady, np. świerszcze, karaczyce czy larwy mącznika. Młode osobniki karmi się częściej, dorosłe zwykle raz na tydzień lub rzadziej. Niezjedzoną zdobycz usuwaj następnego dnia, bo może zranić pająka, zwłaszcza w czasie wylinki.": "Spiders eat insects such as crickets, roaches or mealworm larvae. Young ones are fed more often, adults usually once a week or less. Remove uneaten prey the next day, as it can injure the spider, especially during a molt.", "Wylinka": "Molting", "Pająki rosną dzięki wylinkom. Przed nią zwykle odmawiają jedzenia, stają się mniej aktywne, a niektóre zamykają się w gnieździe. W tym czasie nie karm i nie dotykaj pająka — po wylince potrzebuje kilku dni, aby jego pancerz stwardniał.": "Spiders grow by molting. Beforehand they usually refuse food and become less active, and some seal themselves in a burrow. During this time do not feed or touch the spider — after a molt it needs a few days for its exoskeleton to harden.", "Bezpieczeństwo": "Safety", "Nie traktuj pająka jak zwierzęcia do głaskania. Wiele ptaszników ma włoski parzące, które podrażniają skórę i oczy, a niektóre gatunki mają silniejszy jad. Pająk bywa też płochliwy i upadek z wysokości może się dla niego skończyć śmiercią. Pracuj przy terrarium spokojnie, a ręce myj po każdym kontakcie.": "Do not treat a spider as a pet to cuddle. Many tarantulas have urticating hairs that irritate skin and eyes, and some species have stronger venom. A spider can also be skittish, and a fall from height can kill it. Work around the enclosure calmly and wash your hands after every contact.", "Wybór pająka": "Choosing a spider", "Początkującym zwykle poleca się spokojne, odporne gatunki naziemne, takie jak Brachypelma hamorii czy Grammostola pulchra. Wybieraj zwierzęta z legalnej hodowli (CB, czyli urodzone w niewoli), a nie odłowione w naturze, i zwróć uwagę na przepisy o ochronie gatunków (CITES), które dotyczą części z nich.": "Beginners are usually advised to start with calm, hardy ground-dwelling species such as Brachypelma hamorii or Grammostola pulchra. Choose animals from legal breeders (CB, i.e. captive-bred) rather than wild-caught, and mind the species-protection rules (CITES) that apply to some of them.", "To ogólne informacje wprowadzające. Szczegółowe wymagania sprawdź dla konkretnego gatunku u doświadczonego hodowcy.": "This is general introductory information. Check the detailed requirements for your specific species with an experienced breeder.", "Słuchawki Aura": "Aura Headphones", "Zegarek Prism": "Prism Watch", "Lampka Halo": "Halo Lamp", "Klawiatura Glide": "Glide Keyboard", "Plecak Mono": "Mono Backpack", "Kubek Thermo": "Thermo Mug", "Dom": "Home", "Peryferia": "Peripherals", "Akcesoria": "Accessories", "Bezprzewodowe, z aktywną redukcją szumów i 40 h pracy.": "Wireless, with active noise cancellation and 40 h of battery life.", "Szafirowe szkło, GPS i tydzień na jednym ładowaniu.": "Sapphire glass, GPS and a week on one charge.", "Regulowana barwa światła, sterowanie dotykiem.": "Adjustable light color, touch control.", "Niskoprofilowa, mechaniczna, podświetlana.": "Low-profile, mechanical, backlit.", "Wodoodporny, z kieszenią na 16\" laptop.": "Water-resistant, with a pocket for a 16\" laptop.", "Trzyma temperaturę przez 12 godzin.": "Keeps temperature for 12 hours."};
+const EN={"Szukaj produktu…": "Search products…", "Szukaj": "Search", "Kategoria": "Category", "Konto klienta": "Customer account", "Koszyk": "Cart", "Wszystkie produkty": "All products", "Promocje": "Sale", "Lista życzeń": "Wishlist", "Brak produktów na liście życzeń.": "Your wishlist is empty.", "Dodaj do listy życzeń": "Add to wishlist", "Usuń z listy życzeń": "Remove from wishlist", "♡ Dodaj do listy życzeń": "♡ Add to wishlist", "♥ Usuń z listy życzeń": "♥ Remove from wishlist", "Usuń": "Remove", "Opinie": "Reviews", "Brak opinii — bądź pierwszy!": "No reviews yet — be the first!", "Dziękujemy! Twoja opinia pojawi się po zatwierdzeniu.": "Thank you! Your review will appear after approval.", "Dodaj opinię": "Add a review", "Wyślij opinię": "Submit review", "Twoje imię": "Your name", "Napisz opinię…": "Write a review…", "Treść opinii": "Review text", "Wybierz ocenę (1–5 gwiazdek).": "Choose a rating (1–5 stars).", "Podaj imię (min. 2 znaki).": "Enter your name (min. 2 characters).", "Opinia musi mieć min. 10 znaków.": "The review must have at least 10 characters.", "Limit 3 opinii na godzinę.": "Limit: 3 reviews per hour.", "Jaki pająk dla mnie?": "Which spider is for me?", "Jakie masz doświadczenie z ptasznikami?": "What is your experience with tarantulas?", "Początkujący": "Beginner", "Mam trochę doświadczenia": "Some experience", "Zaawansowany": "Advanced", "Jaki tryb życia pająka Ci odpowiada?": "Which spider lifestyle suits you?", "Nadrzewny — wspina się i widać go": "Arboreal — climbs and is easy to watch", "Norowy — skryty, kopie nory": "Burrowing — reclusive, digs burrows", "Bez znaczenia": "Doesn’t matter", "Jaki masz budżet?": "What is your budget?", "Bez limitu": "No limit", "Czy chcesz uniknąć gatunków z dokumentami CITES?": "Do you want to avoid species that need CITES documents?", "Tak, unikam": "Yes, avoid them", "Nie przeszkadza mi to": "I don’t mind", "Wstecz": "Back", "Twoje podpowiedzi": "Your matches", "Uwaga: wszystkie gatunki w ofercie są dla doświadczonych hodowców — przeczytaj sekcję „Hodowla” przed zakupem.": "Note: all species on offer are for experienced keepers — read the “Breeding” section before buying.", "Brak dostępnych produktów.": "No products available.", "Zacznij od nowa": "Start over", "pasuje do wybranego trybu życia": "fits your chosen lifestyle", "mieści się w budżecie": "within your budget", "bez wymogu CITES": "no CITES requirement", "Domyślnie": "Default", "Cena: rosnąco": "Price: low to high", "Cena: malejąco": "Price: high to low", "Nazwa A–Z": "Name A–Z", "Najpierw dostępne": "In stock first", "Tylko dostępne": "In stock only", "Cena od": "Price from", "Cena do": "Price to", "Sortuj": "Sort", "Resetuj": "Reset", "Poprzednie": "Previous", "Następne": "Next", "Porównaj": "Compare", "+ Porównaj": "+ Compare", "✓ W porównaniu": "✓ Comparing", "Wyczyść": "Clear", "Porównanie gatunków": "Species comparison", "Możesz porównać maksymalnie 3 gatunki.": "You can compare up to 3 species.", "Cena": "Price", "Dostępność": "Availability", "Tryb życia": "Lifestyle", "Temperament": "Temperament", "Poziom": "Level", "Status": "Status", "Ubarwienie": "Coloration", "Dokumenty": "Documents", "Uwagi": "Notes", "Rozmiar dorosłej samicy": "Adult female size", "Rozmiar": "Size", "Kod rabatowy": "Discount code", "Zastosuj": "Apply", "Usuń kod": "Remove code", "Nieprawidłowy kod rabatowy.": "Invalid discount code.", "Kod zastosowany.": "Code applied.", "Start": "Home", "Sklep": "Shop", "Nawigacja": "Navigation", "Azjatyckie ptaszniki z hodowli — od klasyki po rzadkie formy.": "Asian tarantulas from our breeding — from classics to rare forms.", "Wejdź do sklepu": "Enter the shop", "Zakręć ruletką": "Spin the roulette", "Gatunków w ofercie": "Species on offer", "Sztuk na stanie": "Pieces in stock", "Aktywnych promocji": "Active sales", "Wyselekcjonowane gatunki": "Selected species", "Poecilotheria i Cyriopagopus — każdy gatunek z opisem i wymaganiami.": "Poecilotheria and Cyriopagopus — every species with a description and requirements.", "Ruletka i promocje": "Roulette and sales", "Raz na dobę zakręć kołem i wygraj pająka za 0 zł.": "Once a day, spin the wheel and win a spider for free.", "Wiedza z hodowli": "Breeding knowledge", "Zajrzyj do sekcji „Hodowla” i listy gatunków, zanim kupisz.": "Check the “Breeding” section and the species list before you buy.", "Pająk dnia": "Spider of the day", "Najczęstsze pytania": "Frequently asked questions", "Czy płatności są prawdziwe?": "Are the payments real?", "Nie. Płatność jest symulacją — żadne pieniądze nie są pobierane, a zamówienie służy tylko do testów.": "No. Payment is a simulation — no money is charged and the order is for testing only.", "Czy do zakupu potrzebne są dokumenty CITES?": "Do I need CITES documents to buy?", "Rodzaj Poecilotheria jest objęty załącznikiem II CITES, więc przy tych gatunkach obowiązują dokumenty hodowli. Pozostałe gatunki w ofercie zwykle ich nie wymagają.": "The genus Poecilotheria is listed in CITES Appendix II, so breeding documents apply to these species. The other species on offer usually do not require them.", "Czy te pająki są dla początkujących?": "Are these spiders for beginners?", "Nie. To szybkie, defensywne gatunki — polecamy je doświadczonym hodowcom.": "No. These are fast, defensive species — we recommend them to experienced keepers.", "Jak działa ruletka?": "How does the roulette work?", "Raz na 24 godziny kręcisz kołem. Jeśli trafisz nagrodę, produkt ląduje w koszyku za 0 zł.": "Once every 24 hours you spin the wheel. If you hit a prize, the product goes to your cart for free.", "Fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Szybki i skryty.": "A violet-navy tarantula with light banding on its legs. Fast and reclusive.", "Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria. Nadrzewny i bardzo szybki.": "Gooty Sapphire — the only blue tarantula of the genus Poecilotheria. Arboreal and very fast.", "Klasyczny ptasznik nadrzewny z Indii — kontrastowe, biało-szaro-czarne ubarwienie.": "A classic arboreal tarantula from India — contrasting white-grey-black coloration.", "Cobalt Blue — z wiekiem nabiera intensywnie niebieskich odnóży. Skryty i defensywny.": "Cobalt Blue — its legs turn intensely blue with age. Reclusive and defensive.", "Thai Zebra — norowy ptasznik z kontrastowym paskowaniem. Defensywny.": "Thai Zebra — a burrowing tarantula with contrasting striping. Defensive.", "Vietnam Tiger w odmianie blue — norowy, szybki i defensywny.": "Vietnam Tiger in the blue variety — burrowing, fast and defensive.", "Lista gatunków": "Species list", "Dostępne w sklepie": "Available in the shop", "Inne gatunki": "Other species", "Dostępny": "In stock", "Brak na stanie": "Out of stock", "Brak gatunków.": "No species.", "Wybrane pajkoki dla tych, którzy lubią wygrywać": "Hand-picked spiders for those who love to win", "Zakręć ruletką i wygraj pająka 🎡": "Spin the roulette and win a spider 🎡", "Płatności w trybie testowym": "Payments in test mode", "Młode osobniki (maluchy). Efektowny, fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Gatunek naziemno-norowy, szybki i defensywny — dla zaawansowanych hodowców. Takson nieopisany (sp.), pochodzenie w ofertach podawane różnie.": "Young spiderlings. A striking violet-navy tarantula with light banding on its legs. A burrowing ground species, fast and defensive — for advanced keepers. Undescribed taxon (sp.); the origin is stated differently in offers.", "Młode osobniki (maluchy). Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria, nadrzewny, dorosły osiąga 15–20 cm rozpiętości odnóży. Szybki, jad istotny medycznie — tylko dla doświadczonych. Gatunek CITES (zał. II), krytycznie zagrożony w naturze.": "Young spiderlings. Gooty Sapphire — the only blue tarantula of the genus Poecilotheria, arboreal, reaching a 15–20 cm leg span as an adult. Fast, with medically significant venom — for experienced keepers only. CITES Appendix II species, critically endangered in the wild.", "Młode osobniki (maluchy). Ptasznik nadrzewny z Indii o kontrastowym, biało-szaro-czarnym ubarwieniu, rozpiętość odnóży do ok. 18–20 cm. Bardzo szybki, dla zaawansowanych. Gatunek CITES (zał. II) — wymaga dokumentów hodowli.": "Young spiderlings. An arboreal tarantula from India with contrasting white-grey-black coloration and a leg span of up to about 18–20 cm. Very fast, for advanced keepers. CITES Appendix II species — breeding documents required.", "Młode osobniki (maluchy). Ptasznik kobaltowy (Cobalt Blue) — gatunek norowy z Birmy i Tajlandii, z wiekiem nabiera intensywnie niebieskiego ubarwienia odnóży. Skryty, szybki i defensywny; dla zaawansowanych.": "Young spiderlings. Cobalt Blue — a burrowing species from Myanmar and Thailand whose legs turn intensely blue with age. Reclusive, fast and defensive; for advanced keepers.", "Młode osobniki (maluchy). Thai Zebra — ptasznik norowy z Birmy, Tajlandii i Kambodży z kontrastowym paskowaniem. Zwykle bez wymogu zaświadczenia CITES. Defensywny, dla zaawansowanych.": "Young spiderlings. Thai Zebra — a burrowing tarantula from Myanmar, Thailand and Cambodia with contrasting striping. Usually no CITES certificate required. Defensive, for advanced keepers.", "Młode osobniki (maluchy). Vietnam Tiger — norowy ptasznik z Tajlandii, Laosu i Kambodży, tu w odmianie blue. Szybki, defensywny, dla zaawansowanych.": "Young spiderlings. Vietnam Tiger — a burrowing tarantula from Thailand, Laos and Cambodia, here in the blue variety. Fast, defensive, for advanced keepers.", "Ruletka": "Roulette", "Zakręć": "Spin", "Ruletka jest chwilowo niedostępna.": "The roulette is temporarily unavailable.", "Zakręć kołem raz na 24 godziny i wygraj produkt za 0 zł! Wygrana trafia od razu do koszyka.": "Spin the wheel once every 24 hours and win a product for free! Your prize goes straight to your cart.", "Pudło — spróbuj jutro!": "No luck — try again tomorrow!", "Poprzednie losowanie: pudło.": "Previous spin: no luck.", "Wygrana w ruletce": "Roulette prize", "Wybrane pajkoki dla tych, którzy lubią wygrywać. from emperor's for emperor's": "Hand-picked spiders for those who love to win. from emperor's for emperor's", "Kontakt": "Contact", "Informacje": "Information", "O nas": "About us", "Hodowla": "Breeding", "Pn–Pt, 9:00–17:00": "Mon–Fri, 9:00–17:00", "© ": "© ", "Spider Emperor. Wszelkie prawa zastrzeżone.": "Spider Emperor. All rights reserved.", "Panel admina": "Admin panel", "Panel (zalogowany)": "Panel (logged in)", "Wszystkie kategorie": "All categories", "Brak produktów dla tych filtrów.": "No products match these filters.", "Aktualnie brak promocji.": "No items on sale right now.", "Brak": "Out of stock", "Do koszyka": "Add to cart", "Zobacz szczegóły": "View details", "Opcja produktu": "Product option", "Twój koszyk": "Your cart", "Koszyk jest pusty.": "Your cart is empty.", "Koszyk jest pusty": "Your cart is empty", "Wróć do sklepu": "Back to shop", "Mniej": "Less", "Więcej": "More", "Zamknij": "Close", "Do kasy": "Checkout", "Kasa": "Checkout", "Imię i nazwisko": "Full name", "Telefon": "Phone", "Adres": "Address", "Kod pocztowy": "Postal code", "Miasto": "City", "Płatność kartą (symulacja)": "Card payment (simulation)", "Numer karty": "Card number", "Ważność": "Expiry", "MM/RR": "MM/YY", "Anuluj": "Cancel", "Karta testowa: 4242 4242 4242 4242 (sukces), 4000 0000 0000 0002 (odrzucona), 4000 0000 0000 9995 (brak środków). Dane karty nie są nigdzie zapisywane.": "Test card: 4242 4242 4242 4242 (success), 4000 0000 0000 0002 (declined), 4000 0000 0000 9995 (insufficient funds). Card details are never stored.", "Ceny przeliczone po stałym kursie 1 € = 4,25 zł (symulacja).": "Prices converted at a fixed rate of €1 = PLN 4.25 (simulation).", "Autoryzacja…": "Authorizing…", "Podaj imię i nazwisko.": "Enter your full name.", "Podaj poprawny e-mail.": "Enter a valid e-mail.", "Podaj poprawny numer telefonu.": "Enter a valid phone number.", "Podaj adres.": "Enter your address.", "Kod pocztowy w formacie 00-000.": "Postal code format: 00-000.", "Podaj miasto.": "Enter your city.", "Nieprawidłowy numer karty.": "Invalid card number.", "Karta wygasła lub data jest błędna.": "Card expired or date is invalid.", "Nieprawidłowy kod CVC.": "Invalid CVC code.", "Zbyt wiele prób. Odczekaj minutę.": "Too many attempts. Wait a minute.", "Płatność odrzucona przez bank.": "Payment declined by the bank.", "Brak środków na karcie.": "Insufficient funds on the card.", "Płatność przyjęta ✓": "Payment accepted ✓", "Numer zamówienia:": "Order number:", "To symulacja — potwierdzenie nie zostało wysłane, a środki nie zostały pobrane.": "This is a simulation — no confirmation was sent and no funds were charged.", "Moje dane": "My details", "Twoje zamówienia": "Your orders", "Dane zapisują się tylko w tej przeglądarce i uzupełniają się automatycznie w kasie.": "Your details are saved only in this browser and are pre-filled at checkout.", "Usuń dane": "Delete data", "Zapisz dane": "Save details", "Dane zapisane": "Details saved", "Dane usunięte": "Details deleted", "Zapisz e-mail w zakładce „Moje dane”, aby zobaczyć zamówienia.": "Save your e-mail in the “My details” tab to see your orders.", "Brak zamówień dla tego adresu e-mail.": "No orders for this e-mail address.", "Zapisz swoje dane w zakładce „Moje dane”, aby napisać do supportu.": "Save your details in the “My details” tab to contact support.", "Temat": "Subject", "Wiadomość": "Message", "Wyślij zgłoszenie": "Send request", "Twoje zgłoszenia": "Your requests", "Brak zgłoszeń.": "No requests.", "Podaj temat (min. 3 znaki).": "Enter a subject (min. 3 characters).", "Opisz problem (min. 10 znaków).": "Describe the problem (min. 10 characters).", "Limit 3 zgłoszeń na godzinę.": "Limit: 3 requests per hour.", "Zgłoszenie wysłane": "Request sent", "Odpowiedz…": "Reply…", "Odpowiedź": "Reply", "Wyślij": "Send", "Klient": "Customer", "otwarte": "open", "zamknięte": "closed", "opłacone": "paid", "wysłane": "shipped", "zrealizowane": "completed", "Usunąć zapisane dane klienta?": "Delete saved customer details?", "Wybierz opcję": "Choose option", "Dodaj do koszyka": "Add to cart", "Brak opisu.": "No description.", "Spider Emperor to sklep stworzony dla tych, którzy lubią wygrywać. Stawiamy na starannie wybrane produkty i prostą, przejrzystą obsługę zamówień.": "Spider Emperor is a shop built for those who love to win. We focus on carefully selected products and simple, transparent order handling.", "Masz pytanie o zamówienie lub produkt? Napisz do nas przez zakładkę Support w koncie klienta albo skorzystaj z danych kontaktowych w stopce.": "Have a question about an order or product? Write to us through the Support tab in your customer account or use the contact details in the footer.", "Uwaga: płatności w tym sklepie są symulacją — żadne prawdziwe pieniądze nie są pobierane.": "Note: payments in this shop are a simulation — no real money is charged.", "Pajęczaki w domu": "Arachnids at home", "Hodowla pająków, zwłaszcza ptaszników, to spokojne hobby: zwierzę nie wymaga spacerów ani codziennej uwagi, a obserwowanie jego zachowania potrafi wciągnąć na lata. Każdy gatunek ma jednak własne wymagania, dlatego zanim cokolwiek kupisz, poznaj potrzeby konkretnego gatunku.": "Keeping spiders, especially tarantulas, is a calm hobby: the animal needs no walks or daily attention, and watching its behavior can hook you for years. Every species has its own requirements, so learn the needs of a specific species before you buy anything.", "Terrarium": "Enclosure", "Podstawą jest szczelne, dobrze wentylowane terrarium z zamknięciem, którego pająk nie otworzy. Gatunki naziemne potrzebują więcej miejsca na podłodze, a nadrzewne — wysokości. Dno wypełnia się podłożem (np. włóknem kokosowym) o grubości dopasowanej do stylu życia gatunku, a do tego dochodzi kryjówka i miseczka z wodą.": "The basics are a secure, well-ventilated enclosure with a lid the spider cannot open. Ground-dwelling species need more floor space, while arboreal ones need height. The bottom is filled with substrate (e.g. coconut fiber) whose depth suits the species’ lifestyle, plus a hide and a water dish.", "Temperatura i wilgotność": "Temperature and humidity", "Większość popularnych gatunków dobrze czuje się w zwykłej temperaturze pokojowej, zwykle około 22–28°C. Wilgotność zależy od gatunku: pustynne wymagają suchszego podłoża, a leśne — wilgotniejszego. Unikaj zarówno przesuszenia, jak i stałego zawilgocenia z brakiem przewiewu.": "Most popular species do well at normal room temperature, usually around 22–28°C. Humidity depends on the species: desert ones need drier substrate, forest ones more humid. Avoid both drying out and constant dampness without airflow.", "Karmienie": "Feeding", "Pająki jedzą owady, np. świerszcze, karaczyce czy larwy mącznika. Młode osobniki karmi się częściej, dorosłe zwykle raz na tydzień lub rzadziej. Niezjedzoną zdobycz usuwaj następnego dnia, bo może zranić pająka, zwłaszcza w czasie wylinki.": "Spiders eat insects such as crickets, roaches or mealworm larvae. Young ones are fed more often, adults usually once a week or less. Remove uneaten prey the next day, as it can injure the spider, especially during a molt.", "Wylinka": "Molting", "Pająki rosną dzięki wylinkom. Przed nią zwykle odmawiają jedzenia, stają się mniej aktywne, a niektóre zamykają się w gnieździe. W tym czasie nie karm i nie dotykaj pająka — po wylince potrzebuje kilku dni, aby jego pancerz stwardniał.": "Spiders grow by molting. Beforehand they usually refuse food and become less active, and some seal themselves in a burrow. During this time do not feed or touch the spider — after a molt it needs a few days for its exoskeleton to harden.", "Bezpieczeństwo": "Safety", "Nie traktuj pająka jak zwierzęcia do głaskania. Wiele ptaszników ma włoski parzące, które podrażniają skórę i oczy, a niektóre gatunki mają silniejszy jad. Pająk bywa też płochliwy i upadek z wysokości może się dla niego skończyć śmiercią. Pracuj przy terrarium spokojnie, a ręce myj po każdym kontakcie.": "Do not treat a spider as a pet to cuddle. Many tarantulas have urticating hairs that irritate skin and eyes, and some species have stronger venom. A spider can also be skittish, and a fall from height can kill it. Work around the enclosure calmly and wash your hands after every contact.", "Wybór pająka": "Choosing a spider", "Początkującym zwykle poleca się spokojne, odporne gatunki naziemne, takie jak Brachypelma hamorii czy Grammostola pulchra. Wybieraj zwierzęta z legalnej hodowli (CB, czyli urodzone w niewoli), a nie odłowione w naturze, i zwróć uwagę na przepisy o ochronie gatunków (CITES), które dotyczą części z nich.": "Beginners are usually advised to start with calm, hardy ground-dwelling species such as Brachypelma hamorii or Grammostola pulchra. Choose animals from legal breeders (CB, i.e. captive-bred) rather than wild-caught, and mind the species-protection rules (CITES) that apply to some of them.", "To ogólne informacje wprowadzające. Szczegółowe wymagania sprawdź dla konkretnego gatunku u doświadczonego hodowcy.": "This is general introductory information. Check the detailed requirements for your specific species with an experienced breeder.", "Słuchawki Aura": "Aura Headphones", "Zegarek Prism": "Prism Watch", "Lampka Halo": "Halo Lamp", "Klawiatura Glide": "Glide Keyboard", "Plecak Mono": "Mono Backpack", "Kubek Thermo": "Thermo Mug", "Dom": "Home", "Peryferia": "Peripherals", "Akcesoria": "Accessories", "Bezprzewodowe, z aktywną redukcją szumów i 40 h pracy.": "Wireless, with active noise cancellation and 40 h of battery life.", "Szafirowe szkło, GPS i tydzień na jednym ładowaniu.": "Sapphire glass, GPS and a week on one charge.", "Regulowana barwa światła, sterowanie dotykiem.": "Adjustable light color, touch control.", "Niskoprofilowa, mechaniczna, podświetlana.": "Low-profile, mechanical, backlit.", "Wodoodporny, z kieszenią na 16\" laptop.": "Water-resistant, with a pocket for a 16\" laptop.", "Trzyma temperaturę przez 12 godzin.": "Keeps temperature for 12 hours."};
 const PAT=[
+[/^Pytanie (\d)\/(\d)$/,(a,b)=>'Question '+a+'/'+b],
+[/^Dopasowanie: (\d+)%$/,n=>'Match: '+n+'%'],
+[/^do (.*)$/,n=>'up to '+n],[/^od (.*) do (.*)$/,(a,b)=>'from '+a+' to '+b],[/^powyżej (.*)$/,n=>'over '+n],
+[/^Porównanie: (\d)\/3$/,n=>'Comparing: '+n+'/3'],
+[/^Rabat \((.*)\)$/,n=>'Discount ('+n+')'],
 [/^Promocje do −(\d+)%$/,n=>'Sales up to −'+n+'%'],
 [/^Wygrałeś: (.*)! Produkt czeka w koszyku za 0 zł\.$/,n=>'You won: '+n+'! The product is waiting in your cart for free.'],
 [/^Poprzednia wygrana: (.*) — sprawdź koszyk\.$/,n=>'Previous prize: '+n+' — check your cart.'],
@@ -276,24 +380,38 @@ function cleanP(p){
   if(!id||name.length<2||cat.length<2)return null;
   if(!Number.isInteger(p.price)||p.price<1||p.price>1e8)return null;
   if(!Number.isInteger(p.stock)||p.stock<0||p.stock>9999)return null;
-  return{id,name,cat,price:p.price,stock:p.stock,desc:strD(p.desc,800),opts,sale:Number.isInteger(p.sale)&&p.sale>=0&&p.sale<=90?p.sale:0,rl:p.rl===true,emoji:str(p.emoji,4)||'📦',img:typeof p.img==='string'&&p.img.length<200000&&IMG.test(p.img)?p.img:''};
+  return{id,name,cat,price:p.price,stock:p.stock,desc:strD(p.desc,800),short:str(p.short,140),gal:Array.isArray(p.gal)?p.gal.filter(x=>typeof x==='string'&&x.length<200000&&IMG.test(x)).slice(0,3):[],opts,sale:Number.isInteger(p.sale)&&p.sale>=0&&p.sale<=90?p.sale:0,rl:p.rl===true,emoji:str(p.emoji,4)||'📦',img:typeof p.img==='string'&&p.img.length<200000&&IMG.test(p.img)?p.img:''};
 }
 const SEED=[
- ['Cyriopagopus sp. "Purple Zebra"','Ornithoctoninae',18000,8,'🕷️','Młode osobniki (maluchy). Efektowny, fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Gatunek naziemno-norowy, szybki i defensywny — dla zaawansowanych hodowców. Takson nieopisany (sp.), pochodzenie w ofertach podawane różnie.'],
- ['Poecilotheria metallica','Poecilotheria',12900,5,'🕷️','Młode osobniki (maluchy). Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria, nadrzewny, dorosły osiąga 15–20 cm rozpiętości odnóży. Szybki, jad istotny medycznie — tylko dla doświadczonych. Gatunek CITES (zał. II), krytycznie zagrożony w naturze.'],
- ['Poecilotheria regalis','Poecilotheria',4500,15,'🕷️','Młode osobniki (maluchy). Ptasznik nadrzewny z Indii o kontrastowym, biało-szaro-czarnym ubarwieniu, rozpiętość odnóży do ok. 18–20 cm. Bardzo szybki, dla zaawansowanych. Gatunek CITES (zał. II) — wymaga dokumentów hodowli.'],
- ['Cyriopagopus lividus','Ornithoctoninae',5500,12,'🕷️','Młode osobniki (maluchy). Ptasznik kobaltowy (Cobalt Blue) — gatunek norowy z Birmy i Tajlandii, z wiekiem nabiera intensywnie niebieskiego ubarwienia odnóży. Skryty, szybki i defensywny; dla zaawansowanych.'],
- ['Cyriopagopus albostriatus','Ornithoctoninae',6000,10,'🕷️','Młode osobniki (maluchy). Thai Zebra — ptasznik norowy z Birmy, Tajlandii i Kambodży z kontrastowym paskowaniem. Zwykle bez wymogu zaświadczenia CITES. Defensywny, dla zaawansowanych.'],
- ['Cyriopagopus longipes blue','Ornithoctoninae',10000,6,'🕷️','Młode osobniki (maluchy). Vietnam Tiger — norowy ptasznik z Tajlandii, Laosu i Kambodży, tu w odmianie blue. Szybki, defensywny, dla zaawansowanych.']
-].map(a=>({id:'p-'+rnd(6),name:a[0],cat:a[1],price:a[2],stock:a[3],emoji:a[4],desc:a[5],img:'',opts:[],sale:0,rl:false}));
+ ['Cyriopagopus sp. "Purple Zebra"','Ornithoctoninae',18000,8,'🕷️','[b]Młode osobniki (maluchy).[/b]\nEfektowny, fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży.\n\n[b]Tryb życia:[/b] naziemno-norowy, skryty\n[b]Temperament:[/b] szybki i defensywny\n[b]Poziom:[/b] dla zaawansowanych\n[b]Uwagi:[/b] takson nieopisany (sp.), pochodzenie w ofertach podawane różnie.','Fioletowo-granatowy ptasznik z jasnym paskowaniem odnóży. Szybki i skryty.'],
+ ['Poecilotheria metallica','Poecilotheria',12900,5,'🕷️','[b]Młode osobniki (maluchy).[/b]\nGooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria.\n\n[b]Tryb życia:[/b] nadrzewny\n[b]Rozmiar dorosłej samicy:[/b] 15–20 cm rozpiętości odnóży\n[b]Temperament:[/b] bardzo szybki, jad istotny medycznie\n[b]Poziom:[/b] tylko dla doświadczonych\n[b]Status:[/b] CITES zał. II, krytycznie zagrożony w naturze','Gooty Sapphire — jedyny niebieski ptasznik z rodzaju Poecilotheria. Nadrzewny i bardzo szybki.'],
+ ['Poecilotheria regalis','Poecilotheria',4500,15,'🕷️','[b]Młode osobniki (maluchy).[/b]\nPtasznik nadrzewny z Indii o kontrastowym, biało-szaro-czarnym ubarwieniu.\n\n[b]Tryb życia:[/b] nadrzewny\n[b]Rozmiar:[/b] rozpiętość odnóży do ok. 18–20 cm\n[b]Temperament:[/b] bardzo szybki\n[b]Poziom:[/b] dla zaawansowanych\n[b]Status:[/b] CITES zał. II — wymaga dokumentów hodowli','Klasyczny ptasznik nadrzewny z Indii — kontrastowe, biało-szaro-czarne ubarwienie.'],
+ ['Cyriopagopus lividus','Ornithoctoninae',5500,12,'🕷️','[b]Młode osobniki (maluchy).[/b]\nPtasznik kobaltowy (Cobalt Blue) — gatunek z Birmy i Tajlandii.\n\n[b]Tryb życia:[/b] norowy, skryty\n[b]Ubarwienie:[/b] z wiekiem intensywnie niebieskie odnóża\n[b]Temperament:[/b] szybki i defensywny\n[b]Poziom:[/b] dla zaawansowanych','Cobalt Blue — z wiekiem nabiera intensywnie niebieskich odnóży. Skryty i defensywny.'],
+ ['Cyriopagopus albostriatus','Ornithoctoninae',6000,10,'🕷️','[b]Młode osobniki (maluchy).[/b]\nThai Zebra — gatunek z Birmy, Tajlandii i Kambodży z kontrastowym paskowaniem.\n\n[b]Tryb życia:[/b] norowy\n[b]Temperament:[/b] defensywny\n[b]Poziom:[/b] dla zaawansowanych\n[b]Dokumenty:[/b] zwykle bez wymogu zaświadczenia CITES','Thai Zebra — norowy ptasznik z kontrastowym paskowaniem. Defensywny.'],
+ ['Cyriopagopus longipes blue','Ornithoctoninae',10000,6,'🕷️','[b]Młode osobniki (maluchy).[/b]\nVietnam Tiger — gatunek z Tajlandii, Laosu i Kambodży, tu w odmianie blue.\n\n[b]Tryb życia:[/b] norowy\n[b]Temperament:[/b] szybki i defensywny\n[b]Poziom:[/b] dla zaawansowanych','Vietnam Tiger w odmianie blue — norowy, szybki i defensywny.']
+].map(a=>({id:'p-'+rnd(6),name:a[0],cat:a[1],price:a[2],stock:a[3],emoji:a[4],desc:a[5],short:a[6],img:'',gal:[],opts:[],sale:0,rl:false}));
 SEED[5].sale=10;SEED[2].rl=true;SEED[4].rl=true;
 let P=(S.get('shop.products',null)||[]).map(cleanP).filter(Boolean);
-if(!S.get('shop.products',null)||S.get('shop.pv',0)!==2){P=SEED;S.set('shop.products',P);S.set('shop.pv',2)}
+let pvv=S.get('shop.pv',0);
+if(!S.get('shop.products',null)||pvv<2){P=SEED;S.set('shop.products',P);S.set('shop.pv',3)}
+else if(pvv<3){for(const q of P){const m=SEED.find(x=>x.name===q.name);if(m){if(!q.short)q.short=m.short;if(q.desc.startsWith('Młode osobniki (maluchy).')&&!q.desc.includes('['))q.desc=m.desc}}S.set('shop.products',P);S.set('shop.pv',3)}
 let O=(S.get('shop.orders',[])||[]);if(!Array.isArray(O))O=[];
 const saveP=()=>S.set('shop.products',P);
 function cleanS(x){if(!x||typeof x!=='object')return null;const id=typeof x.id==='string'&&/^[\w-]{1,40}$/.test(x.id)?x.id:null,name=str(x.name,80),note=str(x.note,120);return id&&name.length>=2?{id,name,note}:null}
 let SPC=S.get('shop.species',[]);SPC=(Array.isArray(SPC)?SPC:[]).map(cleanS).filter(Boolean).slice(0,300);
 const saveS=()=>S.set('shop.species',SPC);
+function cleanC(x){if(!x||typeof x!=='object')return null;const code=typeof x.code==='string'&&/^[A-Z0-9_-]{3,20}$/.test(x.code)?x.code:null,pct=Number.isInteger(x.pct)&&x.pct>=1&&x.pct<=90?x.pct:0;return code&&pct?{code,pct,active:x.active!==false,used:Number.isInteger(x.used)&&x.used>=0?x.used:0}:null}
+let CODES=S.get('shop.codes',null);CODES=Array.isArray(CODES)?CODES.map(cleanC).filter(Boolean).slice(0,100):[{code:'EMPEROR10',pct:10,active:true,used:0}];
+const saveK=()=>S.set('shop.codes',CODES);
+function cleanR(x){if(!x||typeof x!=='object')return null;const ok=v=>typeof v==='string'&&/^[\w-]{1,40}$/.test(v)?v:null,id=ok(x.id),pid=ok(x.pid),name=str(x.name,40),text=str(x.text,400),rating=Number.isInteger(x.rating)&&x.rating>=1&&x.rating<=5?x.rating:0,ts=Number.isFinite(x.ts)?x.ts:0,status=x.status==='approved'?'approved':'pending';return id&&pid&&name.length>=2&&text.length>=10&&rating?{id,pid,name,rating,text,ts,status}:null}
+let RV=S.get('shop.reviews',[]);RV=(Array.isArray(RV)?RV:[]).map(cleanR).filter(Boolean).slice(0,1000);
+const saveR=()=>S.set('shop.reviews',RV);
+let MYR=S.get('shop.myrev',[]);MYR=Array.isArray(MYR)?MYR.filter(x=>typeof x==='string').slice(0,200):[];
+let rvTimes=[];
+let WL=S.get('shop.wish',[]);WL=Array.isArray(WL)?WL.filter(x=>typeof x==='string'&&/^[\w-]{1,40}$/.test(x)).slice(0,100):[];
+const saveW=()=>S.set('shop.wish',WL);
+let COUPON=S.get('shop.coupon',null);
+const couponObj=()=>typeof COUPON==='string'?CODES.find(c=>c.code===COUPON&&c.active):null;
 let cart={};
 const sc=S.get('shop.cart',{});
 if(sc&&typeof sc==='object')for(const[id,q]of Object.entries(sc))if(Number.isInteger(q)&&q>0)cart[id]=q;
@@ -322,7 +440,7 @@ function rich(t){
   if(last<t.length)add(txt(t.slice(last)));
   return root;
 }
-function orb(p){return h('div',{class:'orb','aria-hidden':'true'},p.img?h('img',{src:p.img,alt:''}):p.emoji)}
+function orb(p){const im=p.img||(p.gal&&p.gal[0]);return h('div',{class:'orb','aria-hidden':'true'},im?h('img',{src:im,alt:''}):p.emoji)}
 function renderCats(){
   const s=$('#cf'),cur=s.value;clr(s);
   s.append(h('option',{value:''},'Wszystkie kategorie'));
@@ -332,10 +450,12 @@ function renderCats(){
 let view='all';
 function syncTabs(){document.querySelectorAll('#vt .btn').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.v===view)))}
 function renderGrid(){
-  const g=$('#grid'),q=$('#q').value.toLowerCase().trim(),c=$('#cf').value;clr(g);
-  const L=P.filter(p=>(view!=='sale'||p.sale>0)&&(!c||p.cat===c)&&(!q||(p.name+' '+plain(p.desc)).toLowerCase().includes(q)));
+  const g=$('#grid'),q=$('#q').value.toLowerCase().trim(),c=$('#cf').value;clr(g);landing(false);renderCmp();wcount();
+  const so=$('#so').value,fa=$('#fa').checked,lo=parseFloat($('#pmin').value.replace(',','.')),hi=parseFloat($('#pmax').value.replace(',','.')),dp=p=>pr(p)/100/(CUR==='EUR'?RATE:1);
+  const L=P.filter(p=>(view!=='sale'||p.sale>0)&&(!c||p.cat===c)&&(!fa||p.stock>0)&&(isNaN(lo)||dp(p)>=lo)&&(isNaN(hi)||dp(p)<=hi)&&(!q||(p.name+' '+plain(p.desc)).toLowerCase().includes(q)));
+  if(so==='pa')L.sort((a,b)=>pr(a)-pr(b));else if(so==='pd')L.sort((a,b)=>pr(b)-pr(a));else if(so==='na')L.sort((a,b)=>a.name.localeCompare(b.name,'pl'));else if(so==='av')L.sort((a,b)=>(b.stock>0)-(a.stock>0));
   if(!L.length)g.append(h('div',{class:'empty glass',style:'grid-column:1/-1;padding:40px'},view==='sale'&&!P.some(p=>p.sale>0)?'Aktualnie brak promocji.':'Brak produktów dla tych filtrów.'));
-  L.forEach(p=>{const sel=p.opts.length?h('select',{'aria-label':'Opcja produktu'},...p.opts.map((o,i)=>h('option',{value:i},o))):'';g.append(h('article',{class:'card glass'},p.sale?h('span',{class:'sale'},'−'+p.sale+'%'):'',h('button',{class:'plain',type:'button','aria-label':'Szczegóły: '+p.name,onclick:()=>showProduct(p.id)},orb(p)),h('span',{class:'cat'},p.cat),h('h3',{},h('button',{class:'link',type:'button',onclick:()=>showProduct(p.id)},p.name)),h('p',{},rich(p.desc)),h('button',{class:'link more',type:'button',onclick:()=>showProduct(p.id)},'Zobacz szczegóły'),sel,
+  L.forEach(p=>{const st=ratingOf(p.id),rt=st.n?h('span',{class:'rt'},'★ '+fnum(st.avg)+' ('+st.n+')'):'',wl=WL.includes(p.id);const sel=p.opts.length?h('select',{'aria-label':'Opcja produktu'},...p.opts.map((o,i)=>h('option',{value:i},o))):'';g.append(h('article',{class:'card glass'},h('button',{class:'heart'+(wl?' on':''),type:'button','aria-label':wl?'Usuń z listy życzeń':'Dodaj do listy życzeń','aria-pressed':String(wl),onclick:()=>toggleW(p.id)},wl?'♥':'♡'),p.sale?h('span',{class:'sale'},'−'+p.sale+'%'):'',h('button',{class:'plain',type:'button','aria-label':'Szczegóły: '+p.name,onclick:()=>showProduct(p.id)},orb(p)),h('div',{class:'row',style:'justify-content:flex-start;gap:10px'},h('span',{class:'cat'},p.cat),rt),h('h3',{},h('button',{class:'link',type:'button',onclick:()=>showProduct(p.id)},p.name)),h('p',{},rich(p.short||p.desc)),h('div',{class:'row',style:'justify-content:flex-start;gap:16px'},h('button',{class:'link more',type:'button',onclick:()=>showProduct(p.id)},'Zobacz szczegóły'),h('button',{class:'link more',type:'button',onclick:()=>toggleCmp(p.id)},CMP.includes(p.id)?'✓ W porównaniu':'+ Porównaj')),sel,
     p.stock>0&&p.stock<=5?h('span',{class:'low'},'Zostało tylko '+p.stock+' szt.'):'',
     h('div',{class:'row'},h('span',{class:'price'},p.sale?h('s',{class:'old'},money(p.price)):'',money(pr(p))),
       h('button',{class:'btn pri',type:'button',disabled:p.stock<1,onclick:()=>{addCart(p.id+'~'+(sel?+sel.value:0),1);toast(p.name+' w koszyku')}},p.stock<1?'Brak':'Do koszyka'))));})
@@ -346,16 +466,18 @@ function showProduct(id){
   const sel=p.opts.length?h('select',{'aria-label':'Opcja produktu'},...p.opts.map((o,i)=>h('option',{value:i},o))):null;
   const inCart=()=>Object.entries(cart).filter(([k])=>k.split('~')[0]===p.id).reduce((s,[,v])=>s+v,0);
   const left=()=>Math.max(0,Math.min(20,p.stock-inCart()));
+  const wb=h('button',{class:'link',type:'button',style:'margin-bottom:6px'}),wsync=()=>{wb.textContent=WL.includes(p.id)?'♥ Usuń z listy życzeń':'♡ Dodaj do listy życzeń'};wb.onclick=()=>{toggleW(p.id);wsync()};wsync();
   const num=h('b',{style:'min-width:2ch;text-align:center'},'1'),tot=h('span',{class:'hint'}),info=h('div',{class:'hint'});
   const minus=h('button',{class:'btn',type:'button','aria-label':'Mniej',onclick:()=>{qty--;upd()}},'−'),plus=h('button',{class:'btn',type:'button','aria-label':'Więcej',onclick:()=>{qty++;upd()}},'+');
   const add=h('button',{class:'btn pri',type:'button',onclick:()=>{const n=qty;addCart(p.id+'~'+(sel?+sel.value:0),n);toast(n+'× '+p.name+' w koszyku');qty=1;upd()}},'Dodaj do koszyka');
   function upd(){const l=left();qty=Math.min(Math.max(qty,l?1:0),l);num.textContent=String(qty);add.disabled=l<1;minus.disabled=qty<=1;plus.disabled=qty>=l;tot.textContent='Razem: '+money(pr(p)*qty);
     info.textContent=(p.stock<1?'Brak na stanie.':p.stock<=5?'Zostało tylko '+p.stock+' szt.':'Dostępne: '+p.stock+' szt.')+(inCart()?' · W koszyku: '+inCart()+' szt.':'')}
-  b.append(orb(p),h('span',{class:'cat',style:'display:block;margin-top:12px'},p.cat),h('h2',{style:'margin:2px 0'},p.name),h('div',{class:'dprice'},p.sale?h('s',{class:'old'},money(p.price)):'',money(pr(p)),p.sale?h('span',{class:'sale',style:'position:static;margin-left:10px;display:inline-block'},'−'+p.sale+'%'):''),h('p',{class:'dd'},p.desc?rich(p.desc):'Brak opisu.'),
+  b.append(gallery(p),h('span',{class:'cat',style:'display:block;margin-top:12px'},p.cat),h('h2',{style:'margin:2px 0'},p.name),wb,h('div',{class:'dprice'},p.sale?h('s',{class:'old'},money(p.price)):'',money(pr(p)),p.sale?h('span',{class:'sale',style:'position:static;margin-left:10px;display:inline-block'},'−'+p.sale+'%'):''),h('p',{class:'dd'},p.desc?rich(p.desc):'Brak opisu.'),
     sel?h('label',{style:'margin-bottom:12px'},'Wybierz opcję',sel):'',
     h('div',{class:'row',style:'margin-bottom:6px'},h('div',{class:'qty'},minus,num,plus),tot),info,
     h('div',{class:'row',style:'margin-top:14px'},h('button',{class:'btn',type:'button',onclick:()=>$('#dD').close()},'Zamknij'),add));
-  b.firstChild.classList.add('big');upd();open($('#dD'));
+  b.append(reviewsBlock(p));
+  upd();open($('#dD'));
 }
 function speciesList(){
   const b=$('#pS');clr(b);b.append(h('h2',{},'Lista gatunków'));
@@ -369,6 +491,153 @@ function speciesList(){
   [...SPC].sort((a,c)=>cmp(a.name,c.name)).forEach(x=>b.append(h('div',{class:'item'},h('div',{},h('b',{},x.name),x.note?h('small',{},x.note):''))));
   b.append(h('div',{class:'row',style:'margin-top:14px;justify-content:flex-end'},h('button',{class:'btn pri',type:'button',onclick:()=>$('#dS').close()},'Zamknij')));
   open($('#dS'));
+}
+function landing(anim){
+  const v=[P.length,P.reduce((a,p)=>a+p.stock,0),P.filter(p=>p.sale>0).length],still=!anim||matchMedia('(prefers-reduced-motion: reduce)').matches;
+  ['#st1','#st2','#st3'].forEach((id,i)=>{const el=$(id);if(still){el.textContent=v[i];return}const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1100);el.textContent=Math.round(v[i]*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)});
+  const b=$('#dayp');clr(b);if(!P.length)return;
+  const p=P[Math.floor(Date.now()/864e5)%P.length];
+  b.append(h('div',{class:'dorb'},orb(p)),h('div',{class:'dtx'},h('span',{class:'cat'},'Pająk dnia'),h('h3',{},p.name),h('p',{},rich(p.short||p.desc)),
+    h('div',{class:'row'},h('span',{class:'price'},p.sale?h('s',{class:'old'},money(p.price)):'',money(pr(p))),h('button',{class:'btn pri',type:'button',onclick:()=>showProduct(p.id)},'Zobacz szczegóły'))));
+}
+function gallery(p){
+  const big=orb(p);big.classList.add('big');
+  const sl=[...(p.img?[p.img]:[]),...(p.gal||[])];if(!sl.length)return big;
+  let cur=0,th=null;big.style.cursor='zoom-in';big.addEventListener('click',()=>lightbox(sl,cur));
+  if(!(p.gal||[]).length)return big;
+  const show=i=>{cur=i;clr(big);big.append(h('img',{src:sl[i],alt:''}));[...th.children].forEach((b,j)=>b.classList.toggle('on',j===i))};
+  th=h('div',{class:'thumbs'});
+  sl.forEach((src,i)=>th.append(h('button',{class:'th',type:'button','aria-label':'Zdjęcie '+(i+1),onclick:()=>show(i)},h('img',{src,alt:''}))));
+  show(0);return h('div',{class:'gal'},big,th);
+}
+let LBX=null;
+function lightbox(sl,i){
+  const b=$('#pZ');clr(b);let cur=i;const img=h('img',{alt:''}),ct=h('div',{class:'lb-c'});
+  const show=n=>{cur=(n+sl.length)%sl.length;img.src=sl[cur];ct.textContent=sl.length>1?(cur+1)+' / '+sl.length:''};
+  const nb=(l,c,fn,a)=>h('button',{class:'lb-b '+c,type:'button','aria-label':a,onclick:e=>{e.stopPropagation();fn()}},l);
+  b.append(img,ct,nb('✕','lb-x',()=>$('#dZ').close(),'Zamknij'));
+  if(sl.length>1)b.append(nb('‹','lb-l',()=>show(cur-1),'Poprzednie'),nb('›','lb-r',()=>show(cur+1),'Następne'));
+  b.onclick=e=>{if(e.target===b)$('#dZ').close()};
+  let x0=null;b.ontouchstart=e=>{x0=e.touches[0].clientX};b.ontouchend=e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>50&&sl.length>1)show(cur+(dx<0?1:-1))};
+  LBX=n=>show(cur+n);show(i);open($('#dZ'));
+}
+function shrink(fl,ok,bad){
+  if(!['image/jpeg','image/png','image/webp'].includes(fl.type)||fl.size>5e6){bad('Niedozwolony plik.');return}
+  const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.72))};im.onerror=()=>bad('To nie jest poprawny obraz.');im.src=r.result};r.readAsDataURL(fl);
+}
+let CMP=[];
+function toggleCmp(id){const i=CMP.indexOf(id);if(i>=0)CMP.splice(i,1);else if(CMP.length>=3){toast('Możesz porównać maksymalnie 3 gatunki.');return}else CMP.push(id);renderGrid()}
+function renderCmp(){
+  const bar=$('#cmpbar');CMP=CMP.filter(id=>P.some(p=>p.id===id));bar.hidden=!(CMP.length&&PAGE==='shop');clr(bar);
+  bar.append(h('span',{},'Porównanie: '+CMP.length+'/3'),h('button',{class:'btn pri',type:'button',disabled:CMP.length<2,onclick:compare},'Porównaj'),h('button',{class:'btn',type:'button',onclick:()=>{CMP=[];renderGrid()}},'Wyczyść'));
+}
+function parseAttrs(d){const o={};String(d||'').split('\n').forEach(l=>{const m=/^\[b\]([^\[\]:]{1,40}):\[\/b\]\s*(.+)$/.exec(l.trim());if(m)o[m[1]]=m[2]});return o}
+function compare(){
+  const L=CMP.map(id=>P.find(p=>p.id===id)).filter(Boolean);if(L.length<2)return;
+  const b=$('#pX');clr(b);b.append(h('h2',{},'Porównanie gatunków'));
+  const at=L.map(p=>parseAttrs(p.desc)),keys=[...new Set(at.flatMap(a=>Object.keys(a)))];
+  const rows=[['Kategoria',L.map(p=>p.cat)],['Cena',L.map(p=>money(pr(p)))],['Dostępność',L.map(p=>p.stock>0?'Dostępny':'Brak na stanie')],...keys.map(k=>[k,at.map(a=>a[k]||'—')])];
+  const t=h('table',{class:'cmpt'},h('thead',{},h('tr',{},h('th',{}),...L.map(p=>h('th',{},h('div',{class:'cmpimg'},orb(p)),p.name)))),
+    h('tbody',{},...rows.map(([k,vs])=>h('tr',{},h('th',{scope:'row'},k),...vs.map(v=>h('td',{},v))))));
+  b.append(h('div',{style:'overflow-x:auto'},t),h('div',{class:'row',style:'margin-top:14px;justify-content:flex-end'},h('button',{class:'btn pri',type:'button',onclick:()=>$('#dX').close()},'Zamknij')));
+  open($('#dX'));
+}
+async function saveFile(name,text){
+  try{const dl=window.claude&&await window.claude.use('downloads');if(dl){await dl.save({filename:name,data:text});return true}}catch(e){if(e&&e.code==='declined')return false}
+  try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);return true}catch(e){return false}
+}
+async function exportData(){
+  if(!admin)return;
+  const d={app:'spider-emperor',v:1,ts:Date.now(),data:{products:P,orders:O,tickets:T,species:SPC,codes:CODES,reviews:RV}};
+  if(await saveFile('spider-emperor-kopia-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(d)))toast('Kopia gotowa.');
+}
+function importData(fl,msg){
+  if(!admin)return;
+  if(fl.size>8e6){msg.textContent='Plik jest za duży (max 8 MB).';return}
+  const r=new FileReader();
+  r.onload=()=>{
+    let j;try{j=JSON.parse(r.result)}catch(e){msg.textContent='To nie jest poprawny plik kopii.';return}
+    if(!j||j.app!=='spider-emperor'||!j.data||typeof j.data!=='object'){msg.textContent='To nie jest kopia sklepu Spider Emperor.';return}
+    const d=j.data,A=x=>Array.isArray(x)?x:[];
+    const np=A(d.products).map(cleanP).filter(Boolean),ns=A(d.species).map(cleanS).filter(Boolean).slice(0,300),nc=A(d.codes).map(cleanC).filter(Boolean).slice(0,100),
+      nt=A(d.tickets).filter(t=>t&&typeof t==='object'&&typeof t.id==='string').slice(0,300),no=A(d.orders).filter(o=>o&&typeof o==='object'&&typeof o.id==='string').slice(0,500),
+      nr=A(d.reviews).map(cleanR).filter(Boolean).slice(0,1000);
+    if(!confirm('Zastąpić obecne dane?\n'+np.length+' produktów, '+no.length+' zamówień, '+nt.length+' zgłoszeń, '+ns.length+' gatunków, '+nc.length+' kodów.'))return;
+    P=np;SPC=ns;CODES=nc;T=nt;O=no;RV=nr;saveR();saveP();saveS();saveK();saveT();S.set('shop.orders',O);
+    fixCart();cnt();renderCats();renderGrid();renderAdmin();toast('Dane zaimportowane.');
+  };
+  r.onerror=()=>{msg.textContent='Nie udało się odczytać pliku.'};r.readAsText(fl);
+}
+const starS=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+const fnum=x=>new Intl.NumberFormat(LANG==='en'?'en':'pl',{maximumFractionDigits:1}).format(x);
+function ratingOf(pid){const a=RV.filter(r=>r.pid===pid&&r.status==='approved');return{n:a.length,avg:a.length?a.reduce((s,r)=>s+r.rating,0)/a.length:0}}
+function reviewsBlock(p){
+  const w=h('div',{class:'rv'});
+  const draw=()=>{
+    clr(w);const a=RV.filter(r=>r.pid===p.id&&r.status==='approved').sort((x,y)=>y.ts-x.ts).slice(0,20),st=ratingOf(p.id);
+    w.append(h('h3',{style:'margin:18px 0 6px'},'Opinie'));
+    w.append(st.n?h('div',{class:'rt'},starS(Math.round(st.avg))+' '+fnum(st.avg)+' ('+st.n+')'):h('div',{class:'hint'},'Brak opinii — bądź pierwszy!'));
+    a.forEach(r=>w.append(h('div',{class:'item',style:'display:block'},h('div',{class:'row'},h('b',{},r.name),h('span',{class:'rt'},starS(r.rating)+' · '+new Date(r.ts).toLocaleDateString(LANG==='en'?'en-GB':'pl-PL'))),h('p',{style:'margin:6px 0 0'},r.text))));
+    if(MYR.includes(p.id)){w.append(h('div',{class:'hint',style:'margin-top:10px'},'Dziękujemy! Twoja opinia pojawi się po zatwierdzeniu.'));return}
+    let rating=0;const err=h('div',{class:'err',role:'alert'}),sb=h('div',{class:'stars'});
+    const paint=()=>[...sb.children].forEach((b,i)=>{b.textContent=i<rating?'★':'☆';b.setAttribute('aria-pressed',String(i+1===rating))});
+    for(let i=1;i<=5;i++)sb.append(h('button',{class:'star',type:'button','aria-label':i+' / 5',onclick:()=>{rating=i;paint()}},'☆'));paint();
+    const nm=h('input',{maxlength:40,placeholder:'Twoje imię','aria-label':'Twoje imię',value:PR.name?PR.name.split(' ')[0]:''}),tx=h('textarea',{maxlength:400,rows:3,placeholder:'Napisz opinię…','aria-label':'Treść opinii'});
+    const f=h('form',{novalidate:true,style:'margin-top:12px'},h('b',{},'Dodaj opinię'),sb,nm,tx,err,h('button',{class:'btn pri',type:'submit'},'Wyślij opinię'));
+    f.addEventListener('submit',e=>{
+      e.preventDefault();err.textContent='';const name=str(nm.value,40),text=str(tx.value,400),now=Date.now();rvTimes=rvTimes.filter(t=>now-t<3600000);
+      if(rating<1)err.textContent='Wybierz ocenę (1–5 gwiazdek).';
+      else if(name.length<2)err.textContent='Podaj imię (min. 2 znaki).';
+      else if(text.length<10)err.textContent='Opinia musi mieć min. 10 znaków.';
+      else if(rvTimes.length>=3)err.textContent='Limit 3 opinii na godzinę.';
+      else{rvTimes.push(now);RV.unshift({id:'r-'+rnd(5),pid:p.id,name,rating,text,ts:now,status:'pending'});RV=RV.slice(0,1000);saveR();MYR.push(p.id);S.set('shop.myrev',MYR);draw()}
+    });
+    w.append(f);
+  };
+  draw();return w;
+}
+function wcount(){const e=$('#wcn');if(e)e.textContent=WL.length?'('+WL.length+')':''}
+function toggleW(id){const i=WL.indexOf(id);if(i>=0)WL.splice(i,1);else if(WL.length<100)WL.push(id);saveW();renderGrid();if($('#dW').open)wishlist()}
+function wishlist(){
+  const b=$('#pW');clr(b);b.append(h('h2',{},'Lista życzeń'));
+  const L=WL.map(id=>P.find(p=>p.id===id)).filter(Boolean);
+  if(!L.length)b.append(h('div',{class:'empty'},'Brak produktów na liście życzeń.'));
+  L.forEach(p=>b.append(h('div',{class:'item'},h('div',{},h('b',{},p.name),h('small',{},p.cat,' · ',p.stock>0?'Dostępny':'Brak na stanie')),
+    h('div',{},h('span',{class:'price'},money(pr(p))),' ',h('button',{class:'btn',type:'button',onclick:()=>{$('#dW').close();showProduct(p.id)}},'Zobacz szczegóły'),' ',h('button',{class:'btn dng',type:'button',onclick:()=>toggleW(p.id)},'Usuń')))));
+  b.append(h('div',{class:'row',style:'margin-top:14px;justify-content:flex-end'},h('button',{class:'btn pri',type:'button',onclick:()=>$('#dW').close()},'Zamknij')));
+  open($('#dW'));
+}
+let QZ={};
+function quiz(step){
+  const b=$('#pQ');clr(b);
+  const Q=[['Jakie masz doświadczenie z ptasznikami?','exp',[['Początkujący','b'],['Mam trochę doświadczenia','m'],['Zaawansowany','a']]],
+    ['Jaki tryb życia pająka Ci odpowiada?','life',[['Nadrzewny — wspina się i widać go','arb'],['Norowy — skryty, kopie nory','bur'],['Bez znaczenia','any']]],
+    ['Jaki masz budżet?','bud',[['do '+money(6000),'l'],['od '+money(6000)+' do '+money(12000),'m'],['powyżej '+money(12000),'h'],['Bez limitu','n']]],
+    ['Czy chcesz uniknąć gatunków z dokumentami CITES?','cites',[['Tak, unikam','y'],['Nie przeszkadza mi to','n']]]];
+  if(step>=Q.length){
+    const sc=P.filter(p=>p.stock>0).map(p=>{
+      const a=parseAttrs(p.desc),life=(a['Tryb życia']||'').toLowerCase(),tem=(a['Temperament']||'').toLowerCase(),cit=/CITES zał\. II/i.test(p.desc),x=pr(p),r=[];
+      const dif=/bardzo szybki/.test(tem)?3:/szybki|defensywn/.test(tem)?2:1;let s=40;
+      if(QZ.life==='any')s+=12;else if(life.includes(QZ.life==='arb'?'nadrzewn':'noro')){s+=25;r.push('pasuje do wybranego trybu życia')}else s-=5;
+      const ok=QZ.bud==='n'||(QZ.bud==='l'&&x<=6000)||(QZ.bud==='m'&&x>6000&&x<=12000)||(QZ.bud==='h'&&x>12000);
+      if(ok){s+=25;if(QZ.bud!=='n')r.push('mieści się w budżecie')}else s-=10;
+      if(QZ.cites==='y'){if(cit)s-=25;else{s+=10;r.push('bez wymogu CITES')}}
+      s-=QZ.exp==='b'?dif*6:QZ.exp==='m'?dif*3:0;
+      return{p,s:Math.max(5,Math.min(99,Math.round(s))),r};
+    }).sort((u,v)=>v.s-u.s).slice(0,3);
+    b.append(h('h2',{},'Twoje podpowiedzi'));
+    if(QZ.exp!=='a')b.append(h('p',{class:'hint'},'Uwaga: wszystkie gatunki w ofercie są dla doświadczonych hodowców — przeczytaj sekcję „Hodowla” przed zakupem.'));
+    if(!sc.length)b.append(h('div',{class:'empty'},'Brak dostępnych produktów.'));
+    sc.forEach(({p,s,r})=>b.append(h('div',{class:'item'},h('div',{},h('b',{},p.name),h('small',{},'Dopasowanie: '+s+'%'),h('div',{},...r.map(t=>h('span',{class:'tag'},t)))),
+      h('div',{},h('span',{class:'price'},money(pr(p))),' ',h('button',{class:'btn pri',type:'button',onclick:()=>{$('#dQ').close();showProduct(p.id)}},'Zobacz szczegóły')))));
+    b.append(h('div',{class:'row',style:'margin-top:14px'},h('button',{class:'btn',type:'button',onclick:()=>{QZ={};quiz(0)}},'Zacznij od nowa'),h('button',{class:'btn pri',type:'button',onclick:()=>$('#dQ').close()},'Zamknij')));
+    open($('#dQ'));return;
+  }
+  const[q,k,opts]=Q[step];
+  b.append(h('h2',{},'Jaki pająk dla mnie?'),h('div',{class:'hint'},'Pytanie '+(step+1)+'/'+Q.length),h('h3',{style:'margin:10px 0'},q),
+    h('div',{class:'qopts'},...opts.map(([l,v])=>h('button',{class:'btn',type:'button',onclick:()=>{QZ[k]=v;quiz(step+1)}},l))),
+    h('div',{class:'row',style:'margin-top:14px'},step?h('button',{class:'btn',type:'button',onclick:()=>quiz(step-1)},'Wstecz'):h('span'),h('button',{class:'btn',type:'button',onclick:()=>$('#dQ').close()},'Zamknij')));
+  open($('#dQ'));
 }
 function rint(n){return crypto.getRandomValues(new Uint32Array(1))[0]%n}
 function roulette(){
@@ -408,7 +677,9 @@ function roulette(){
 function items(){return Object.entries(cart).map(([k,q])=>{const[id,i='0',w]=k.split('~'),p=P.find(x=>x.id===id);return p&&q>0?{p,q,k,o:p.opts[+i]||'',free:w==='w'}:null}).filter(Boolean)}
 function fixCart(){const tot={};for(const k of Object.keys(cart)){const[id,i='0',w]=k.split('~'),p=P.find(x=>x.id===id);if(!p||!(+i>=0&&+i<Math.max(1,p.opts.length))||(w&&!(w==='w'&&spinOK(id)))){delete cart[k];continue}const q=Math.min(cart[k],p.stock-(tot[id]||0),w?1:20);if(q>0){cart[k]=q;tot[id]=(tot[id]||0)+q}else delete cart[k]}saveC()}
 const cnt=()=>{$('#cc').textContent=items().reduce((s,i)=>s+i.q,0)};
-const total=()=>items().reduce((s,i)=>s+(i.free?0:pr(i.p)*i.q),0);
+const sub=()=>items().reduce((s,i)=>s+(i.free?0:pr(i.p)*i.q),0);
+const discount=()=>{const c=couponObj();return c?Math.round(sub()*c.pct/100):0};
+const total=()=>sub()-discount();
 function addCart(k,d){
   const id=k.split('~')[0],p=P.find(x=>x.id===id);if(!p)return;
   const other=Object.entries(cart).filter(([x])=>x!==k&&x.split('~')[0]===id).reduce((s,[,v])=>s+v,0);
@@ -426,7 +697,10 @@ function renderCart(){
     h('div',{},h('b',{},p.name+(o?' — '+o:'')+(free?' 🎁':'')),h('small',{class:'hint',style:'display:block'},free?'Wygrana w ruletce':money(pr(p))+' / szt.')),
     h('div',{class:'qty'},h('button',{class:'btn',type:'button','aria-label':'Mniej',onclick:()=>addCart(k,-1)},'−'),h('span',{},String(q)),
       h('button',{class:'btn',type:'button','aria-label':'Więcej',onclick:()=>addCart(k,1)},'+')))));
-  b.append(w,h('div',{class:'row'},h('b',{},'Razem: '+money(total())),
+  const cc=couponObj(),cerr=h('div',{class:'err',role:'alert'}),ci=h('input',{maxlength:20,placeholder:'Kod rabatowy','aria-label':'Kod rabatowy'});
+  const cu=cc?h('div',{class:'row hint'},h('span',{},'Rabat ('+cc.code+' −'+cc.pct+'%)'),h('span',{},'−'+money(discount())+' ',h('button',{class:'link',type:'button',onclick:()=>{COUPON=null;S.set('shop.coupon',null);renderCart()}},'Usuń kod')))
+    :h('div',{class:'row'},ci,h('button',{class:'btn',type:'button',onclick:()=>{const v=ci.value.toUpperCase().trim(),c=CODES.find(x=>x.code===v&&x.active);if(!c){cerr.textContent='Nieprawidłowy kod rabatowy.';return}COUPON=c.code;S.set('shop.coupon',COUPON);renderCart();toast('Kod zastosowany.')}},'Zastosuj'));
+  b.append(w,cu,cerr,h('div',{class:'row',style:'margin-top:10px'},h('b',{},'Razem: '+money(total())),
     h('span',{},h('button',{class:'btn',type:'button',onclick:()=>$('#dC').close()},'Zamknij'),' ',h('button',{class:'btn pri',type:'button',onclick:()=>{$('#dC').close();checkout()}},'Do kasy'))));
 }
 
@@ -484,9 +758,10 @@ function checkout(){
     if(!free0&&(num==='4000000000000002'||num==='4000000000009995')){
       err.textContent=num.endsWith('0002')?'Płatność odrzucona przez bank.':'Brak środków na karcie.';
       pay.disabled=false;pay.textContent='Zapłać '+money(total());f.cv.value='';return}
-    const order={id:'ZAM-'+rnd(4),ts:now,items:items().map(({p,q,o,free})=>({name:p.name+(o?' ('+o+')':'')+(free?' 🎁':''),price:free?0:pr(p),qty:q})),total:total(),name,email,phone,addr:addr+', '+zip+' '+city,card:free0?'—':brand(num)+' •••• '+last4,status:'opłacone'};
+    const order={id:'ZAM-'+rnd(4),ts:now,items:items().map(({p,q,o,free})=>({name:p.name+(o?' ('+o+')':'')+(free?' 🎁':''),price:free?0:pr(p),qty:q})),total:total(),coupon:couponObj()?couponObj().code:'',name,email,phone,addr:addr+', '+zip+' '+city,card:free0?'—':brand(num)+' •••• '+last4,status:'opłacone'};
     items().forEach(({p,q})=>{P.find(x=>x.id===p.id).stock-=q});
     if(items().some(i=>i.free)&&SP){SP.used=true;S.set('shop.spin',SP)}
+    {const c=couponObj();if(c){c.used++;saveK();COUPON=null;S.set('shop.coupon',null)}}
     O.unshift(order);O=O.slice(0,500);if(!PR.email){PR=cleanProf({name,email,phone,addr,zip,city});S.set('shop.profile',PR)}S.set('shop.orders',O);saveP();
     cart={};saveC();f.reset();$('#cc').textContent='0';renderGrid();
     clr(b);b.append(h('h2',{class:'ok'},'Płatność przyjęta ✓'),h('p',{},'Numer zamówienia: ',h('b',{},order.id)),h('p',{class:'hint'},'To symulacja — potwierdzenie nie zostało wysłane, a środki nie zostały pobrane.'),h('button',{class:'btn pri',type:'button',onclick:()=>$('#dK').close()},'Wróć do sklepu'));
@@ -632,13 +907,43 @@ function renderAdmin(){
   if(!admin)return;const b=$('#pA');clr(b);touch();$('#admt').textContent='Panel (zalogowany)';
   const tb=(k,l)=>h('button',{class:'btn',type:'button',role:'tab','aria-selected':String(tab===k),onclick:()=>{tab=k;renderAdmin()}},l);
   b.append(h('div',{class:'row'},h('h2',{style:'margin:0'},'Panel administratora'),h('button',{class:'btn dng',type:'button',onclick:()=>{logout();toast('Wylogowano')}},'Wyloguj')),
-    h('div',{class:'tabs',role:'tablist',style:'margin-top:14px'},tb('p','Produkty'),tb('o','Zamówienia ('+O.length+')'),tb('c','Klienci'),tb('s','Support ('+T.filter(t=>t.status==='otwarte').length+')'),tb('g','Gatunki ('+SPC.length+')')));
+    h('div',{class:'tabs',role:'tablist',style:'margin-top:14px'},tb('p','Produkty'),tb('o','Zamówienia ('+O.length+')'),tb('c','Klienci'),tb('s','Support ('+T.filter(t=>t.status==='otwarte').length+')'),tb('g','Gatunki ('+SPC.length+')'),tb('k','Kody ('+CODES.length+')'),tb('r','Opinie ('+RV.filter(r=>r.status==='pending').length+')'),tb('b','Kopia')));
   if(tab==='p'){
     b.append(h('button',{class:'btn pri',type:'button',style:'margin-bottom:12px',onclick:()=>editP(null)},'+ Dodaj produkt'));
     if(!P.length)b.append(h('div',{class:'empty'},'Brak produktów.'));
     P.forEach(p=>b.append(h('div',{class:'item'},h('div',{},h('b',{},p.emoji+' '+p.name+(p.rl?' 🎡':'')),h('small',{},p.cat+' · '+money(p.price)+(p.sale?' · −'+p.sale+'%':'')+' · stan: '+p.stock)),
       h('div',{},h('button',{class:'btn',type:'button',onclick:()=>editP(p)},'Edytuj'),' ',
       h('button',{class:'btn dng',type:'button',onclick:()=>{if(!admin)return;if(confirm('Usunąć „'+p.name+'”?')){P=P.filter(x=>x.id!==p.id);fixCart();cnt();saveP();renderCats();renderGrid();renderAdmin()}}},'Usuń')))));
+  }else if(tab==='r'){
+    if(!RV.length)b.append(h('div',{class:'empty'},'Brak opinii.'));
+    [...RV].sort((x,y)=>(x.status==='pending'?0:1)-(y.status==='pending'?0:1)||y.ts-x.ts).forEach(r=>{
+      const pn=(P.find(q=>q.id===r.pid)||{}).name||'(usunięty produkt)';
+      b.append(h('div',{class:'item',style:'display:block'},h('div',{class:'row'},h('b',{},starS(r.rating)+' · '+r.name),h('span',{class:'hint'},(r.status==='pending'?'oczekuje':'zatwierdzona')+' · '+pn)),h('p',{style:'margin:6px 0'},r.text),
+        h('div',{},r.status==='pending'?h('button',{class:'btn pri',type:'button',onclick:()=>{if(!admin)return;r.status='approved';saveR();renderGrid();renderAdmin()}},'Zatwierdź'):'',' ',h('button',{class:'btn dng',type:'button',onclick:()=>{if(!admin)return;RV=RV.filter(x=>x!==r);saveR();renderGrid();renderAdmin()}},'Usuń'))));
+    });
+  }else if(tab==='b'){
+    const msg=h('div',{class:'err',role:'alert'});
+    b.append(h('p',{class:'hint'},'Dane sklepu są zapisane tylko w tej przeglądarce. Wyeksportuj kopię do pliku, a w razie potrzeby zaimportuj ją z powrotem (np. po wyczyszczeniu danych witryny albo na innym urządzeniu). Kopia zawiera produkty, zamówienia, zgłoszenia, gatunki i kody — bez hasła admina.'),
+      h('div',{style:'margin-bottom:14px'},h('button',{class:'btn pri',type:'button',onclick:exportData},'Eksportuj dane')),
+      h('label',{},'Importuj z pliku (.json) — zastąpi obecne dane',h('input',{type:'file',accept:'application/json,.json',onchange:ev=>{const fl=ev.target.files[0];ev.target.value='';msg.textContent='';if(fl)importData(fl,msg)}})),msg);
+  }else if(tab==='k'){
+    const err=h('div',{class:'err',role:'alert'});
+    const f=h('form',{novalidate:true,style:'margin-bottom:12px'},h('p',{class:'hint'},'Kod działa na wszystkie produkty (poza nagrodami z ruletki). Rabat procentowy 1–90%.'),
+      h('div',{class:'two'},field('Kod (litery, cyfry, - _)','ccode',{maxlength:20}),field('Rabat (%)','cpct',{inputmode:'numeric',maxlength:2})),err,h('button',{class:'btn pri',type:'submit'},'+ Dodaj kod'));
+    f.addEventListener('submit',e=>{
+      e.preventDefault();if(!admin)return;touch();
+      const code=f.elements['ccode'].value.toUpperCase().trim(),pct=/^\d{1,2}$/.test(f.elements['cpct'].value.trim())?+f.elements['cpct'].value:0;
+      if(!/^[A-Z0-9_-]{3,20}$/.test(code)){err.textContent='Kod: 3–20 znaków (A–Z, 0–9, - _).';return}
+      if(pct<1||pct>90){err.textContent='Rabat: liczba od 1 do 90.';return}
+      if(CODES.some(c=>c.code===code)){err.textContent='Taki kod już istnieje.';return}
+      if(CODES.length>=100){err.textContent='Limit 100 kodów.';return}
+      CODES.push({code,pct,active:true,used:0});saveK();renderAdmin();toast('Dodano kod');
+    });
+    b.append(f);
+    if(!CODES.length)b.append(h('div',{class:'empty'},'Brak kodów rabatowych.'));
+    CODES.forEach(c=>b.append(h('div',{class:'item'},h('div',{},h('b',{},c.code+' · −'+c.pct+'%'),h('small',{},(c.active?'aktywny':'wyłączony')+' · użyty: '+c.used+'×')),
+      h('div',{},h('button',{class:'btn',type:'button',onclick:()=>{if(!admin)return;c.active=!c.active;saveK();renderAdmin()}},c.active?'Wyłącz':'Włącz'),' ',
+      h('button',{class:'btn dng',type:'button',onclick:()=>{if(!admin)return;CODES=CODES.filter(x=>x!==c);saveK();renderAdmin()}},'Usuń')))));
   }else if(tab==='g'){
     const err=h('div',{class:'err',role:'alert'});
     const f=h('form',{novalidate:true,style:'margin-bottom:12px'},h('p',{class:'hint'},'Gatunki dodane tutaj pojawią się na liście gatunków w sekcji „Inne gatunki”. Gatunki z produktów dodają się do listy automatycznie.'),
@@ -685,11 +990,14 @@ function editP(p){
   const col=h('input',{type:'color',value:'#ff8800','aria-label':'Kolor tekstu',style:'width:46px;height:38px;padding:2px;cursor:pointer'});
   const tb2=(l,st,t,fn)=>h('button',{class:'btn',type:'button',style:st,title:t,'aria-label':t,onclick:fn},l);
   const tools=h('div',{class:'tools'},tb2('B','font-weight:800','Pogrubienie',()=>wrap('[b]','[/b]')),tb2('I','font-style:italic','Kursywa',()=>wrap('[i]','[/i]')),tb2('U','text-decoration:underline','Podkreślenie',()=>wrap('[u]','[/u]')),tb2('S','text-decoration:line-through','Przekreślenie',()=>wrap('[s]','[/s]')),col,tb2('Kolor','','Zastosuj kolor do zaznaczenia',()=>wrap('[c='+col.value+']','[/c]')),tb2('Wyczyść','','Usuń formatowanie',()=>{ta.value=ta.value.replace(TAGRE,'');upd()}));
+  let gal=p?[...(p.gal||[])]:[];const gv=h('div',{class:'thumbs'});
+  const drawG=()=>{clr(gv);gal.forEach((src,i)=>gv.append(h('span',{class:'th on',style:'position:relative;cursor:default'},h('img',{src,alt:''}),h('button',{type:'button','aria-label':'Usuń zdjęcie z galerii',style:'position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;border:0;background:#fff;color:#000;cursor:pointer;line-height:1;padding:0',onclick:()=>{gal.splice(i,1);drawG()}},'×'))))};drawG();
+  const gin=h('label',{},'Galeria — dodatkowe zdjęcia (max 3, po jednym)',h('input',{type:'file',accept:'image/jpeg,image/png,image/webp',onchange:ev=>{const fl=ev.target.files[0];ev.target.value='';if(!fl)return;if(gal.length>=3){err.textContent='Galeria może mieć maksymalnie 3 zdjęcia.';return}shrink(fl,d=>{gal.push(d);drawG();err.textContent=''},m=>{err.textContent=m})}}));
   const f=h('form',{novalidate:true},h('h2',{},p?'Edytuj produkt':'Nowy produkt'),
     field('Nazwa','name',{maxlength:80,value:p?p.name:''}),
     h('div',{class:'two'},field('Kategoria','cat',{maxlength:30,value:p?p.cat:''}),field('Emoji','emoji',{maxlength:4,value:p?p.emoji:'📦'})),
     h('div',{class:'two'},field('Cena (PLN)','price',{inputmode:'decimal',value:p?(p.price/100).toFixed(2):''}),field('Stan magazynowy','stock',{inputmode:'numeric',value:p?String(p.stock):''})),
-    h('label',{},'Opis (zaznacz tekst i użyj przycisków formatowania)',ta),tools,h('div',{class:'hint'},'Podgląd:'),pv,
+    field('Krótki opis (widoczny na karcie, max 140 znaków)','short',{required:false,maxlength:140,value:p?p.short:''}),h('label',{},'Pełny opis (zaznacz tekst i użyj przycisków formatowania)',ta),tools,h('div',{class:'hint'},'Podgląd:'),pv,
     h('label',{},'Do wygrania w ruletce',h('select',{name:'rl'},h('option',{value:'0'},'Nie'),h('option',{value:'1',selected:!!(p&&p.rl)},'Tak'))),field('Promocja (%) — 0 = brak','sale',{required:false,inputmode:'numeric',maxlength:2,value:p?String(p.sale):'0'}),field('Opcje do wyboru (po przecinku, np. S, M, L — opcjonalnie)','opts',{required:false,maxlength:200,value:p?p.opts.join(', '):''}),h('label',{},'Zdjęcie (JPG/PNG/WebP, do 5 MB)',h('input',{type:'file',accept:'image/jpeg,image/png,image/webp',onchange:ev=>{
       const fl=ev.target.files[0];if(!fl)return;
       if(!['image/jpeg','image/png','image/webp'].includes(fl.type)||fl.size>5e6){err.textContent='Niedozwolony plik.';ev.target.value='';return}
@@ -697,13 +1005,13 @@ function editP(p){
         const k=Math.min(1,400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));
         c.getContext('2d').drawImage(im,0,0,c.width,c.height);img=c.toDataURL('image/jpeg',.8);prev.textContent='Zdjęcie gotowe.';err.textContent=''};
         im.onerror=()=>{err.textContent='To nie jest poprawny obraz.'};im.src=r.result};r.readAsDataURL(fl)}})),
-    prev,h('button',{class:'btn dng',type:'button',onclick:()=>{img='';prev.textContent='Zdjęcie usunięte.'}},'Usuń zdjęcie'),err,
+    prev,h('button',{class:'btn dng',type:'button',onclick:()=>{img='';prev.textContent='Zdjęcie usunięte.'}},'Usuń zdjęcie'),gin,gv,err,
     h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:()=>$('#dP').close()},'Anuluj'),h('button',{class:'btn pri',type:'submit'},'Zapisz')));
   f.addEventListener('submit',e=>{
     e.preventDefault();if(!admin)return;touch();
     if(!/^\d{1,2}$/.test(f.sale.value.trim())||+f.sale.value>90){err.textContent='Promocja: liczba od 0 do 90.';return}
     const pr=/^\d{1,6}([.,]\d{1,2})?$/.exec(f.price.value.trim()),st=/^\d{1,4}$/.test(f.stock.value.trim())?+f.stock.value:-1;
-    const n={id:p?p.id:'p-'+rnd(6),name:str(f.name.value,80),cat:str(f.cat.value,30),emoji:str(f.emoji.value,4)||'📦',price:pr?Math.round(parseFloat(pr[0].replace(',','.'))*100):0,stock:st,desc:strD(f.desc.value,800),img,sale:+f.sale.value,rl:f.rl.value==='1',opts:f.opts.value.split(',').map(o=>str(o,24)).filter(Boolean).slice(0,12)};
+    const n={id:p?p.id:'p-'+rnd(6),name:str(f.name.value,80),cat:str(f.cat.value,30),emoji:str(f.emoji.value,4)||'📦',price:pr?Math.round(parseFloat(pr[0].replace(',','.'))*100):0,stock:st,desc:strD(f.desc.value,800),short:str(f.elements['short'].value,140),img,gal,sale:+f.sale.value,rl:f.rl.value==='1',opts:f.opts.value.split(',').map(o=>str(o,24)).filter(Boolean).slice(0,12)};
     const ok=cleanP(n);
     if(!ok){err.textContent='Sprawdź dane: nazwa i kategoria (min. 2 znaki), cena > 0, stan 0–9999.';return}
     if(p)P=P.map(x=>x.id===p.id?ok:x);else P.push(ok);
@@ -715,6 +1023,8 @@ function editP(p){
 /* ---------- init ---------- */
 $('#q').addEventListener('input',renderGrid);
 $('#cf').addEventListener('change',renderGrid);
+['#so','#fa','#pmin','#pmax'].forEach(i=>$(i).addEventListener('input',renderGrid));
+$('#fr').addEventListener('click',()=>{$('#so').value='';$('#fa').checked=false;$('#pmin').value='';$('#pmax').value='';renderGrid()});
 $('#cartb').addEventListener('click',()=>{renderCart();open($('#dC'))});
 $('#adm').addEventListener('click',adminEntry);
 $('#about').addEventListener('click',about);$('#farm').addEventListener('click',farm);$('#help').addEventListener('click',()=>{utab='s';account()});
@@ -725,11 +1035,15 @@ function menu(o){MN.classList.toggle('open',o);GB.setAttribute('aria-expanded',S
 GB.addEventListener('click',e=>{e.stopPropagation();menu(!MN.classList.contains('open'))});
 MN.addEventListener('click',e=>{if(e.target.closest('.mi'))menu(false)});
 document.addEventListener('click',e=>{if(!MN.contains(e.target))menu(false)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
-$('#rlm').addEventListener('click',roulette);$('#sup').addEventListener('click',()=>{utab='s';account()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false);if(LBX&&$('#dZ').open){if(e.key==='ArrowRight')LBX(1);if(e.key==='ArrowLeft')LBX(-1)}});
+$('#rlm').addEventListener('click',roulette);$('#wsh').addEventListener('click',wishlist);$('#qzm').addEventListener('click',()=>{QZ={};quiz(0)});$('#goquiz').addEventListener('click',()=>{QZ={};quiz(0)});$('#sup').addEventListener('click',()=>{utab='s';account()});
 $('#dA').addEventListener('click',touch);$('#dA').addEventListener('keydown',touch);
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d&&d.id!=='dK')d.close()}));
 [[3,6,34,-8],[72,22,40,14],[14,58,28,10],[60,70,36,-14],[40,10,22,6]].forEach(([l,t,w,r])=>{const i=logo();i.className='bgl';i.style.cssText='left:'+l+'%;top:'+t+'%;width:'+w+'vmin;height:'+w+'vmin;animation:bspin '+(90+Math.abs(r)*6)+'s linear infinite '+(r<0?'reverse':'normal')+';animation-delay:-'+(Math.abs(r)*9)+'s';$('.blobs').append(i)});
+(function(){const sp=$('#splash');if(!sp)return;$('#splogo').append(logo());
+  const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;document.body.classList.add('lock');let done=false;
+  const end=()=>{if(done)return;done=true;sp.classList.add('out');document.body.classList.remove('lock');document.body.classList.add('ready');setTimeout(()=>sp.remove(),rm?50:900)};
+  setTimeout(end,rm?500:3200);sp.addEventListener('click',end);addEventListener('keydown',end,{once:true});})();
 $('#isli').prepend(logo());
 const ISL=$('#isl'),ITX=$('#islt');let ii=0;
 function islMsgs(){const mx=Math.max(0,...P.map(p=>p.sale||0));return['Spider Emperor','Wybrane pajkoki dla tych, którzy lubią wygrywać',"from emperor's for emperor's",'Zakręć ruletką i wygraj pająka 🎡',...(mx?['Promocje do −'+mx+'%']:[]),'Płatności w trybie testowym']}
@@ -746,7 +1060,20 @@ document.querySelectorAll('#vt .btn').forEach(b=>b.addEventListener('click',()=>
 function applyPrefs(lang){S.set('shop.prefs',{lang:LANG,cur:CUR});mkFmt();document.documentElement.lang=LANG;if(lang&&LANG==='pl')untr();renderCats();renderGrid();cnt();if(lang&&LANG==='en')trTree(document.body)}
 $('#lg').addEventListener('change',e=>{LANG=e.target.value==='en'?'en':'pl';applyPrefs(true)});
 $('#cu').addEventListener('change',e=>{CUR=e.target.value==='EUR'?'EUR':'PLN';applyPrefs(false)});
-renderCats();renderGrid();
+$('#lmark').append(logo());
+$('#goshop').addEventListener('click',()=>go('shop'));$('#goroul').addEventListener('click',roulette);
+let PAGE='start';
+function go(pg,push){
+  if(!['start','shop','info'].includes(pg))pg='start';PAGE=pg;
+  document.querySelectorAll('[data-pg]').forEach(e=>{e.hidden=e.dataset.pg!==pg});
+  document.querySelectorAll('.nav .btn').forEach(b=>b.setAttribute('aria-current',String(b.dataset.go===pg)));
+  if(push!==false){try{location.hash='#/'+pg}catch(e){}}
+  scrollTo(0,0);renderCmp();if(pg==='start')landing(true);
+}
+const hp=()=>(location.hash.match(/^#\/(\w+)/)||[])[1]||'start';
+document.querySelectorAll('.nav .btn').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+addEventListener('hashchange',()=>{const pg=hp();if(pg!==PAGE)go(pg,false)});
+renderCats();renderGrid();go(hp(),false);
 if(LANG==='en')trTree(document.body);
 </script>
 </body>
